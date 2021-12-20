@@ -1,0 +1,653 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE2D71E2276DFA74001577C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */; };
+		AE2D71E4276E0A5D001577C5 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E3276E0A5C001577C5 /* K.swift */; };
+		AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */; };
+		AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */; };
+		AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */; };
+		AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71EB276F1C1A001577C5 /* Navigation.swift */; };
+		AE5FEFE32770793F000561A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5FEFE22770793F000561A6 /* Service.swift */; };
+		AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A02769DD4200D715E1 /* AddAdvertising.swift */; };
+		AE6685A9276A15B500D715E1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A8276A15B500D715E1 /* Item.swift */; };
+		AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685AB276A170E00D715E1 /* TableDetails.swift */; };
+		AE901DAC2760942B00CC7586 /* HomeAndSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAB2760942B00CC7586 /* HomeAndSearch.swift */; };
+		AE901DAE2760944B00CC7586 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAD2760944B00CC7586 /* Account.swift */; };
+		AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */; };
+		AEF1CCE1276C965400DD8DB9 /* UpdateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1CCE0276C965400DD8DB9 /* UpdateAccount.swift */; };
+		AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64880275F58800092AE8D /* AppDelegate.swift */; };
+		AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64882275F58800092AE8D /* SceneDelegate.swift */; };
+		AEF64885275F58800092AE8D /* Wellcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64884275F58800092AE8D /* Wellcome.swift */; };
+		AEF64888275F58800092AE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF64886275F58800092AE8D /* Main.storyboard */; };
+		AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEF64889275F58820092AE8D /* Assets.xcassets */; };
+		AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF6488B275F58820092AE8D /* LaunchScreen.storyboard */; };
+		AEF64896275F5BC90092AE8D /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64895275F5BC90092AE8D /* SignIn.swift */; };
+		AEF64898275F9CE90092AE8D /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64897275F9CE80092AE8D /* SignUp.swift */; };
+		F3E7BACBFE325B58EE9D22F0 /* Pods_FinalReema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4341ABC2665BE5C7DEED643 /* Pods_FinalReema.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		207C10FC6EF096AF8E65CDDA /* Pods-FinalReema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.release.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.release.xcconfig"; sourceTree = "<group>"; };
+		47B58215C88030BF6100FE9C /* Pods-FinalReema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.debug.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.debug.xcconfig"; sourceTree = "<group>"; };
+		AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE2D71E3276E0A5C001577C5 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
+		AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailVC.swift; sourceTree = "<group>"; };
+		AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tapbarVC.swift; sourceTree = "<group>"; };
+		AE2D71EB276F1C1A001577C5 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		AE5FEFE22770793F000561A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		AE6685A02769DD4200D715E1 /* AddAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdvertising.swift; sourceTree = "<group>"; };
+		AE6685A8276A15B500D715E1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		AE6685AB276A170E00D715E1 /* TableDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetails.swift; sourceTree = "<group>"; };
+		AE901DAB2760942B00CC7586 /* HomeAndSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearch.swift; sourceTree = "<group>"; };
+		AE901DAD2760944B00CC7586 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableInHome.swift; sourceTree = "<group>"; };
+		AEF1CCE0276C965400DD8DB9 /* UpdateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccount.swift; sourceTree = "<group>"; };
+		AEF6487D275F58800092AE8D /* FinalReema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalReema.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF64880275F58800092AE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AEF64882275F58800092AE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AEF64884275F58800092AE8D /* Wellcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wellcome.swift; sourceTree = "<group>"; };
+		AEF64887275F58800092AE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AEF64889275F58820092AE8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AEF6488C275F58820092AE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AEF6488E275F58820092AE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEF64895275F5BC90092AE8D /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		AEF64897275F9CE80092AE8D /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		C4341ABC2665BE5C7DEED643 /* Pods_FinalReema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalReema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEF6487A275F58800092AE8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E7BACBFE325B58EE9D22F0 /* Pods_FinalReema.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE6685A22769DD5700D715E1 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		AE6685A32769DD6300D715E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE6685A42769DD6D00D715E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AEF6488B275F58820092AE8D /* LaunchScreen.storyboard */,
+				AEF64886275F58800092AE8D /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AE6685A52769F85800D715E1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AED29C6627709BFF00274606 /* Wellcome */,
+				AED29C6027709B4C00274606 /* signup */,
+				AED29C5E27709AF700274606 /* Login */,
+				AED29C6127709B7B00274606 /* Home */,
+				AED29C6727709C1A00274606 /* Advertising */,
+				AED29C6827709C4E00274606 /* DetailsAdversting */,
+				AED29C6527709BE600274606 /* Account */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AE6685AA276A15C400D715E1 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				AE6685A8276A15B500D715E1 /* Item.swift */,
+				AE6685AB276A170E00D715E1 /* TableDetails.swift */,
+			);
+			path = Struct;
+			sourceTree = "<group>";
+		};
+		AE901DAF276095DD00CC7586 /* Suport */ = {
+			isa = PBXGroup;
+			children = (
+				AEF64889275F58820092AE8D /* Assets.xcassets */,
+				AEF64882275F58800092AE8D /* SceneDelegate.swift */,
+				AEF64880275F58800092AE8D /* AppDelegate.swift */,
+			);
+			path = Suport;
+			sourceTree = "<group>";
+		};
+		AED29C5B277096CD00274606 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = classes;
+			sourceTree = "<group>";
+		};
+		AED29C5D277098B800274606 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				AE2D71E3276E0A5C001577C5 /* K.swift */,
+				AE5FEFE22770793F000561A6 /* Service.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		AED29C5E27709AF700274606 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AED29C5F27709B0900274606 /* loginViewControllers */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		AED29C5F27709B0900274606 /* loginViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AEF64895275F5BC90092AE8D /* SignIn.swift */,
+				AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */,
+				AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */,
+			);
+			path = loginViewControllers;
+			sourceTree = "<group>";
+		};
+		AED29C6027709B4C00274606 /* signup */ = {
+			isa = PBXGroup;
+			children = (
+				AEF64897275F9CE80092AE8D /* SignUp.swift */,
+			);
+			path = signup;
+			sourceTree = "<group>";
+		};
+		AED29C6127709B7B00274606 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AED29C6227709BA900274606 /* HomeviewController */,
+				AED29C6427709BD000274606 /* Navagation */,
+				AED29C6327709BBC00274606 /* Tabbar */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AED29C6227709BA900274606 /* HomeviewController */ = {
+			isa = PBXGroup;
+			children = (
+				AE901DAB2760942B00CC7586 /* HomeAndSearch.swift */,
+			);
+			path = HomeviewController;
+			sourceTree = "<group>";
+		};
+		AED29C6327709BBC00274606 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		AED29C6427709BD000274606 /* Navagation */ = {
+			isa = PBXGroup;
+			children = (
+				AE2D71EB276F1C1A001577C5 /* Navigation.swift */,
+			);
+			path = Navagation;
+			sourceTree = "<group>";
+		};
+		AED29C6527709BE600274606 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				AE901DAD2760944B00CC7586 /* Account.swift */,
+				AEF1CCE0276C965400DD8DB9 /* UpdateAccount.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		AED29C6627709BFF00274606 /* Wellcome */ = {
+			isa = PBXGroup;
+			children = (
+				AEF64884275F58800092AE8D /* Wellcome.swift */,
+			);
+			path = Wellcome;
+			sourceTree = "<group>";
+		};
+		AED29C6727709C1A00274606 /* Advertising */ = {
+			isa = PBXGroup;
+			children = (
+				AE6685A02769DD4200D715E1 /* AddAdvertising.swift */,
+			);
+			path = Advertising;
+			sourceTree = "<group>";
+		};
+		AED29C6827709C4E00274606 /* DetailsAdversting */ = {
+			isa = PBXGroup;
+			children = (
+				AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */,
+			);
+			path = DetailsAdversting;
+			sourceTree = "<group>";
+		};
+		AEF64874275F58800092AE8D = {
+			isa = PBXGroup;
+			children = (
+				AEF6487F275F58800092AE8D /* FinalReema */,
+				AEF6487E275F58800092AE8D /* Products */,
+				BE9F042A377CE39348125F39 /* Pods */,
+				FA33051880402859FC5B7D80 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AEF6487E275F58800092AE8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEF6487D275F58800092AE8D /* FinalReema.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEF6487F275F58800092AE8D /* FinalReema */ = {
+			isa = PBXGroup;
+			children = (
+				AED29C5D277098B800274606 /* Constant */,
+				AE6685A52769F85800D715E1 /* ViewController */,
+				AE6685A32769DD6300D715E1 /* Model */,
+				AE6685AA276A15C400D715E1 /* Struct */,
+				AED29C5B277096CD00274606 /* classes */,
+				AE6685A22769DD5700D715E1 /* Extention */,
+				AE6685A42769DD6D00D715E1 /* View */,
+				AE901DAF276095DD00CC7586 /* Suport */,
+				AEF6488E275F58820092AE8D /* Info.plist */,
+				AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */,
+			);
+			path = FinalReema;
+			sourceTree = "<group>";
+		};
+		BE9F042A377CE39348125F39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47B58215C88030BF6100FE9C /* Pods-FinalReema.debug.xcconfig */,
+				207C10FC6EF096AF8E65CDDA /* Pods-FinalReema.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA33051880402859FC5B7D80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4341ABC2665BE5C7DEED643 /* Pods_FinalReema.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AEF6487C275F58800092AE8D /* FinalReema */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEF64891275F58820092AE8D /* Build configuration list for PBXNativeTarget "FinalReema" */;
+			buildPhases = (
+				93ED5D3C78961EDCD42B8B5B /* [CP] Check Pods Manifest.lock */,
+				AEF64879275F58800092AE8D /* Sources */,
+				AEF6487A275F58800092AE8D /* Frameworks */,
+				AEF6487B275F58800092AE8D /* Resources */,
+				3F5F75EBA75A27CD39FA2B8F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FinalReema;
+			productName = FinalReema;
+			productReference = AEF6487D275F58800092AE8D /* FinalReema.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEF64875275F58800092AE8D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					AEF6487C275F58800092AE8D = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = AEF64878275F58800092AE8D /* Build configuration list for PBXProject "R-Garage" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AEF64874275F58800092AE8D;
+			productRefGroup = AEF6487E275F58800092AE8D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AEF6487C275F58800092AE8D /* FinalReema */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEF6487B275F58800092AE8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */,
+				AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */,
+				AEF64888275F58800092AE8D /* Main.storyboard in Resources */,
+				AE2D71E2276DFA74001577C5 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F5F75EBA75A27CD39FA2B8F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinalReema/Pods-FinalReema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinalReema/Pods-FinalReema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinalReema/Pods-FinalReema-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93ED5D3C78961EDCD42B8B5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinalReema-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AEF64879275F58800092AE8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
+				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
+				AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */,
+				AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */,
+				AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */,
+				AE5FEFE32770793F000561A6 /* Service.swift in Sources */,
+				AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */,
+				AEF1CCE1276C965400DD8DB9 /* UpdateAccount.swift in Sources */,
+				AEF64896275F5BC90092AE8D /* SignIn.swift in Sources */,
+				AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */,
+				AE901DAE2760944B00CC7586 /* Account.swift in Sources */,
+				AEF64898275F9CE90092AE8D /* SignUp.swift in Sources */,
+				AE2D71E4276E0A5D001577C5 /* K.swift in Sources */,
+				AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */,
+				AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */,
+				AE6685A9276A15B500D715E1 /* Item.swift in Sources */,
+				AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */,
+				AE901DAC2760942B00CC7586 /* HomeAndSearch.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AEF64886275F58800092AE8D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEF64887275F58800092AE8D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AEF6488B275F58820092AE8D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEF6488C275F58820092AE8D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AEF6488F275F58820092AE8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AEF64890275F58820092AE8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AEF64892275F58820092AE8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47B58215C88030BF6100FE9C /* Pods-FinalReema.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQQ2YBW9F8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinalReema/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allowed to access to ypuy photo";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = reema.com.RGarage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AEF64893275F58820092AE8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 207C10FC6EF096AF8E65CDDA /* Pods-FinalReema.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQQ2YBW9F8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinalReema/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allowed to access to ypuy photo";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = reema.com.RGarage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AEF64878275F58800092AE8D /* Build configuration list for PBXProject "R-Garage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF6488F275F58820092AE8D /* Debug */,
+				AEF64890275F58820092AE8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEF64891275F58820092AE8D /* Build configuration list for PBXNativeTarget "FinalReema" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF64892275F58820092AE8D /* Debug */,
+				AEF64893275F58820092AE8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEF64875275F58800092AE8D /* Project object */;
+}

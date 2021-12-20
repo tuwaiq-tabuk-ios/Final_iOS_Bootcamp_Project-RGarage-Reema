@@ -1,0 +1,6 @@
+framework module Pods_FinalReema {
+  umbrella header "Pods-FinalReema-umbrella.h"
+
+  export *
+  module * { export * }
+}
