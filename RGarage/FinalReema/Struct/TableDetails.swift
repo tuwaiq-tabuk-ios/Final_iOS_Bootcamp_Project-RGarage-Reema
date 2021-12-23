@@ -7,7 +7,6 @@
 
 import UIKit
 class  TableDetails : UITableViewCell {
-  //من الهوم سكري اللي فيها التابل فيو
   
   @IBOutlet weak var address: UILabel!
   
@@ -17,6 +16,5 @@ class  TableDetails : UITableViewCell {
   
   @IBOutlet weak var imageTabel : UIImageView!
   
-//  //سويت لهم متغيرات 
 
 }

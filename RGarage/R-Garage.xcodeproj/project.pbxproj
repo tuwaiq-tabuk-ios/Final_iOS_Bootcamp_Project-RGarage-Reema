@@ -15,7 +15,7 @@
 		AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71EB276F1C1A001577C5 /* Navigation.swift */; };
 		AE5FEFE32770793F000561A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5FEFE22770793F000561A6 /* Service.swift */; };
 		AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A02769DD4200D715E1 /* AddAdvertising.swift */; };
-		AE6685A9276A15B500D715E1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A8276A15B500D715E1 /* Item.swift */; };
+		AE6685A9276A15B500D715E1 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A8276A15B500D715E1 /* Detail.swift */; };
 		AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685AB276A170E00D715E1 /* TableDetails.swift */; };
 		AE901DAC2760942B00CC7586 /* HomeAndSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAB2760942B00CC7586 /* HomeAndSearch.swift */; };
 		AE901DAE2760944B00CC7586 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAD2760944B00CC7586 /* Account.swift */; };
@@ -43,7 +43,7 @@
 		AE2D71EB276F1C1A001577C5 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		AE5FEFE22770793F000561A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		AE6685A02769DD4200D715E1 /* AddAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdvertising.swift; sourceTree = "<group>"; };
-		AE6685A8276A15B500D715E1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		AE6685A8276A15B500D715E1 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		AE6685AB276A170E00D715E1 /* TableDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetails.swift; sourceTree = "<group>"; };
 		AE901DAB2760942B00CC7586 /* HomeAndSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearch.swift; sourceTree = "<group>"; };
 		AE901DAD2760944B00CC7586 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -97,24 +97,10 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		AE6685A52769F85800D715E1 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				AED29C6627709BFF00274606 /* Wellcome */,
-				AED29C6027709B4C00274606 /* signup */,
-				AED29C5E27709AF700274606 /* Login */,
-				AED29C6127709B7B00274606 /* Home */,
-				AED29C6727709C1A00274606 /* Advertising */,
-				AED29C6827709C4E00274606 /* DetailsAdversting */,
-				AED29C6527709BE600274606 /* Account */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		AE6685AA276A15C400D715E1 /* Struct */ = {
 			isa = PBXGroup;
 			children = (
-				AE6685A8276A15B500D715E1 /* Item.swift */,
+				AE6685A8276A15B500D715E1 /* Detail.swift */,
 				AE6685AB276A170E00D715E1 /* TableDetails.swift */,
 			);
 			path = Struct;
@@ -260,8 +246,14 @@
 		AEF6487F275F58800092AE8D /* FinalReema */ = {
 			isa = PBXGroup;
 			children = (
+				AED29C6627709BFF00274606 /* Wellcome */,
+				AED29C6027709B4C00274606 /* signup */,
+				AED29C5E27709AF700274606 /* Login */,
+				AED29C6127709B7B00274606 /* Home */,
+				AED29C6727709C1A00274606 /* Advertising */,
+				AED29C6827709C4E00274606 /* DetailsAdversting */,
+				AED29C6527709BE600274606 /* Account */,
 				AED29C5D277098B800274606 /* Constant */,
-				AE6685A52769F85800D715E1 /* ViewController */,
 				AE6685A32769DD6300D715E1 /* Model */,
 				AE6685AA276A15C400D715E1 /* Struct */,
 				AED29C5B277096CD00274606 /* classes */,
@@ -422,7 +414,7 @@
 				AE2D71E4276E0A5D001577C5 /* K.swift in Sources */,
 				AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */,
 				AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */,
-				AE6685A9276A15B500D715E1 /* Item.swift in Sources */,
+				AE6685A9276A15B500D715E1 /* Detail.swift in Sources */,
 				AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */,
 				AE901DAC2760942B00CC7586 /* HomeAndSearch.swift in Sources */,
 			);
