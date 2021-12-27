@@ -12,6 +12,6 @@ struct Detail
   var address = ""
   var phone = ""
   var price = ""
-//  var image = UIImage()
+  var image = ""
 }
  

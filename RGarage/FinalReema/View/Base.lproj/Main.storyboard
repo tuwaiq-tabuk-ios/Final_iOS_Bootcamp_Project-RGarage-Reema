@@ -749,10 +749,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="48Y-az-TxX">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ftd-hf-6bd" userLabel="top-View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="272.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget Password?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVw-Zo-qWh">
                                                 <rect key="frame" x="0.0" y="53" width="414" height="48"/>
@@ -805,10 +805,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMs-5d-EGT" userLabel="middl View">
-                                        <rect key="frame" x="0.0" y="258" width="414" height="258"/>
+                                        <rect key="frame" x="0.0" y="272.5" width="414" height="273"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Forgot password-cuate" translatesAutoresizingMaskIntoConstraints="NO" id="3TK-XS-QLI">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="258"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="273"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -822,7 +822,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="win-BT-mOK" userLabel="bottom View">
-                                        <rect key="frame" x="0.0" y="516" width="414" height="258"/>
+                                        <rect key="frame" x="0.0" y="545.5" width="414" height="272.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HzS-Xl-oqi">
                                                 <rect key="frame" x="30" y="53" width="354" height="48"/>
@@ -834,7 +834,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rp3-YN-FIF">
-                                                <rect key="frame" x="132" y="166" width="150" height="48"/>
+                                                <rect key="frame" x="132" y="178" width="150" height="50.5"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
@@ -1217,7 +1217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40p-qJ-q5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5842.0289855072469" y="109.82142857142857"/>
+            <point key="canvasLocation" x="3168" y="884"/>
         </scene>
         <!--Add Advertising-->
         <scene sceneID="HY9-9k-iF3">
@@ -1430,7 +1430,7 @@
                     <navigationItem key="navigationItem" id="fhY-mW-iYt">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="9Kg-WG-UUJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="O6B-0m-4Gq">
-                                <rect key="frame" x="332.5" y="0.0" width="61.5" height="44"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.96688343109999997" green="0.80784590830000003" blue="0.27849984909999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>

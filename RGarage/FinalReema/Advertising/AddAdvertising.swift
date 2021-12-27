@@ -9,11 +9,12 @@ import UIKit
 
 class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
-  var getAdvertismentInfo = [Detail(address: "Main street", phone: "000000000", price: "90"),
-  Detail(address: "Street 2", phone: "55555555555", price: "40")]
+  var getAdvertismentInfo:Detail = Detail(address: "Main street", phone: "000000000", price: "90" , image: "user1")
+                             //  Detail(address: "Street 2", phone: "55555555555", price: "40",image: "Social media-bro")
   
   
-  var getDetail : Detail!
+//  let a : self.getAdvertismentInfo
+//  var getDetail : Detail!
   
   @IBOutlet weak var imageView: UIView!
   @IBOutlet weak var addImageAD: UIImageView!
@@ -33,6 +34,11 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
     BasicView.layer.shadowOffset = .zero
     BasicView.layer.shadowRadius = 150
     BasicView.layer.shouldRasterize = true
+    
+    addImageAD.image = UIImage(named: getAdvertismentInfo.image)
+    addressAD.text = getAdvertismentInfo.address
+    phoneNumberAD.text = getAdvertismentInfo.phone
+    priceAD.text = getAdvertismentInfo.price
     
 
 //    getDetail.address = (addressAD.text)

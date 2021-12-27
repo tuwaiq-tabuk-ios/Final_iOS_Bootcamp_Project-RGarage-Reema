@@ -16,6 +16,9 @@ class SignUp: UIViewController  , UINavigationControllerDelegate {
   var vc = UIViewController()
   //for uoload photo for firebase
   let storage = Storage.storage().reference()
+  var ref: DatabaseReference!
+
+  ref = Database.database().reference()
 
   @IBOutlet weak var nameUserSignUp: UITextField!
   @IBOutlet weak var emailUserSignUp: UITextField!
@@ -194,6 +197,29 @@ extension SignUp : UIImagePickerControllerDelegate {
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
   }
+  
+  func getUserInfo()
+  
+  {
+    self.ref.child("users").child(user.uid).setValue(["username": username])
+    self.ref.child("users/\(user.uid)/username").setValue(username)
+    
+    let fulNmae = nameUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    let email = emailUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    
+    
+    self.ref.child("users/\(fulNmae.uid)/username").setValue(fulNmae )
+    
+    ref.child("users/\(uid)/username").getData(completion:  { error, snapshot in
+      guard error == nil else {
+        print(error!.localizedDescription)
+        return;
+      }
+      let userName = snapshot.value as? String ?? "Unknown";
+    });
+  }
+  }
+  
   
   
 }
