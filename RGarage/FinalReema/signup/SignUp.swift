@@ -16,10 +16,7 @@ class SignUp: UIViewController  , UINavigationControllerDelegate {
   var vc = UIViewController()
   //for uoload photo for firebase
   let storage = Storage.storage().reference()
-  var ref: DatabaseReference!
-
-  ref = Database.database().reference()
-
+  
   @IBOutlet weak var nameUserSignUp: UITextField!
   @IBOutlet weak var emailUserSignUp: UITextField!
   @IBOutlet weak var passwordUserSignUp: UITextField!
@@ -73,7 +70,6 @@ class SignUp: UIViewController  , UINavigationControllerDelegate {
     }
     else {
       let fulNmae = nameUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-      
       let email = emailUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let password = passwordUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let confirmPass = confirmPassUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -109,36 +105,27 @@ class SignUp: UIViewController  , UINavigationControllerDelegate {
         )
         self.present(alert,animated: true , completion:  nil)
       }
-      
     }
-
-
   }
-
   func transitionToHome() {
-    
     let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
-    
     view.window?.rootViewController = tapbarVC
     view.window?.makeKeyAndVisible()
-    
   }
+  
   //button for user add photo from library
   @IBAction func userPhotoButton(_ sender: Any) {
     
     presentPhotoActionSheet()
   }
-  
 }
-
 extension SignUp : UIImagePickerControllerDelegate {
   func presentPhotoActionSheet(){
     let actionSheet = UIAlertController(
       title: "Profile Picture",
       message: "How would you like to select a picture",
       preferredStyle: .actionSheet)
-    
-    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {[weak self] _ in
       self?.presenCamera()
     } ))
@@ -146,36 +133,42 @@ extension SignUp : UIImagePickerControllerDelegate {
       self?.presentPhotoPicker()
     }))
     present(actionSheet , animated: true)
-    
   }
+  
   func presenCamera (){
     let addImge = UIImagePickerController()
     addImge.sourceType = .camera
     addImge.delegate = self
     addImge.allowsEditing = true
     present(addImge, animated: true)
-    
   }
+  
+  
   func presentPhotoPicker(){
     let addImge = UIImagePickerController()
     addImge.sourceType = .photoLibrary
     addImge.delegate = self
     addImge.allowsEditing = true
     present(addImge, animated: true)
-    
   }
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+  
+  
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info:
+                             [UIImagePickerController.InfoKey : Any]) {
+    
     picker.dismiss(animated: true, completion: nil)
-    guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+    guard let selectedImage =
+            info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
       return
     }
-     self.userPhoto.image  = selectedImage
+    self.userPhoto.image  = selectedImage
     guard let imagData = selectedImage.pngData() else {
       return
     }
     storage.child("images/file.png").putData(imagData,
-                                             metadata: nil, completion: { _, error in
+                                             metadata: nil,
+                                             completion: { _, error in
       
       guard error == nil else {
         print ("Fieled")
@@ -186,7 +179,6 @@ extension SignUp : UIImagePickerControllerDelegate {
           return
         }
         
-        
         let urlString = url.absoluteString
         print("Download URL : \(urlString) ")
         UserDefaults.standard.set(urlString, forKey: "url")
@@ -194,32 +186,10 @@ extension SignUp : UIImagePickerControllerDelegate {
       })
     })
   }
+  
+  
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
   }
-  
-  func getUserInfo()
-  
-  {
-    self.ref.child("users").child(user.uid).setValue(["username": username])
-    self.ref.child("users/\(user.uid)/username").setValue(username)
-    
-    let fulNmae = nameUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-    let email = emailUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-    
-    
-    self.ref.child("users/\(fulNmae.uid)/username").setValue(fulNmae )
-    
-    ref.child("users/\(uid)/username").getData(completion:  { error, snapshot in
-      guard error == nil else {
-        print(error!.localizedDescription)
-        return;
-      }
-      let userName = snapshot.value as? String ?? "Unknown";
-    });
-  }
-  }
-  
-  
   
 }

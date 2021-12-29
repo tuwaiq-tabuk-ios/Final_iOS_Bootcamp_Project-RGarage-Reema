@@ -6,12 +6,10 @@
 //
 
 import UIKit
-
-struct Detail
-{
+struct Details {
   var address = ""
-  var phone = ""
+  var date = ""
   var price = ""
-  var image = ""
+  var image = "" 
 }
  

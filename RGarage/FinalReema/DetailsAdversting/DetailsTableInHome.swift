@@ -9,6 +9,8 @@ import UIKit
 
 class DetailsTableInHome: UIViewController {
   
+  
+  
   @IBOutlet weak var point1: UIImageView!
   @IBOutlet weak var point2: UIImageView!
   @IBOutlet weak var point3: UIImageView!
@@ -22,6 +24,7 @@ class DetailsTableInHome: UIViewController {
   @IBOutlet weak var DetailsView: UIView!
   @IBOutlet weak var ratingView: UIView!
  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 

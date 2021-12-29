@@ -20,12 +20,7 @@ class ForgetPasswordVC: UIViewController {
     sendButton.layer.cornerRadius = 10
     
     }
-  @IBAction func backToLogInButton(_ sender: UIButton) {
-    self.vc = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignIn
-    self.vc.modalPresentationStyle = .fullScreen
-    present(vc,animated: false, completion: nil)
-  }
-  
+    
   @IBAction func sendButtonTOCheck(_ sender: UIButton) {
     let auth = Auth.auth()
     

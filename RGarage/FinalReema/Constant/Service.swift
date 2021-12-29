@@ -10,8 +10,7 @@ import UIKit
 class Service{
   
   static func createAleartController(title : String
-                                     , message: String
-  ) -> UIAlertController{
+                                     , message: String) -> UIAlertController{
     
     let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)
     let okAction  = UIAlertAction(title: "Ok", style: .default){(action) in
