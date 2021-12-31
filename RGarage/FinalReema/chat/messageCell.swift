@@ -12,21 +12,16 @@ class messageCell: UITableViewCell {
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var messageBubble: UIView!
   
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
+ 
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
-    // Configure the view for the selected state
-  }
-  
+   }
+
   enum sender {
     case me , other
   }
-  
-  
+   
   func getMessageDesign (sender:sender){
     var backGroundColor : UIColor?
     switch sender{
@@ -40,12 +35,9 @@ class messageCell: UITableViewCell {
       textLabel?.textAlignment = .left
     }
     
-    
     messageBubble.backgroundColor = backGroundColor
     messageBubble.layer.cornerRadius = messageLabel.frame.size.height/2.5
     messageBubble.layer.shadowOpacity = 0.1
-    
-    
+     
   }
 }
-

@@ -7,31 +7,32 @@
 
 import UIKit
 
-class DetailsTableInHome: UIViewController {
+class DetailsTableInHome : UIViewController {
   
-  
-  
-  @IBOutlet weak var point1: UIImageView!
-  @IBOutlet weak var point2: UIImageView!
-  @IBOutlet weak var point3: UIImageView!
-  //baisic image
   @IBOutlet weak var imageDeatailTableHome: UIImageView!
+  //buttons
+  @IBOutlet weak var chatButton: UIButton!
   
-//buttons
-  @IBOutlet weak var locationButton: UIButton!
-  @IBOutlet weak var priceButton: UIButton!
-  @IBOutlet weak var phoneButton: UIButton!
   @IBOutlet weak var DetailsView: UIView!
-  @IBOutlet weak var ratingView: UIView!
- 
+
+  //labels
+  
+  @IBOutlet weak var addressLabel: UILabel!
+  @IBOutlet weak var priceLabel: UILabel!
+  @IBOutlet weak var phoneLabel: UILabel!
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
-
-  }
-       @IBAction func buttonPressed(_ sender: UIButton) {
-
+   }
   
-}
+
+  @IBAction func chatButton(_ sender: UIButton) {
+    
+    let VC = storyboard?.instantiateViewController(withIdentifier: "UsersChatTableVC") as! UsersChatTableVC
+    
+      present(VC, animated: true, completion: nil)
+  }
+   
+  
 }

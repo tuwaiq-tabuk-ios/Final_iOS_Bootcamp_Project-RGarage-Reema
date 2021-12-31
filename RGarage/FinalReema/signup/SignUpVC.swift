@@ -11,7 +11,8 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 
-class SignUp: UIViewController  , UINavigationControllerDelegate {
+class SignUpVC: UIViewController
+, UINavigationControllerDelegate {
   
   var vc = UIViewController()
   //for uoload photo for firebase
@@ -34,7 +35,7 @@ class SignUp: UIViewController  , UINavigationControllerDelegate {
     
   }
   @IBAction func ButtonToSignIn(_ sender: UIButton) {
-    vc = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignIn
+    vc = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignInVC
     vc.modalPresentationStyle = .fullScreen
     present(vc,animated: false, completion: nil)
   }
@@ -73,6 +74,7 @@ class SignUp: UIViewController  , UINavigationControllerDelegate {
       let email = emailUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let password = passwordUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let confirmPass = confirmPassUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      
       if confirmPass == password{
         
         Auth.auth().createUser(withEmail: email, password: password )  { (result, err) in
@@ -119,7 +121,7 @@ class SignUp: UIViewController  , UINavigationControllerDelegate {
     presentPhotoActionSheet()
   }
 }
-extension SignUp : UIImagePickerControllerDelegate {
+extension SignUpVC : UIImagePickerControllerDelegate {
   func presentPhotoActionSheet(){
     let actionSheet = UIAlertController(
       title: "Profile Picture",

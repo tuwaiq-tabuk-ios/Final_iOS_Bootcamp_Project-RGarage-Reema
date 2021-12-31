@@ -6,17 +6,14 @@
 //
 
 import UIKit
-class  TableDetails : UITableViewCell {
-  //من الهوم سكري اللي فيها التابل فيو
-  
-  @IBOutlet weak var address: UILabel!
-  
-  @IBOutlet weak var data: UILabel!
-  
-  @IBOutlet weak var price: UILabel!
-  
-  @IBOutlet weak var imageTabel : UIImageView!
-  
-//  //سويت لهم متغيرات 
 
+class  TableDetails : UITableViewCell {
+  
+// item home srcren item 
+  @IBOutlet weak var address: UILabel!
+  @IBOutlet weak var data: UILabel!
+  @IBOutlet weak var price: UILabel!
+  @IBOutlet weak var imageTabel : UIImageView!
+ 
+ 
 }

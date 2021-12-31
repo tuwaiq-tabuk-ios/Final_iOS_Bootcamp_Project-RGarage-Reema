@@ -26,13 +26,13 @@ class Wellcome: UIViewController {
 
     if sender.tag == 1 {
   
-      ViewC = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignIn
+      ViewC = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignInVC
       ViewC.modalPresentationStyle = .fullScreen
       present(ViewC,animated: false, completion: nil)
 
      }
     else {
-      ViewC = self.storyboard?.instantiateViewController(withIdentifier:"SignUp") as! SignUp
+      ViewC = self.storyboard?.instantiateViewController(withIdentifier:"SignUp") as! SignUpVC
       ViewC.modalPresentationStyle = .fullScreen
       present(ViewC,animated: false,completion: nil)
     }

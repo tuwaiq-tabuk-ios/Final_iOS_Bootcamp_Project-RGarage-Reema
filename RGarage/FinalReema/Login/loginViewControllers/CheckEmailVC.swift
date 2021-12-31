@@ -17,7 +17,7 @@ backToLoogin.layer.cornerRadius = 10
     
 
   @IBAction func bacToLoginPressed(_ sender: UIButton) {
-    vc = storyboard?.instantiateViewController(withIdentifier:"SignIn" ) as! SignIn
+    vc = storyboard?.instantiateViewController(withIdentifier:"SignIn" ) as! SignInVC
     vc.modalPresentationStyle = .fullScreen
     present(vc,animated: false, completion: nil)
     

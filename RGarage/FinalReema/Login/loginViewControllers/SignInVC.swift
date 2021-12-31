@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
-class SignIn: UIViewController {
+class SignInVC: UIViewController {
   var vc = UIViewController()
 
   @IBOutlet weak var emailSignIn: UITextField!
@@ -20,7 +20,7 @@ class SignIn: UIViewController {
   }
   
   @IBAction func ButtonToSignUp(_ sender: UIButton) {
-    vc = self.storyboard?.instantiateViewController(withIdentifier:"SignUp") as! SignUp
+    vc = self.storyboard?.instantiateViewController(withIdentifier:"SignUp") as! SignUpVC
     vc.modalPresentationStyle = .fullScreen
     present(vc,animated: false, completion: nil)
   }

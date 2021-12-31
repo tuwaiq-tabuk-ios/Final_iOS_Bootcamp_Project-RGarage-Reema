@@ -7,9 +7,9 @@
 
 import UIKit
 struct Details {
-  var address = ""
-  var date = ""
-  var price = ""
-  var image = "" 
+  
+  var address : String!
+  var price: String!
+  var image : UIImage!
 }
  

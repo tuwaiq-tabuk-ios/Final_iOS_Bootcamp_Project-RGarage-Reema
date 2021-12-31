@@ -7,12 +7,12 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class ChatViewController: UIViewController {
   
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextFeild: UITextField!
-  @IBOutlet weak var sendarName: UILabel!
   
   let db = Firestore.firestore()
   var messages :[Messages] = []
@@ -53,7 +53,7 @@ class ChatViewController: UIViewController {
        let messageSender = Auth.auth().currentUser?.email {
       db.collection("messages").addDocument(data:[
         "sender" : messageSender ,
-        "text" :messageText,
+        "text"   :  messageText,
         "time" :Date().timeIntervalSince1970
       ]){(error) in
         if let err = error {

@@ -25,7 +25,24 @@ class UpdateAccountVC: UIViewController,
   override func viewDidLoad() {
     super.viewDidLoad()
     
-//    getUserInfo()
+//    handle = Auth.auth().addStateDidChangeListener { auth, user in
+//
+//    }
+//    if Auth.auth().currentUser != nil {
+//      // User is signed in.
+//      // ...
+//    } else {
+//      // No user is signed in.
+//      // ...
+//    }
+//    Auth.auth().currentUser?.updateEmail(to: email) { error in
+//      let email = user?.email
+//
+//    }
+//
+//    Auth.auth().currentUser?.updatePassword(to: password) { error in
+//      // ...
+//    }
   }
   
   
@@ -49,16 +66,19 @@ class UpdateAccountVC: UIViewController,
   }
   
   
-  // button for user logout from the system
+// button for user logout from the system
   @IBAction func logoutUserPressed(_ sender: Any) {
-    try! Auth.auth().signOut()
+    try! FirebaseAuth.Auth.auth().signOut()
     //when user logout go to this page
     let wellcome = self.storyboard?.instantiateViewController(identifier: "Wellcome") as? Wellcome
     
     self.view.window?.rootViewController = wellcome
     self.view.window?.makeKeyAndVisible()
   }
+   
   
+  
+ 
 //  
 //  func getUserInfo(){
 //    let db = Firestore.firestore()
@@ -100,7 +120,6 @@ class UpdateAccountVC: UIViewController,
 //    //      }
 //    
 //    //    func userRoleListener() {
-//    //reema6717@icloud.com
 //    //    guard let userUid = Auth.auth().currentUser.uid else { return } .
 //    //    Firestore.firestore().collection("users").document(userUid).getDocument { (snapshot, error) in
 //    //     if let data = snapshot?.data() {
