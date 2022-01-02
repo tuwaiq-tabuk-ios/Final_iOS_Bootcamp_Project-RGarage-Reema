@@ -12,44 +12,48 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseCore
  
-class AccountVC: UIViewController {
- 
+class AccountVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
+ //variable
+  var ADuserIfo = [ADuser]()
+  
+  var avatar = UIImage()
+  var userName = ""
+  
   @IBOutlet weak var profilePhoto: UIImageView!
   @IBOutlet weak var nameUser: UILabel!
+  @IBOutlet weak var tableViewAccount: UITableView!
   
-//  var loggInUser = AnyObject?(<#AnyObject#>)
-////  var databaseRef =
-//  var storgeRef = FirebaseStorage.Storage().reference()
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
-  }
-  func getUserInfo(){
-    let db = Firestore.firestore()
-    
-    //    db.collection("users").getDocuments() { (querySnapshot, err) in
-    //        if let err = err {
-    //            print("Error getting documents: \(err)")
-    //        } else {
-    //            for document in querySnapshot!.documents {
-    //                print("**********\n\n\n\(document.documentID) => \(document.data())")
-    //              self.userFullName = document.data()["fulNmae"] as! String
-    //            }
-    //          //self.nameUser.text = self.userFullName
-    //        }
-    //    }
-    
-    let docRef = db.collection("users").document("uid")
-    
-    docRef.getDocument { (document, error) in
-      if let document = document, document.exists {
-        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-        print("Document data: \(dataDescription)")
-      } else {
-        print("Document does not exist")
-      }
-    }
-    
+    profilePhoto.image = avatar
+    nameUser.text = userName
   }
   
+  func numberOfSections(in tableView: UITableView) -> Int {
+    // #warning Incomplete implementation, return the number of sections
+    return 1
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return addADInfo.count
+  }
+  
+  
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let infoAD :  ADuser = addADInfo[indexPath.row]
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "outletADUser", for: indexPath) as! outletADUser
+   
+    cell.addressADuser.text = infoAD.addressUser
+    cell.priceADuser.text  = infoAD.priceUser
+    cell.imageADuser.image = infoAD.imageUser
+    
+    return cell
  }
+}
+
+
+  
+

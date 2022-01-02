@@ -15,6 +15,7 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
   var imageAD = UIImage()
   
   var details = Details()
+  var adInfoUsers = ADuser()
   
   @IBOutlet weak var imageView: UIView!
   @IBOutlet weak var addImageAD: UIImageView!
@@ -47,20 +48,30 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
     ppriceAD = "Price is : \(priceAD.text!)"
     print("**aaddressAD:\(ppriceAD)\n")
     
-    
+    //home
     details.image = imageAD
     details.price = ppriceAD
     details.address = aaddressAD
     
+    //Account
+//    adInfoUsers.imageUser = imageAD
+//    adInfoUsers.addressUser = aaddressAD
+//    adInfoUsers.priceUser = ppriceAD
+    
     data.append(details)
+//    addADInfo.append(adInfoUsers)
     
-    let AddDetails = storyboard?.instantiateViewController(withIdentifier: "HomeAndSearch") as! HomeAndSearch
+    let AddDetails = storyboard?.instantiateViewController(withIdentifier: "HomeAndSearchVC") as! HomeAndSearchVC
     
+//    let addADInfoToAccount  = storyboard?.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
     let tapbar = storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! tapbarVC
     
     present(tapbar, animated: true, completion: nil)
     
-    AddDetails.TableView?.reloadData()
+    AddDetails.tableView?.reloadData()
+    
+//    addADInfoToAccount.tableViewAccount?.reloadData()
+    
     
   }
   

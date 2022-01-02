@@ -9,11 +9,14 @@ import UIKit
 
 class  TableDetails : UITableViewCell {
   
-// item home srcren item 
+// item home srcren item
+  
   @IBOutlet weak var address: UILabel!
   @IBOutlet weak var data: UILabel!
   @IBOutlet weak var price: UILabel!
   @IBOutlet weak var imageTabel : UIImageView!
  
+ }
  
-}
+
+var data = [Details]()

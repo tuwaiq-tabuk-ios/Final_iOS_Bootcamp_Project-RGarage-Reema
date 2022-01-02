@@ -14,6 +14,14 @@ import FirebaseStorage
 class SignUpVC: UIViewController
 , UINavigationControllerDelegate {
   
+  //variable
+  var userFullName : String = ""
+  var userEmail : String = ""
+  var userPassword: String = ""
+  var userConfirmPassword : String = ""
+  var userImage = UIImage()
+  
+
   var vc = UIViewController()
   //for uoload photo for firebase
   let storage = Storage.storage().reference()
@@ -31,14 +39,15 @@ class SignUpVC: UIViewController
     userPhoto.layer.cornerRadius = userPhoto.frame.height/2
     userPhoto.layer.borderWidth = 3
     userPhoto.layer.borderColor = UIColor.lightGray.cgColor
-    
-    
   }
+  
+  
   @IBAction func ButtonToSignIn(_ sender: UIButton) {
     vc = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignInVC
     vc.modalPresentationStyle = .fullScreen
     present(vc,animated: false, completion: nil)
   }
+  
   
   func validateFields () -> String? {
     if nameUserSignUp.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -64,7 +73,23 @@ class SignUpVC: UIViewController
   
   
   @IBAction func signUpTapped(_ sender: Any) {
+ 
+    userImage = userPhoto.image!
+    print("**userImage:\(userImage)\n")
+    userFullName = nameUserSignUp.text!
+    print("**userFullName:\(userFullName)\n")
+    userEmail = emailUserSignUp.text!
+    print("**userEmail:\(userEmail)\n")
+    userPassword = passwordUserSignUp.text!
+    print("**userPassword:\(userPassword)\n")
+    userConfirmPassword = confirmPassUserSignUp.text!
+    print("**userConfirmPassword:\(userConfirmPassword)\n")
     
+//    self.performSegue(withIdentifier: "toUPdateUserinfo", sender: self)
+//    self.performSegue(withIdentifier: "toAccountUser", sender: self)
+    
+    
+    //firebase signup
     let error = validateFields()
     if error != nil {
       
@@ -99,8 +124,9 @@ class SignUpVC: UIViewController
             }
             // Transition to the home screen
             self.transitionToHome()
+         
           }
-          
+    
         }
       } else{
         let alert =  Service.createAleartController(title: "Error", message: "password not mach"
@@ -108,12 +134,31 @@ class SignUpVC: UIViewController
         self.present(alert,animated: true , completion:  nil)
       }
     }
+      
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let vc = segue.destination as? UpdateAccountVC
+    vc?.userImageUPdate = userImage
+    vc?.userFullNameUPdate = userFullName
+    vc?.userEmailUPdate = userEmail
+    vc?.userPasswordUPdate = userPassword
+    vc?.userConfirmPasswordUPdate = userConfirmPassword
+    
+    let accountVC = segue.destination as? AccountVC
+    accountVC?.userName = userFullName
+    accountVC?.avatar = userImage
+    
+  }
+  
   func transitionToHome() {
     let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
     view.window?.rootViewController = tapbarVC
     view.window?.makeKeyAndVisible()
   }
+  
+  
+  
   
   //button for user add photo from library
   @IBAction func userPhotoButton(_ sender: Any) {
@@ -188,7 +233,6 @@ extension SignUpVC : UIImagePickerControllerDelegate {
       })
     })
   }
-  
   
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
