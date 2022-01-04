@@ -52,6 +52,12 @@ class AccountVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
     
     return cell
  }
+  @IBAction func settingButtom(_ sender: Any) {
+    let UpdateAccountVC = storyboard?.instantiateViewController(identifier:"UpdateAccountVC") as? UpdateAccountVC
+    view.window?.rootViewController = UpdateAccountVC
+    view.window?.makeKeyAndVisible()
+  }
+  
 }
 
 

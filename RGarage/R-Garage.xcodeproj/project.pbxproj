@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE0B6E832781C87C00766F4C /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B6E822781C87C00766F4C /* MessageTableViewCell.xib */; };
 		AE2D71E2276DFA74001577C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */; };
 		AE2D71E4276E0A5D001577C5 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E3276E0A5C001577C5 /* K.swift */; };
 		AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */; };
@@ -23,10 +22,8 @@
 		AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */; };
 		AEA74210277F874000B2625D /* UsersChatTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA7420F277F873F00B2625D /* UsersChatTableVC.swift */; };
 		AEAEB0DE277C4AC400C4CF88 /* UsersChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEB0DD277C4AC400C4CF88 /* UsersChatCell.swift */; };
-		AEB5ED1A277B264000525ADE /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB5ED19277B264000525ADE /* MessageCell.swift */; };
-		AEB5ED1C277B319E00525ADE /* messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB5ED1B277B319E00525ADE /* messages.swift */; };
 		AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */; };
-		AEE1DC32277A438B00451FF6 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE1DC31277A438B00451FF6 /* ChatViewController.swift */; };
+		AEE561592782F40D0036BE1D /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE561582782F40D0036BE1D /* userInfo.swift */; };
 		AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */; };
 		AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64880275F58800092AE8D /* AppDelegate.swift */; };
 		AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64882275F58800092AE8D /* SceneDelegate.swift */; };
@@ -42,7 +39,6 @@
 /* Begin PBXFileReference section */
 		207C10FC6EF096AF8E65CDDA /* Pods-FinalReema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.release.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.release.xcconfig"; sourceTree = "<group>"; };
 		47B58215C88030BF6100FE9C /* Pods-FinalReema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.debug.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.debug.xcconfig"; sourceTree = "<group>"; };
-		AE0B6E822781C87C00766F4C /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE2D71E3276E0A5C001577C5 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
@@ -58,10 +54,8 @@
 		AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearchVC.swift; sourceTree = "<group>"; };
 		AEA7420F277F873F00B2625D /* UsersChatTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersChatTableVC.swift; sourceTree = "<group>"; };
 		AEAEB0DD277C4AC400C4CF88 /* UsersChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersChatCell.swift; sourceTree = "<group>"; };
-		AEB5ED19277B264000525ADE /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		AEB5ED1B277B319E00525ADE /* messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messages.swift; sourceTree = "<group>"; };
 		AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableInHome.swift; sourceTree = "<group>"; };
-		AEE1DC31277A438B00451FF6 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		AEE561582782F40D0036BE1D /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
 		AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountVC.swift; sourceTree = "<group>"; };
 		AEF6487D275F58800092AE8D /* FinalReema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalReema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF64880275F58800092AE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +85,6 @@
 		AE0B6E802781C82000766F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AEB5ED1B277B319E00525ADE /* messages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -99,8 +92,6 @@
 		AE0B6E812781C83000766F4C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AEB5ED19277B264000525ADE /* MessageCell.swift */,
-				AE0B6E822781C87C00766F4C /* MessageTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,7 +99,6 @@
 		AE0B6E842781C9D900766F4C /* ViewConteroller */ = {
 			isa = PBXGroup;
 			children = (
-				AEE1DC31277A438B00451FF6 /* ChatViewController.swift */,
 			);
 			path = ViewConteroller;
 			sourceTree = "<group>";
@@ -247,6 +237,7 @@
 				AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */,
 				AE901DAD2760944B00CC7586 /* AccountVC.swift */,
 				AE2E3A322781836A000DCFC6 /* outletADUser.swift */,
+				AEE561582782F40D0036BE1D /* userInfo.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -410,7 +401,6 @@
 			files = (
 				AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */,
 				AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */,
-				AE0B6E832781C87C00766F4C /* MessageTableViewCell.xib in Resources */,
 				AEF64888275F58800092AE8D /* Main.storyboard in Resources */,
 				AE2D71E2276DFA74001577C5 /* GoogleService-Info.plist in Resources */,
 			);
@@ -465,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE561592782F40D0036BE1D /* userInfo.swift in Sources */,
 				AEAEB0DE277C4AC400C4CF88 /* UsersChatCell.swift in Sources */,
 				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
@@ -478,16 +469,13 @@
 				AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */,
 				AEF64896275F5BC90092AE8D /* SignInVC.swift in Sources */,
 				AE2E3A332781836A000DCFC6 /* outletADUser.swift in Sources */,
-				AEB5ED1A277B264000525ADE /* MessageCell.swift in Sources */,
 				AE2E3A3727819758000DCFC6 /* Details.swift in Sources */,
 				AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */,
 				AE901DAE2760944B00CC7586 /* AccountVC.swift in Sources */,
-				AEE1DC32277A438B00451FF6 /* ChatViewController.swift in Sources */,
 				AEF64898275F9CE90092AE8D /* SignUpVC.swift in Sources */,
 				AE2D71E4276E0A5D001577C5 /* K.swift in Sources */,
 				AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */,
 				AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */,
-				AEB5ED1C277B319E00525ADE /* messages.swift in Sources */,
 				AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

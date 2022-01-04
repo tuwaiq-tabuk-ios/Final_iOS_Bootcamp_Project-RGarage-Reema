@@ -35,11 +35,12 @@ class DetailsTableInHome : UIViewController {
     priceLabel.text = priceD
     imageDeatailTableHome.image = imageD
   }
+  
+  
   @IBAction func chatButton(_ sender: UIButton) {
     
     let VC = storyboard?.instantiateViewController(withIdentifier: "UsersChatTableVC") as! UsersChatTableVC
       present(VC, animated: true, completion: nil)
+    
   }
-   
-  
 }
