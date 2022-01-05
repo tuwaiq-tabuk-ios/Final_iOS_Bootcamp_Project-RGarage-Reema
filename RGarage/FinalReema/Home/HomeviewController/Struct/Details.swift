@@ -6,13 +6,13 @@
 //
 
 import Foundation
-import UIKit
+//import UIKit
 
-struct Details {
-
-  var address : String!
-  var price: String!
-  var image : UIImage!
-  
-}
+//struct Details {
+//
+//  var addressDtaF : String!
+//  var priceDataF: String!
+//  var imageDataF : UIImage!
+//
+//}
 

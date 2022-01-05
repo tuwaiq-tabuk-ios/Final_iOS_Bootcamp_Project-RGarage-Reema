@@ -8,23 +8,28 @@
 import UIKit
 import Firebase
 import FirebaseAuth
- 
+import FirebaseFirestore
+import FirebaseStorage
+
+
 class UpdateAccountVC: UIViewController,
                        UIImagePickerControllerDelegate ,
                        UINavigationControllerDelegate {
   
-  //variabls
-let db = Firestore.firestore()
-//  var userInfo : UserInfo?
- 
+  // Database
+  let db = Firestore.firestore()
+  
+  let storage = Storage.storage().reference()
+  
+  let profileImagesRef = Storage.storage().reference().child("images/")
   
   var userFullNameUPdate : String = ""
   var userEmailUPdate : String = ""
   var userPasswordUPdate: String = ""
   var userConfirmPasswordUPdate : String = ""
   var userImageUPdate = UIImage()
-
-
+  
+  
   @IBOutlet weak var nameUpdate: UITextField!
   @IBOutlet weak var emailUpdate: UITextField!
   @IBOutlet weak var passwordUpdate: UITextField!
@@ -33,78 +38,43 @@ let db = Firestore.firestore()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    let email = Auth.auth().currentUser!.email
-//    let user = email
-//     emailUpdate.text = user
-   }
+    updateUserPhoto.layer.cornerRadius = updateUserPhoto.frame.height/2
+    updateUserPhoto.layer.borderWidth = 3
+    updateUserPhoto.layer.borderColor = UIColor.lightGray.cgColor
+  }
   
-//    override func viewWillAppear(_ animated: Bool) {
-//          super.viewWillAppear(animated) // call super
-//
-//          getName { (name) in
-//              if let name = name {
-//                  self.nameUpdate.text = name
-//                  print("great success")
-//              }
-//          }
-//      }
-//  func getName(completion: @escaping (_ name: String?) -> Void) {
-//    guard let uid = Auth.auth().currentUser?.uid else {return}
-//    let userRef = Firestore.firestore().collection("users").document(uid)
-//    userRef.getDocument { (documentSnapshot, error) in guard
-//        let document = documentSnapshot?.data() else {
-//            print(error)
-//            return
-//        }
-//        print(document)
-//    }
-//     }
-    //rawbi
-//    print(user?.uid)
-//    if let currentUser  = user {
-//    db.collection("users").document(currentUser.uid).getDocument { doc , err in
-//      if err != nil {
-//        print(err)
-//      }
-//      else{
-//        let data = doc!.data()!
-//        self.userInfo?.fullName = data["fulNmae"] as! String
-//        self.userInfo?.email = data["email"] as! String
-////        self.userInfo.avatar = data["email"] as! String
-//
-//      }
-//    }
-//
-//    }
+  // MARK: Show user Information in update VC
+  override func viewWillAppear(_ animated: Bool) {
+    let user = Auth.auth().currentUser
+    print(user?.uid)
     
-    //rawaboi
+    if let currentUser  = user {
+      db.collection("users").document(currentUser.uid).getDocument { doc , err in
+        if err != nil {
+          print(err!)
+        }
+        else{
+          let data = doc!.data()!
+          
+          self.userFullNameUPdate  = data["fulNmae"] as! String
+          self.userEmailUPdate = (user?.email)!
+          self.userPasswordUPdate = data["password"] as! String
+          print("**********DATA :  \(data)")
+          
+          self.nameUpdate.text = self.userFullNameUPdate
+          self.emailUpdate.text = self.userEmailUPdate
+          self.passwordUpdate.text = self.userPasswordUPdate
+          self.confirmPasswordUpdate.text = self.userPasswordUPdate
+          
+        }
+        
+      }
+    }
     
-    
-//
-//    if  let user = user {
-//      let email = user.email
-//      emailUpdate.text = email
-//
-//
-//    }
-    
-//      let db = Firestore.firestore()
-
-    
-    //let userCollection = db.collection("users")
-//
-//    let name = db.collection("users").document().collection("fulNmae")
-//    print("\n\n\n\n******NAME: \(name)")
-      
-      //     nameUpdate.text = userFullNameUPdate
-      //     emailUpdate.text = userEmailUPdate
-      //     passwordUpdate.text = userPasswordUPdate
-      //     confirmPasswordUpdate.text = userConfirmPasswordUPdate
-      //     updateUserPhoto.image = userImageUPdate
-      
+  }
   
-
   
+  // MARK: update user photo
   //for update user photo but not complet
   @IBAction func updateUserPhotoButton(_ sender: Any) {
     let addImge = UIImagePickerController()
@@ -113,8 +83,6 @@ let db = Firestore.firestore()
     addImge.allowsEditing = true
     present(addImge, animated: true)
   }
-  
-  
   func imagePickerController(
     _ picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
@@ -123,29 +91,31 @@ let db = Firestore.firestore()
     updateUserPhoto.image = image
     self.dismiss(animated: true, completion: nil)
   }
+  // MARK: LOGOUT USER
   
-  
-// button for user logout from the system
   @IBAction func logoutUserPressed(_ sender: Any)
-//  {
-//      do {
-//          try  Auth.auth().signOut()
-//          dismiss(animated: true, completion: nil)
-//      } catch let signOutError as NSError {
-//          print ("Error signing out: %@", signOutError)
-//      }
-//  }
-  
   {
-    try! FirebaseAuth.Auth.auth().signOut()
-    //when user logout go to this page
-    let wellcome = self.storyboard?.instantiateViewController(identifier: "Wellcome") as? Wellcome
-
-    self.view.window?.rootViewController = wellcome
-    self.view.window?.makeKeyAndVisible()
+    do {
+      try  Auth.auth().signOut()
+      
+      //when user logout go to this page
+      let wellcome = self.storyboard?.instantiateViewController(identifier: "Wellcome") as? Wellcome
+      self.view.window?.rootViewController = wellcome
+      //self.view.window?.makeKeyAndVisible()
+    } catch let signOutError as NSError {
+      print ("Error signing out: %@", signOutError)
+    }
   }
   
+  @IBAction func PressedupdatInfoUser(_ sender: UIButton) {
+    //
+    //    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+    //    changeRequest?.displayName = displayName
+    //    changeRequest?.commitChanges { error in
+    //
+    //    }
+    //
+    //  }
+    
+  }
 }
-
-
-

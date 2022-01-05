@@ -10,8 +10,7 @@ import FirebaseAuth
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
-
-
+ 
 class SignUpVC: UIViewController
 , UINavigationControllerDelegate {
   
@@ -24,6 +23,7 @@ class SignUpVC: UIViewController
   
 
   var vc = UIViewController()
+  
   //for uoload photo for firebase
   let storage = Storage.storage().reference()
   
@@ -96,7 +96,7 @@ class SignUpVC: UIViewController
       
     }
     else {
-      let fulNmae = nameUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let fullNmae = nameUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let email = emailUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let password = passwordUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let confirmPass = confirmPassUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -112,8 +112,11 @@ class SignUpVC: UIViewController
             
           }else {
             let db = Firestore.firestore()
-            db.collection("users").addDocument(data: ["fulNmae":fulNmae, "Email" :email , "password":password
-                                                      , "uid": result!.user.uid ]) { (error) in
+            let id = Auth.auth().currentUser?.uid
+            db.collection("users").document(id!).setData(["fulNmae":fullNmae,
+                                                          "Email" :email ,
+                                                          "password":password,
+                                                          "uid": result!.user.uid ]) { (error) in
               
               if error != nil {
                 // Show error message
