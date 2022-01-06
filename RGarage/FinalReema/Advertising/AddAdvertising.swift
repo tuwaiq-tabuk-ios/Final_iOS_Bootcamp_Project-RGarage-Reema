@@ -10,16 +10,15 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestore
 class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  //data
-  let db = Firestore.firestore()
-  var AdData  : [ADD] = []
-  //variable
-  var aaddressAD : String = ""
-  var ppriceAD : String = ""
-  var imageAD = UIImage()
   
-//  var details = Details()
-  var adInfoUsers = ADuser()
+
+  // Database
+  let db = Firestore.firestore()
+  let user = Auth.auth().currentUser
+
+  let storage = Storage.storage().reference()
+  
+  let profileImagesRef = Storage.storage().reference().child("images/")
   
   @IBOutlet weak var imageView: UIView!
   @IBOutlet weak var addImageAD: UIImageView!
@@ -42,31 +41,9 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
     BasicView.layer.shadowRadius = 150
     BasicView.layer.shouldRasterize = true
     
-    loadDataAD()
+
   }
-  
-  func loadDataAD(){
-    db.collection("users").addSnapshotListener { querySnapshot, errer in
-      
-      self.AdData = [] 
-      if let snapshotDoc = querySnapshot?.documents{
-        for doc in snapshotDoc {
-          let data = (doc.data())
-          if let lessorAD = data["lessor"] as? String,
-             let phoneNData = data["lessorphone"] as? String,
-             let addressdata = data["lessorAddress"] as? String,
-             let priceData =  data["pricelessor"] as? String
-//             let imagUserData =  data["imageADlesso"] as? URL
-          {
-            let newAD = ADD(lessor: lessorAD,adphoneData: phoneNData, adAddressData: addressdata, adPriceData: priceData)
-            self.AdData.append(newAD)
-            print("**** :: \(newAD)")
-          }
-        }
-      }
-    }
-  }
-  
+
   
   @IBAction func btnAddAdvertising(_ sender: Any) {
     
@@ -76,7 +53,7 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
 //       let imageUserD = addImageAD.image ,
        let  userLogin = Auth.auth().currentUser?.email {
       
-      db.collection("dvertising").addDocument(data: [
+      db.collection("Advertising").addDocument(data: [
         "lessor": userLogin,
         "lessorphone" : phoneUserD,
         "lessorAddress" : addressUserD ,
@@ -88,26 +65,20 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
         }
         else{
           DispatchQueue.main.async {
-            
             self.phoneNumberAD.text = ""
             self.addressAD.text = ""
             self.priceAD.text = ""
 //            self.addImageAD.image = 
-            
-          }
+              }
         }
       }
+      
     }
-   let AddDetails = storyboard?.instantiateViewController(withIdentifier: "HomeAndSearchVC") as! HomeAndSearchVC
-
     let tapbar = storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! tapbarVC
- 
-    present(tapbar, animated: true, completion: nil)
- 
-    AddDetails.tableView?.reloadData()
 
-    
-  }
+    present(tapbar, animated: true, completion: nil)
+     
+    }
   
   
   
@@ -120,23 +91,36 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
     present(addImge, animated: true)
   }
   
-  
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-  {
-    let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+  func imagePickerController(
+    _ picker: UIImagePickerController,
+    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+  ) {
+    guard let selectedImage =
+            info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+      return
+    }
     
+    let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
     addImageAD.image = image
-    self.dismiss(animated: true, completion: nil)
+    
+    self.addImageAD.image  = selectedImage
+    guard let imagData = selectedImage.pngData() else {
+      return
+    }
+    guard let currentUser  = user else  {return}
+    let imageName = currentUser.uid
+    
+    storage.child("images/\(imageName).png").putData(imagData,
+                                             metadata: nil,
+                                             completion: { _, error in
+      
+      guard error == nil else {
+        print ("Fieled")
+        return
+      }
+      self.dismiss(animated: true, completion: nil)
+
+    })
   }
+  
 }
-
-
-///for data toaccount
-///    //Account
-//    adInfoUsers.imageUser = imageAD
-//    adInfoUsers.addressUser = aaddressAD
-//    adInfoUsers.priceUser = ppriceAD
-
-//    addADInfo.append(adInfoUsers)
-//    let addADInfoToAccount  = storyboard?.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
-//    addADInfoToAccount.tableViewAccount?.reloadData()

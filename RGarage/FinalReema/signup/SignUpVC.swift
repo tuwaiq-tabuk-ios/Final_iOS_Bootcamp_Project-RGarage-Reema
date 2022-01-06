@@ -111,11 +111,14 @@ class SignUpVC: UIViewController
             
             
           }else {
+            
+            
             let db = Firestore.firestore()
             let id = Auth.auth().currentUser?.uid
             db.collection("users").document(id!).setData(["fulNmae":fullNmae,
                                                           "Email" :email ,
                                                           "password":password,
+                                                          
                                                           "uid": result!.user.uid ]) { (error) in
               
               if error != nil {

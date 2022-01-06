@@ -13,8 +13,7 @@
 		AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */; };
 		AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */; };
 		AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71EB276F1C1A001577C5 /* Navigation.swift */; };
-		AE2E3A332781836A000DCFC6 /* outletADUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2E3A322781836A000DCFC6 /* outletADUser.swift */; };
-		AE2E3A3727819758000DCFC6 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2E3A3627819758000DCFC6 /* Details.swift */; };
+		AE2E3A332781836A000DCFC6 /* AdvertisingUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2E3A322781836A000DCFC6 /* AdvertisingUserTVCell.swift */; };
 		AE5FEFE32770793F000561A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5FEFE22770793F000561A6 /* Service.swift */; };
 		AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A02769DD4200D715E1 /* AddAdvertising.swift */; };
 		AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685AB276A170E00D715E1 /* TableDetails.swift */; };
@@ -28,7 +27,6 @@
 		AEE66ACA27838C26001BE7D6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE66AC827838C26001BE7D6 /* MessageTableViewCell.swift */; };
 		AEE66ACB27838C26001BE7D6 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEE66AC927838C26001BE7D6 /* MessageTableViewCell.xib */; };
 		AEE66ACD27838D87001BE7D6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE66ACC27838D87001BE7D6 /* Message.swift */; };
-		AEE66ACF27839199001BE7D6 /* ADDD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE66ACE27839199001BE7D6 /* ADDD.swift */; };
 		AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */; };
 		AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64880275F58800092AE8D /* AppDelegate.swift */; };
 		AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64882275F58800092AE8D /* SceneDelegate.swift */; };
@@ -50,8 +48,7 @@
 		AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailVC.swift; sourceTree = "<group>"; };
 		AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tapbarVC.swift; sourceTree = "<group>"; };
 		AE2D71EB276F1C1A001577C5 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		AE2E3A322781836A000DCFC6 /* outletADUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = outletADUser.swift; sourceTree = "<group>"; };
-		AE2E3A3627819758000DCFC6 /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
+		AE2E3A322781836A000DCFC6 /* AdvertisingUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingUserTVCell.swift; sourceTree = "<group>"; };
 		AE5FEFE22770793F000561A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		AE6685A02769DD4200D715E1 /* AddAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdvertising.swift; sourceTree = "<group>"; };
 		AE6685AB276A170E00D715E1 /* TableDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetails.swift; sourceTree = "<group>"; };
@@ -65,7 +62,6 @@
 		AEE66AC827838C26001BE7D6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		AEE66AC927838C26001BE7D6 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		AEE66ACC27838D87001BE7D6 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		AEE66ACE27839199001BE7D6 /* ADDD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADDD.swift; sourceTree = "<group>"; };
 		AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountVC.swift; sourceTree = "<group>"; };
 		AEF6487D275F58800092AE8D /* FinalReema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalReema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF64880275F58800092AE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				AE6685AB276A170E00D715E1 /* TableDetails.swift */,
-				AE2E3A3627819758000DCFC6 /* Details.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -250,7 +245,7 @@
 			children = (
 				AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */,
 				AE901DAD2760944B00CC7586 /* AccountVC.swift */,
-				AE2E3A322781836A000DCFC6 /* outletADUser.swift */,
+				AE2E3A322781836A000DCFC6 /* AdvertisingUserTVCell.swift */,
 				AEE561582782F40D0036BE1D /* userInfo.swift */,
 			);
 			path = Account;
@@ -268,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				AE6685A02769DD4200D715E1 /* AddAdvertising.swift */,
-				AEE66ACE27839199001BE7D6 /* ADDD.swift */,
 			);
 			path = Advertising;
 			sourceTree = "<group>";
@@ -475,7 +469,6 @@
 				AEAEB0DE277C4AC400C4CF88 /* UsersChatCell.swift in Sources */,
 				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
-				AEE66ACF27839199001BE7D6 /* ADDD.swift in Sources */,
 				AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */,
 				AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */,
 				AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */,
@@ -487,8 +480,7 @@
 				AEE66AC727836B88001BE7D6 /* ChatVC.swift in Sources */,
 				AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */,
 				AEF64896275F5BC90092AE8D /* SignInVC.swift in Sources */,
-				AE2E3A332781836A000DCFC6 /* outletADUser.swift in Sources */,
-				AE2E3A3727819758000DCFC6 /* Details.swift in Sources */,
+				AE2E3A332781836A000DCFC6 /* AdvertisingUserTVCell.swift in Sources */,
 				AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */,
 				AE901DAE2760944B00CC7586 /* AccountVC.swift in Sources */,
 				AEF64898275F9CE90092AE8D /* SignUpVC.swift in Sources */,

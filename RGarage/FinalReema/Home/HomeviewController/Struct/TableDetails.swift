@@ -19,4 +19,3 @@ class  TableDetails : UITableViewCell {
  }
  
 
-//var data = [Details]()

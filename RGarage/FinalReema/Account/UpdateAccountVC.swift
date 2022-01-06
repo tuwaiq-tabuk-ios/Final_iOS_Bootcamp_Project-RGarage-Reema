@@ -18,7 +18,8 @@ class UpdateAccountVC: UIViewController,
   
   // Database
   let db = Firestore.firestore()
-  
+  let user = Auth.auth().currentUser
+
   let storage = Storage.storage().reference()
   
   let profileImagesRef = Storage.storage().reference().child("images/")
@@ -45,7 +46,6 @@ class UpdateAccountVC: UIViewController,
   
   // MARK: Show user Information in update VC
   override func viewWillAppear(_ animated: Bool) {
-    let user = Auth.auth().currentUser
     print(user?.uid)
     
     if let currentUser  = user {
@@ -57,7 +57,7 @@ class UpdateAccountVC: UIViewController,
           let data = doc!.data()!
           
           self.userFullNameUPdate  = data["fulNmae"] as! String
-          self.userEmailUPdate = (user?.email)!
+          self.userEmailUPdate = (self.user?.email)!
           self.userPasswordUPdate = data["password"] as! String
           print("**********DATA :  \(data)")
           
@@ -87,10 +87,37 @@ class UpdateAccountVC: UIViewController,
     _ picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
   ) {
+    guard let selectedImage =
+            info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+      return
+    }
+    
     let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
     updateUserPhoto.image = image
-    self.dismiss(animated: true, completion: nil)
+    
+    self.updateUserPhoto.image  = selectedImage
+    guard let imagData = selectedImage.pngData() else {
+      return
+    }
+    guard let currentUser  = user else  {return}
+    let imageName = currentUser.uid
+    
+    
+    
+    storage.child("images/\(imageName).png").putData(imagData,
+                                             metadata: nil,
+                                             completion: { _, error in
+      
+      guard error == nil else {
+        print ("Fieled")
+        return
+      }
+      self.dismiss(animated: true, completion: nil)
+    })
   }
+  
+  
+  
   // MARK: LOGOUT USER
   
   @IBAction func logoutUserPressed(_ sender: Any)
@@ -108,14 +135,14 @@ class UpdateAccountVC: UIViewController,
   }
   
   @IBAction func PressedupdatInfoUser(_ sender: UIButton) {
-    //
-    //    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-    //    changeRequest?.displayName = displayName
-    //    changeRequest?.commitChanges { error in
-    //
-    //    }
-    //
-    //  }
+//
+//        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+//        changeRequest?.displayName = displayName
+//        changeRequest?.commitChanges { error in
+//
+//        }
+//
+//      }
     
   }
 }
