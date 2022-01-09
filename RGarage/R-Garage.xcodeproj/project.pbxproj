@@ -15,7 +15,7 @@
 		AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71EB276F1C1A001577C5 /* Navigation.swift */; };
 		AE374B652789F19F004E9ACC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE374B612789F19F004E9ACC /* ChatViewController.swift */; };
 		AE374B662789F19F004E9ACC /* messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE374B622789F19F004E9ACC /* messages.swift */; };
-		AE374B672789F19F004E9ACC /* messageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE374B632789F19F004E9ACC /* messageCell.swift */; };
+		AE374B672789F19F004E9ACC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE374B632789F19F004E9ACC /* MessageCell.swift */; };
 		AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */; };
 		AE4BDA2D27886C1A00C966E1 /* AdvertisingUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */; };
 		AE5FEFE32770793F000561A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5FEFE22770793F000561A6 /* Service.swift */; };
@@ -24,7 +24,6 @@
 		AE901DAE2760944B00CC7586 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAD2760944B00CC7586 /* AccountVC.swift */; };
 		AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */; };
 		AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */; };
-		AEE561592782F40D0036BE1D /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE561582782F40D0036BE1D /* userInfo.swift */; };
 		AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */; };
 		AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64880275F58800092AE8D /* AppDelegate.swift */; };
 		AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64882275F58800092AE8D /* SceneDelegate.swift */; };
@@ -48,7 +47,7 @@
 		AE2D71EB276F1C1A001577C5 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		AE374B612789F19F004E9ACC /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AE374B622789F19F004E9ACC /* messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messages.swift; sourceTree = "<group>"; };
-		AE374B632789F19F004E9ACC /* messageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messageCell.swift; sourceTree = "<group>"; };
+		AE374B632789F19F004E9ACC /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdvertaisment.swift; sourceTree = "<group>"; };
 		AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingUserTVCell.swift; sourceTree = "<group>"; };
 		AE5FEFE22770793F000561A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -57,7 +56,6 @@
 		AE901DAD2760944B00CC7586 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearchVC.swift; sourceTree = "<group>"; };
 		AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableInHome.swift; sourceTree = "<group>"; };
-		AEE561582782F40D0036BE1D /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
 		AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountVC.swift; sourceTree = "<group>"; };
 		AEF6487D275F58800092AE8D /* FinalReema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalReema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF64880275F58800092AE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +99,16 @@
 				AEF64880275F58800092AE8D /* AppDelegate.swift */,
 			);
 			path = Suport;
+			sourceTree = "<group>";
+		};
+		AEAC8D33278AB2FA005A0620 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AE374B612789F19F004E9ACC /* ChatViewController.swift */,
+				AE374B632789F19F004E9ACC /* MessageCell.swift */,
+				AE374B622789F19F004E9ACC /* messages.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		AED29C5D277098B800274606 /* Constant */ = {
@@ -178,7 +186,6 @@
 			children = (
 				AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */,
 				AE901DAD2760944B00CC7586 /* AccountVC.swift */,
-				AEE561582782F40D0036BE1D /* userInfo.swift */,
 				AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */,
 				AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */,
 			);
@@ -230,9 +237,7 @@
 		AEF6487F275F58800092AE8D /* FinalReema */ = {
 			isa = PBXGroup;
 			children = (
-				AE374B612789F19F004E9ACC /* ChatViewController.swift */,
-				AE374B632789F19F004E9ACC /* messageCell.swift */,
-				AE374B622789F19F004E9ACC /* messages.swift */,
+				AEAC8D33278AB2FA005A0620 /* Chat */,
 				AED29C6827709C4E00274606 /* DetailsAdversting */,
 				AED29C6627709BFF00274606 /* Wellcome */,
 				AED29C6027709B4C00274606 /* signup */,
@@ -389,13 +394,12 @@
 				AE4BDA2D27886C1A00C966E1 /* AdvertisingUserTVCell.swift in Sources */,
 				AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */,
 				AE374B652789F19F004E9ACC /* ChatViewController.swift in Sources */,
-				AEE561592782F40D0036BE1D /* userInfo.swift in Sources */,
 				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
 				AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */,
 				AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */,
 				AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */,
-				AE374B672789F19F004E9ACC /* messageCell.swift in Sources */,
+				AE374B672789F19F004E9ACC /* MessageCell.swift in Sources */,
 				AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */,
 				AE5FEFE32770793F000561A6 /* Service.swift in Sources */,
 				AE374B662789F19F004E9ACC /* messages.swift in Sources */,

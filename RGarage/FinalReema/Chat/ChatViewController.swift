@@ -24,6 +24,7 @@ class ChatViewController: UIViewController {
     messageTableView.dataSource = self
     // Do any additional setup after loading the view.
   }
+  
   // فنكشن تجيب البانات من قاعدة البيانات
   func loadData(){
     db.collection("messages").order(by:"time").addSnapshotListener { (querySnapshot, erorr) in
@@ -36,10 +37,10 @@ class ChatViewController: UIViewController {
             let newMessage = Messages(sender: messagSender ,
                                       body : messagText)
             self.messages.append(newMessage)
-              DispatchQueue.main.async {
+            DispatchQueue.main.async {
               self.messageTableView.reloadData()
             }
-
+            
           }
           
         }
@@ -74,7 +75,7 @@ extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageCell
+    let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
     cell.messageLabel.text = messages[indexPath.row].body
     cell.backgroundColor = .clear
     

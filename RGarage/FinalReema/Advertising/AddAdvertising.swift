@@ -77,9 +77,7 @@ class AddAdvertising : UIViewController
      
     }
   
-  
-  
-  @IBAction func addphotoButon(_ sender: Any) {
+    @IBAction func addphotoButon(_ sender: Any) {
     
     let addImge = UIImagePickerController()
     addImge.sourceType = .photoLibrary

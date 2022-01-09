@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+
 struct Messages{
   let sender : String
   let body : String

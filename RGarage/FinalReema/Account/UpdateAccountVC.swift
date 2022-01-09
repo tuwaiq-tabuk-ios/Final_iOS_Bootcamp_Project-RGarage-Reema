@@ -19,9 +19,7 @@ class UpdateAccountVC: UIViewController,
   // Database
   let db = Firestore.firestore()
   let user = Auth.auth().currentUser
-
   let storage = Storage.storage().reference()
-  
   let profileImagesRef = Storage.storage().reference().child("images/")
   
   var userFullNameUPdate : String = ""
@@ -48,7 +46,6 @@ class UpdateAccountVC: UIViewController,
   
   // MARK: Show user Information in update VC
   override func viewWillAppear(_ animated: Bool) {
-    print(user?.uid)
     
     if let currentUser  = user {
       db.collection("users").document(currentUser.uid).getDocument { doc , err in

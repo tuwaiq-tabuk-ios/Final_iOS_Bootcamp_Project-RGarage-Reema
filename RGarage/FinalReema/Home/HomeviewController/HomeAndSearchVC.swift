@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
-struct infoLessor {
+struct InfoLessor {
     var priceLosser: String
     var lessorAddress: String
     var pictures = [UIImage]()
@@ -27,9 +27,8 @@ struct infoLessor {
 class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
   
    let searchController = UISearchController()
+   var infoLessorArr = [InfoLessor]()
   
-  
-  var infoLessorArr = [infoLessor]()
   var pictures = [UIImage]()
 
   let db = Firestore.firestore()
@@ -63,7 +62,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
                       let data = document.data()
                       let AdressD = data["lessorAddress"] as? String ?? ""
                       let PriceD = data["pricelessor"] as? String ?? ""
-                    let newAD = infoLessor(priceLosser: PriceD, lessorAddress: AdressD)
+                    let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD)
                       self.infoLessorArr.append(newAD)
                   }
                   self.tableView.reloadData()
@@ -96,12 +95,9 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     return  cell
     
   }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    
     let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsTableInHome
         
     self.navigationController?.pushViewController(controller, animated: true)

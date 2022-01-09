@@ -58,10 +58,13 @@ class SignUpVC: UIViewController
       self.present(alert,animated: true , completion:  nil)
     }
     
-    let cleanedPassword = passwordUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    let cleanedPassword = passwordUserSignUpTF.text!
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+    
     if K.isPasswordValid(cleanedPassword) == false  {
       let alert =  Service.createAleartController(title: "Error"
                                                   , message:"Please make sure your password is at least 8 characters, contains a special character and a number.")
+      
       
       self.present(alert,animated: true , completion:  nil)
       
@@ -82,10 +85,7 @@ class SignUpVC: UIViewController
     print("**userPassword:\(userPassword)\n")
     userConfirmPassword = confirmPassUserSignUpTF.text!
     print("**userConfirmPassword:\(userConfirmPassword)\n")
-    
-    //    self.performSegue(withIdentifier: "toUPdateUserinfo", sender: self)
-    //    self.performSegue(withIdentifier: "toAccountUser", sender: self)
-    
+  
     
     //firebase signup
     let error = validateFields()
