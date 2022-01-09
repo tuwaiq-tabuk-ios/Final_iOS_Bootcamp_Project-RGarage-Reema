@@ -29,6 +29,7 @@ class UpdateAccountVC: UIViewController,
   var userPasswordUPdate: String = ""
   var userConfirmPasswordUPdate : String = ""
   var userImageUPdate = UIImage()
+  var phoneNumber : String = ""
   
   
   @IBOutlet weak var nameUpdate: UITextField!
@@ -36,6 +37,7 @@ class UpdateAccountVC: UIViewController,
   @IBOutlet weak var passwordUpdate: UITextField!
   @IBOutlet weak var confirmPasswordUpdate: UITextField!
   @IBOutlet weak var updateUserPhoto: UIImageView!
+  @IBOutlet weak var numberUserUpdataTF: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -56,11 +58,13 @@ class UpdateAccountVC: UIViewController,
         else{
           let data = doc!.data()!
           
-          self.userFullNameUPdate  = data["fulNmae"] as! String
+          self.userFullNameUPdate  = data["FullName"] as! String
           self.userEmailUPdate = (self.user?.email)!
-          self.userPasswordUPdate = data["password"] as! String
-          print("**********DATA :  \(data)")
+          self.userPasswordUPdate = data["Password"] as! String
+          self.phoneNumber = data["PhoneNumber"] as! String
           
+          print("**********DATA :  \(data)")
+          self.numberUserUpdataTF.text = self.phoneNumber
           self.nameUpdate.text = self.userFullNameUPdate
           self.emailUpdate.text = self.userEmailUPdate
           self.passwordUpdate.text = self.userPasswordUPdate
@@ -76,6 +80,7 @@ class UpdateAccountVC: UIViewController,
   
   // MARK: update user photo
   //for update user photo but not complet
+  
   @IBAction func updateUserPhotoButton(_ sender: Any) {
     let addImge = UIImagePickerController()
     addImge.sourceType = .photoLibrary
@@ -83,6 +88,8 @@ class UpdateAccountVC: UIViewController,
     addImge.allowsEditing = true
     present(addImge, animated: true)
   }
+  
+  
   func imagePickerController(
     _ picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
@@ -101,8 +108,6 @@ class UpdateAccountVC: UIViewController,
     }
     guard let currentUser  = user else  {return}
     let imageName = currentUser.uid
-    
-    
     
     storage.child("images/\(imageName).png").putData(imagData,
                                              metadata: nil,

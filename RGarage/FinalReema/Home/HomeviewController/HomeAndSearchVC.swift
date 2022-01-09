@@ -14,7 +14,8 @@ import FirebaseStorage
 struct infoLessor {
     var priceLosser: String
     var lessorAddress: String
- 
+    var pictures = [UIImage]()
+  
     var dictionary: [String: Any] {
         return [
             "priceLosser": priceLosser,
@@ -29,11 +30,11 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   
   
   var infoLessorArr = [infoLessor]()
+  var pictures = [UIImage]()
+
   let db = Firestore.firestore()
   let storage = Storage.storage()
   
-//  var adv = [""]
-//  private var document: [DocumentSnapshot] = []
 
   @IBOutlet weak var tableView: UITableView!
   
@@ -41,11 +42,12 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     title = "Explore"
     navigationItem.searchController = searchController
     loadData()
+    
   }
   
-  
+
   func loadData() {
- 
+
       db.collection("Advertising").getDocuments() { (snapshot, error) in
 
           if let error = error {
@@ -61,7 +63,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
                       let data = document.data()
                       let AdressD = data["lessorAddress"] as? String ?? ""
                       let PriceD = data["pricelessor"] as? String ?? ""
-                    let newAD = infoLessor(priceLosser:AdressD, lessorAddress:PriceD )
+                    let newAD = infoLessor(priceLosser: PriceD, lessorAddress: AdressD)
                       self.infoLessorArr.append(newAD)
                   }
                   self.tableView.reloadData()
@@ -69,13 +71,11 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
           }
       }
   }
-
   
+ 
 
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    print("\n\n\n- - - - - - - - - - - - -\(#file) \(#function)")
-    print(" - Lessor COUNT = \(infoLessorArr.count)")
 
     return infoLessorArr.count
 
@@ -88,11 +88,11 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
 
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "cellListOfItemCarage")  as! TableDetails
-    let infoUserAD = infoLessorArr[indexPath.row]
     
-   
-    cell.address.text = infoUserAD.priceLosser
-    cell.price.text = " the price is \(infoUserAD.lessorAddress)"
+    let infoUserAD = infoLessorArr[indexPath.row]
+
+    cell.address.text = infoUserAD.lessorAddress
+    cell.price.text = " the price is \(infoUserAD.priceLosser)"
     return  cell
     
   }
@@ -105,13 +105,6 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsTableInHome
         
     self.navigationController?.pushViewController(controller, animated: true)
-    
-    
-//    cell.address.text =
-//    cell.price.text =
-    
-    
-    
   }
   
 }

@@ -7,10 +7,10 @@
 
 import Foundation
 import UIKit
-
-struct UserInfo {
-  var fullName :String = ""
-  var email :String = ""
-//  var  avatar = UIImage()
-  
-}
+//
+//struct UserInfo {
+//  var fullName :String = ""
+//  var email :String = ""
+////  var  avatar = UIImage()
+//  
+//}

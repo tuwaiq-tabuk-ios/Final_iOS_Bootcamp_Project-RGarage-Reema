@@ -9,21 +9,21 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import FirebaseFirestore
-class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+class AddAdvertising : UIViewController
+,UIImagePickerControllerDelegate
+, UINavigationControllerDelegate {
   
 
   // Database
   let db = Firestore.firestore()
   let user = Auth.auth().currentUser
-
   let storage = Storage.storage().reference()
-  
-  let profileImagesRef = Storage.storage().reference().child("images/")
+  let profileImagesRef = Storage.storage().reference().child("imagesAD/")
   
   @IBOutlet weak var imageView: UIView!
   @IBOutlet weak var addImageAD: UIImageView!
   @IBOutlet weak var addressAD: UITextField!
-  @IBOutlet weak var phoneNumberAD: UITextField!
   @IBOutlet weak var priceAD: UITextField!
   @IBOutlet weak var btnAddAdvertising: UIButton!
   @IBOutlet weak var BasicView: UIView!
@@ -47,15 +47,13 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
   
   @IBAction func btnAddAdvertising(_ sender: Any) {
     
-    if let phoneUserD = phoneNumberAD.text,
-       let addressUserD = addressAD.text,
+    if let addressUserD = addressAD.text,
        let priceUserD = priceAD.text,
 //       let imageUserD = addImageAD.image ,
        let  userLogin = Auth.auth().currentUser?.email {
       
       db.collection("Advertising").addDocument(data: [
         "lessor": userLogin,
-        "lessorphone" : phoneUserD,
         "lessorAddress" : addressUserD ,
         "pricelessor" : priceUserD
 //         "imageADlesso": imageUserD,
@@ -65,7 +63,6 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
         }
         else{
           DispatchQueue.main.async {
-            self.phoneNumberAD.text = ""
             self.addressAD.text = ""
             self.priceAD.text = ""
 //            self.addImageAD.image = 
@@ -110,7 +107,7 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
     guard let currentUser  = user else  {return}
     let imageName = currentUser.uid
     
-    storage.child("images/\(imageName).png").putData(imagData,
+    storage.child("imagesAD/\(imageName).png").putData(imagData,
                                              metadata: nil,
                                              completion: { _, error in
       
@@ -118,6 +115,7 @@ class AddAdvertising : UIViewController  ,UIImagePickerControllerDelegate, UINav
         print ("Fieled")
         return
       }
+
       self.dismiss(animated: true, completion: nil)
 
     })

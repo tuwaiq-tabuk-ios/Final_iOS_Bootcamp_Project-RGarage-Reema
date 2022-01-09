@@ -22,23 +22,22 @@ struct InfoLessorAdverstisement {
     }
 }
 
+
 class AccountVC: UIViewController ,
                  UITableViewDelegate {
   //variable
-  //  var ADuserIfo = [ADuser]()
-  
   var avatar = UIImage()
   var userName = ""
-  
-  
+  //data
   let db = Firestore.firestore()
   let storage = Storage.storage()
+ 
   var infoLessorAdverstisements = [InfoLessorAdverstisement]()
 
   
+  @IBOutlet weak var tableViewAccount: UITableView!
   @IBOutlet weak var profilePhoto: UIImageView!
   @IBOutlet weak var nameUser: UILabel!
-  @IBOutlet weak var tableViewAccount: UITableView!
   
   override func viewDidLoad() {
     print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
@@ -48,15 +47,11 @@ class AccountVC: UIViewController ,
     profilePhoto.layer.borderWidth = 3
     profilePhoto.layer.borderColor = UIColor.lightGray.cgColor
     
-    tableViewAccount.delegate = self
-//    loadData()
-//    profilePhoto.image = avatar
-//    nameUser.text = userName
-    loadData()
-    loadImage()
+        loadImage()
+        loadImage()
     
+    //for user see his name in profile
     let user = Auth.auth().currentUser
-    print(user?.uid)
     if let currentUser  = user {
       db.collection("users").document(currentUser.uid).getDocument { doc , err in
         if err != nil {
@@ -64,40 +59,13 @@ class AccountVC: UIViewController ,
         }
         else{
           let data = doc!.data()!
-          
-          self.userName  = data["fulNmae"] as! String
+          self.userName  = data["FullName"] as! String
           print("\n\n* * * DATA :  \(data)")
           self.nameUser.text = self.userName
         }
       }
     }
   }
-  
-  override func viewWillAppear(_ animated: Bool) {
-//    print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
-    
-//    loadData()
-//    loadImage()
-//
-//    let user = Auth.auth().currentUser
-//    print(user?.uid)
-//    if let currentUser  = user {
-//      db.collection("users").document(currentUser.uid).getDocument { doc , err in
-//        if err != nil {
-//          print(err!)
-//        }
-//        else{
-//          let data = doc!.data()!
-//
-//          self.userName  = data["fulNmae"] as! String
-//          print("\n\n* * * DATA :  \(data)")
-//          self.nameUser.text = self.userName
-//        }
-//      }
-//    }
-    
-  }
-  
   
   @IBAction func settingButtom(_ sender: Any) {
     let UpdateAccountVC = storyboard?.instantiateViewController(identifier:"UpdateAccountVC") as? UpdateAccountVC
@@ -106,9 +74,9 @@ class AccountVC: UIViewController ,
   }
   
   
+  // MARK: loadImage User
   func loadImage() {
     let user = Auth.auth().currentUser
-    print(user?.uid)
     guard let  currentUser  = user  else{return}
     let pathReference = storage.reference(withPath: "images/\(currentUser.uid).png")
     pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
@@ -122,7 +90,6 @@ class AccountVC: UIViewController ,
       }
     }
   }
-
 
   func loadData() {
     print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
@@ -160,8 +127,8 @@ extension AccountVC: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    print("\n\n\n- - - - - - - - - - - - -\(#file) \(#function)")
-    print(" - Lessor COUNT = \(infoLessorAdverstisements.count)")
+//    print("\n\n\n- - - - - - - - - - - - -\(#file) \(#function)")
+//    print(" - Lessor COUNT = \(infoLessorAdverstisements.count)")
       return  infoLessorAdverstisements.count
     }
     
@@ -170,21 +137,22 @@ extension AccountVC: UITableViewDataSource {
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     print("\n\n\n----------------------------\(#file) \(#function)")
       
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ADUser") as! outletADUser
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ADuser") as! AdvertisingUserTVCell
+      
 //      AdvertisingUserTVCell
+      
     let infoUserAD = infoLessorAdverstisements[indexPath.row]
     print(" - Info user: \(infoUserAD)")
     
-      
     let lessorAddress = infoUserAD.lessorAddressAA
-    print("\n\n - LessorAddress- \(lessorAddress)")
+  
     cell.addressADuser.text = lessorAddress
-    
-    
-    let priceADuser = infoUserAD.priceLosserAA
-    print("\n\n\n - The price is: \(priceADuser)")
-    cell.priceADuser.text = " the price is \(priceADuser)"
+    print("\n\n - LessorAddress- \(lessorAddress)")
       
+    let priceADuser = infoUserAD.priceLosserAA
+    cell.priceADuser.text = " the price is \(priceADuser)"
+    print("\n\n\n - The price is: \(priceADuser)")
+
     return  cell
   }
 }

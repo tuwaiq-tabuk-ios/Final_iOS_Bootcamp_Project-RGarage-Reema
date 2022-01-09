@@ -10,36 +10,32 @@ import FirebaseAuth
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
- 
+
 class SignUpVC: UIViewController
 , UINavigationControllerDelegate {
   
   //variable
   var userFullName : String = ""
   var userEmail : String = ""
+  var userPhone : String = ""
   var userPassword: String = ""
   var userConfirmPassword : String = ""
-  var userImage = UIImage()
   
-
+  //data
   var vc = UIViewController()
-  
   //for uoload photo for firebase
   let storage = Storage.storage().reference()
   
-  @IBOutlet weak var nameUserSignUp: UITextField!
-  @IBOutlet weak var emailUserSignUp: UITextField!
-  @IBOutlet weak var passwordUserSignUp: UITextField!
-  @IBOutlet weak var confirmPassUserSignUp: UITextField!
-  @IBOutlet weak var userPhoto: UIImageView!
-  @IBOutlet weak var UserSignUpButton: UIButton!
-  
+  @IBOutlet weak var nameUserSignUpTF: UITextField!
+  @IBOutlet weak var emailUserSignUpTF: UITextField!
+  @IBOutlet weak var passwordUserSignUpTF: UITextField!
+  @IBOutlet weak var confirmPassUserSignUpTF: UITextField!
+  @IBOutlet weak var userSignUpButton: UIButton!
+  @IBOutlet weak var phoneNumberUserSignUpTF: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    userPhoto.layer.cornerRadius = userPhoto.frame.height/2
-    userPhoto.layer.borderWidth = 3
-    userPhoto.layer.borderColor = UIColor.lightGray.cgColor
+    
   }
   
   
@@ -51,17 +47,18 @@ class SignUpVC: UIViewController
   
   
   func validateFields () -> String? {
-    if nameUserSignUp.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        emailUserSignUp.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        passwordUserSignUp.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        confirmPassUserSignUp.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+    if nameUserSignUpTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        emailUserSignUpTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        phoneNumberUserSignUpTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        passwordUserSignUpTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        confirmPassUserSignUpTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
       
       let alert =  Service.createAleartController(title: "Error"
                                                   , message:"Please fill in all fields.")
       self.present(alert,animated: true , completion:  nil)
     }
     
-    let cleanedPassword = passwordUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    let cleanedPassword = passwordUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     if K.isPasswordValid(cleanedPassword) == false  {
       let alert =  Service.createAleartController(title: "Error"
                                                   , message:"Please make sure your password is at least 8 characters, contains a special character and a number.")
@@ -74,20 +71,20 @@ class SignUpVC: UIViewController
   
   
   @IBAction func signUpTapped(_ sender: Any) {
- 
-    userImage = userPhoto.image!
-    print("**userImage:\(userImage)\n")
-    userFullName = nameUserSignUp.text!
+    
+    userFullName = nameUserSignUpTF.text!
     print("**userFullName:\(userFullName)\n")
-    userEmail = emailUserSignUp.text!
+    userEmail = emailUserSignUpTF.text!
     print("**userEmail:\(userEmail)\n")
-    userPassword = passwordUserSignUp.text!
+    userPhone = phoneNumberUserSignUpTF.text!
+    print("**userEmail:\(userPhone)\n")
+    userPassword = passwordUserSignUpTF.text!
     print("**userPassword:\(userPassword)\n")
-    userConfirmPassword = confirmPassUserSignUp.text!
+    userConfirmPassword = confirmPassUserSignUpTF.text!
     print("**userConfirmPassword:\(userConfirmPassword)\n")
     
-//    self.performSegue(withIdentifier: "toUPdateUserinfo", sender: self)
-//    self.performSegue(withIdentifier: "toAccountUser", sender: self)
+    //    self.performSegue(withIdentifier: "toUPdateUserinfo", sender: self)
+    //    self.performSegue(withIdentifier: "toAccountUser", sender: self)
     
     
     //firebase signup
@@ -96,12 +93,13 @@ class SignUpVC: UIViewController
       
     }
     else {
-      let fullNmae = nameUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-      let email = emailUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-      let password = passwordUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-      let confirmPass = confirmPassUserSignUp.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let fullName = nameUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let email = emailUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let password = passwordUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let confirmPass = confirmPassUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let phoneNumber  = phoneNumberUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       
-      if confirmPass == password{
+      if confirmPass == password {
         
         Auth.auth().createUser(withEmail: email, password: password )  { (result, err) in
           if err != nil {
@@ -115,10 +113,10 @@ class SignUpVC: UIViewController
             
             let db = Firestore.firestore()
             let id = Auth.auth().currentUser?.uid
-            db.collection("users").document(id!).setData(["fulNmae":fullNmae,
+            db.collection("users").document(id!).setData(["FullName":fullName,
                                                           "Email" :email ,
-                                                          "password":password,
-                                                          
+                                                          "Password":password,
+                                                          "PhoneNumber": phoneNumber,
                                                           "uid": result!.user.uid ]) { (error) in
               
               if error != nil {
@@ -131,9 +129,9 @@ class SignUpVC: UIViewController
             }
             // Transition to the home screen
             self.transitionToHome()
-         
+            
           }
-    
+          
         }
       } else{
         let alert =  Service.createAleartController(title: "Error", message: "password not mach"
@@ -141,20 +139,6 @@ class SignUpVC: UIViewController
         self.present(alert,animated: true , completion:  nil)
       }
     }
-      
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let vc = segue.destination as? UpdateAccountVC
-    vc?.userImageUPdate = userImage
-    vc?.userFullNameUPdate = userFullName
-    vc?.userEmailUPdate = userEmail
-    vc?.userPasswordUPdate = userPassword
-    vc?.userConfirmPasswordUPdate = userConfirmPassword
-    
-    let accountVC = segue.destination as? AccountVC
-    accountVC?.userName = userFullName
-    accountVC?.avatar = userImage
     
   }
   
@@ -162,87 +146,6 @@ class SignUpVC: UIViewController
     let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
     view.window?.rootViewController = tapbarVC
     view.window?.makeKeyAndVisible()
-  }
-  
-  
-  
-  
-  //button for user add photo from library
-  @IBAction func userPhotoButton(_ sender: Any) {
-    
-    presentPhotoActionSheet()
-  }
-}
-extension SignUpVC : UIImagePickerControllerDelegate {
-  func presentPhotoActionSheet(){
-    let actionSheet = UIAlertController(
-      title: "Profile Picture",
-      message: "How would you like to select a picture",
-      preferredStyle: .actionSheet)
-     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {[weak self] _ in
-      self?.presenCamera()
-    } ))
-    actionSheet.addAction(UIAlertAction(title: "Chose Photo", style: .default, handler: {[weak self ] _ in
-      self?.presentPhotoPicker()
-    }))
-    present(actionSheet , animated: true)
-  }
-  
-  func presenCamera (){
-    let addImge = UIImagePickerController()
-    addImge.sourceType = .camera
-    addImge.delegate = self
-    addImge.allowsEditing = true
-    present(addImge, animated: true)
-  }
-  
-  
-  func presentPhotoPicker(){
-    let addImge = UIImagePickerController()
-    addImge.sourceType = .photoLibrary
-    addImge.delegate = self
-    addImge.allowsEditing = true
-    present(addImge, animated: true)
-  }
-  
-  
-  func imagePickerController(_ picker: UIImagePickerController,
-                             didFinishPickingMediaWithInfo info:
-                             [UIImagePickerController.InfoKey : Any]) {
-    
-    picker.dismiss(animated: true, completion: nil)
-    guard let selectedImage =
-            info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-      return
-    }
-    self.userPhoto.image  = selectedImage
-    guard let imagData = selectedImage.pngData() else {
-      return
-    }
-    storage.child("images/file.png").putData(imagData,
-                                             metadata: nil,
-                                             completion: { _, error in
-      
-      guard error == nil else {
-        print ("Fieled")
-        return
-      }
-      self.storage.child("images/file.png").downloadURL(completion: {url, error in
-        guard let url = url, error == nil else {
-          return
-        }
-        
-        let urlString = url.absoluteString
-        print("Download URL : \(urlString) ")
-        UserDefaults.standard.set(urlString, forKey: "url")
-        
-      })
-    })
-  }
-  
-  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-    picker.dismiss(animated: true, completion: nil)
   }
   
 }
