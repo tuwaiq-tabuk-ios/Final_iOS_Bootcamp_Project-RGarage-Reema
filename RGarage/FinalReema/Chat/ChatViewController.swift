@@ -17,6 +17,7 @@ class ChatViewController: UIViewController {
   let db = Firestore.firestore()
   var messages :[Messages] = []
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     loadData()
@@ -24,6 +25,7 @@ class ChatViewController: UIViewController {
     messageTableView.dataSource = self
     // Do any additional setup after loading the view.
   }
+  
   
   // فنكشن تجيب البانات من قاعدة البيانات
   func loadData(){
@@ -48,6 +50,7 @@ class ChatViewController: UIViewController {
     }
     
   }
+  
   
   @IBAction func sendButtonPressed(_ sender: UIButton) {
     if let messageText = messageTextFeild.text ,

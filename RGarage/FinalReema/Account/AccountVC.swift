@@ -11,15 +11,17 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
+private let reuseIdentifier3 = String(describing:UItablviewCellTableViewCell.self)
+
 struct InfoLessorAdverstisement {
-    var priceLosserAA: String
-    var lessorAddressAA: String
- 
-    var dictionary: [String: Any] {
-        return [
-            "priceLosser": priceLosserAA,
-            "lessorAddress": lessorAddressAA]
-    }
+  var priceLosserAA: String
+  var lessorAddressAA: String
+  
+  var dictionary: [String: Any] {
+    return [
+      "priceLosser": priceLosserAA,
+      "lessorAddress": lessorAddressAA]
+  }
 }
 
 
@@ -31,9 +33,9 @@ class AccountVC: UIViewController ,
   //data
   let db = Firestore.firestore()
   let storage = Storage.storage()
- 
+  
   var infoLessorAdverstisements = [InfoLessorAdverstisement]()
-
+  
   
   @IBOutlet weak var tableViewAccount: UITableView!
   @IBOutlet weak var profilePhoto: UIImageView!
@@ -47,8 +49,15 @@ class AccountVC: UIViewController ,
     profilePhoto.layer.borderWidth = 3
     profilePhoto.layer.borderColor = UIColor.lightGray.cgColor
     
-        loadImage()
-        loadImage()
+    
+    
+    let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
+    
+    tableViewAccount.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
+    
+    
+    loadImage()
+    loadImage()
     
     //for user see his name in profile
     let user = Auth.auth().currentUser
@@ -90,32 +99,32 @@ class AccountVC: UIViewController ,
       }
     }
   }
-
+  
   func loadData() {
     print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
-      db.collection("Advertising").getDocuments() { (snapshot, error) in
-
-          if let error = error {
-
-              print(error.localizedDescription)
-
-          } else {
-
-              if let snapshot = snapshot {
-
-                  for document in snapshot.documents {
-
-                      let data = document.data()
-                      let AdressD = data["lessorAddress"] as? String ?? ""
-                      let PriceD = data["pricelessor"] as? String ?? ""
-                    let newAD = InfoLessorAdverstisement(priceLosserAA: PriceD, lessorAddressAA: AdressD)
-                      self.infoLessorAdverstisements.append(newAD)
-                    print("\n\n - - - THE LessorA ARRAY: \(self.infoLessorAdverstisements)")
-                  }
-                  self.tableViewAccount.reloadData()
-              }
+    db.collection("Advertising").getDocuments() { (snapshot, error) in
+      
+      if let error = error {
+        
+        print(error.localizedDescription)
+        
+      } else {
+        
+        if let snapshot = snapshot {
+          
+          for document in snapshot.documents {
+            
+            let data = document.data()
+            let AdressD = data["lessorAddress"] as? String ?? ""
+            let PriceD = data["pricelessor"] as? String ?? ""
+            let newAD = InfoLessorAdverstisement(priceLosserAA: PriceD, lessorAddressAA: AdressD)
+            self.infoLessorAdverstisements.append(newAD)
+            print("\n\n - - - THE LessorA ARRAY: \(self.infoLessorAdverstisements)")
           }
+          self.tableViewAccount.reloadData()
+        }
       }
+    }
   }
 }
 
@@ -127,32 +136,31 @@ extension AccountVC: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-//    print("\n\n\n- - - - - - - - - - - - -\(#file) \(#function)")
-//    print(" - Lessor COUNT = \(infoLessorAdverstisements.count)")
-      return  infoLessorAdverstisements.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView,
+ 
+    return  infoLessorAdverstisements.count
+  }
+  
+  
+  func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     print("\n\n\n----------------------------\(#file) \(#function)")
-      
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: "ADuser") as! AdvertisingUserTVCell
-      
-//      AdvertisingUserTVCell
-      
+    
+    //AdvertisingUserTVCell
+    
     let infoUserAD = infoLessorAdverstisements[indexPath.row]
     print(" - Info user: \(infoUserAD)")
     
     let lessorAddress = infoUserAD.lessorAddressAA
-  
+    
     cell.addressADuser.text = lessorAddress
     print("\n\n - LessorAddress- \(lessorAddress)")
-      
+    
     let priceADuser = infoUserAD.priceLosserAA
     cell.priceADuser.text = " the price is \(priceADuser)"
     print("\n\n\n - The price is: \(priceADuser)")
-
+    
     return  cell
   }
 }

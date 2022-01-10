@@ -13,17 +13,20 @@
 		AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */; };
 		AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */; };
 		AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71EB276F1C1A001577C5 /* Navigation.swift */; };
-		AE374B652789F19F004E9ACC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE374B612789F19F004E9ACC /* ChatViewController.swift */; };
-		AE374B662789F19F004E9ACC /* messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE374B622789F19F004E9ACC /* messages.swift */; };
-		AE374B672789F19F004E9ACC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE374B632789F19F004E9ACC /* MessageCell.swift */; };
 		AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */; };
 		AE4BDA2D27886C1A00C966E1 /* AdvertisingUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */; };
 		AE5FEFE32770793F000561A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5FEFE22770793F000561A6 /* Service.swift */; };
 		AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A02769DD4200D715E1 /* AddAdvertising.swift */; };
-		AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685AB276A170E00D715E1 /* TableDetails.swift */; };
 		AE901DAE2760944B00CC7586 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAD2760944B00CC7586 /* AccountVC.swift */; };
 		AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */; };
+		AEB8DEDA278C0854009828F7 /* UItablviewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8DED8278C0854009828F7 /* UItablviewCellTableViewCell.swift */; };
+		AEB8DEDB278C0854009828F7 /* UItablviewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEB8DED9278C0854009828F7 /* UItablviewCellTableViewCell.xib */; };
 		AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */; };
+		AEE14A3C278B0852002D7590 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE14A3B278B0852002D7590 /* LocationViewController.swift */; };
+		AEE14A3E278B77BD002D7590 /* LocationViewController0.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE14A3D278B77BC002D7590 /* LocationViewController0.swift */; };
+		AEE6846F278CD46D003A8EBF /* messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE6846C278CD46D003A8EBF /* messages.swift */; };
+		AEE68470278CD46D003A8EBF /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE6846D278CD46D003A8EBF /* MessageCell.swift */; };
+		AEE68471278CD46D003A8EBF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE6846E278CD46D003A8EBF /* ChatViewController.swift */; };
 		AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */; };
 		AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64880275F58800092AE8D /* AppDelegate.swift */; };
 		AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64882275F58800092AE8D /* SceneDelegate.swift */; };
@@ -45,17 +48,20 @@
 		AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailVC.swift; sourceTree = "<group>"; };
 		AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tapbarVC.swift; sourceTree = "<group>"; };
 		AE2D71EB276F1C1A001577C5 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		AE374B612789F19F004E9ACC /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		AE374B622789F19F004E9ACC /* messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messages.swift; sourceTree = "<group>"; };
-		AE374B632789F19F004E9ACC /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdvertaisment.swift; sourceTree = "<group>"; };
 		AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingUserTVCell.swift; sourceTree = "<group>"; };
 		AE5FEFE22770793F000561A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		AE6685A02769DD4200D715E1 /* AddAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdvertising.swift; sourceTree = "<group>"; };
-		AE6685AB276A170E00D715E1 /* TableDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetails.swift; sourceTree = "<group>"; };
 		AE901DAD2760944B00CC7586 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearchVC.swift; sourceTree = "<group>"; };
+		AEB8DED8278C0854009828F7 /* UItablviewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UItablviewCellTableViewCell.swift; sourceTree = "<group>"; };
+		AEB8DED9278C0854009828F7 /* UItablviewCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UItablviewCellTableViewCell.xib; sourceTree = "<group>"; };
 		AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableInHome.swift; sourceTree = "<group>"; };
+		AEE14A3B278B0852002D7590 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		AEE14A3D278B77BC002D7590 /* LocationViewController0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController0.swift; sourceTree = "<group>"; };
+		AEE6846C278CD46D003A8EBF /* messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messages.swift; sourceTree = "<group>"; };
+		AEE6846D278CD46D003A8EBF /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		AEE6846E278CD46D003A8EBF /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountVC.swift; sourceTree = "<group>"; };
 		AEF6487D275F58800092AE8D /* FinalReema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalReema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF64880275F58800092AE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +97,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AE691212278CBC290071E375 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				AEE6846E278CD46D003A8EBF /* ChatViewController.swift */,
+				AEE6846D278CD46D003A8EBF /* MessageCell.swift */,
+				AEE6846C278CD46D003A8EBF /* messages.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
 		AE901DAF276095DD00CC7586 /* Suport */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,16 +115,6 @@
 				AEF64880275F58800092AE8D /* AppDelegate.swift */,
 			);
 			path = Suport;
-			sourceTree = "<group>";
-		};
-		AEAC8D33278AB2FA005A0620 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				AE374B612789F19F004E9ACC /* ChatViewController.swift */,
-				AE374B632789F19F004E9ACC /* MessageCell.swift */,
-				AE374B622789F19F004E9ACC /* messages.swift */,
-			);
-			path = Chat;
 			sourceTree = "<group>";
 		};
 		AED29C5D277098B800274606 /* Constant */ = {
@@ -160,7 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */,
-				AE6685AB276A170E00D715E1 /* TableDetails.swift */,
+				AEB8DED8278C0854009828F7 /* UItablviewCellTableViewCell.swift */,
+				AEB8DED9278C0854009828F7 /* UItablviewCellTableViewCell.xib */,
 			);
 			path = HomeviewController;
 			sourceTree = "<group>";
@@ -216,6 +223,15 @@
 			path = DetailsAdversting;
 			sourceTree = "<group>";
 		};
+		AEE14A3A278B0831002D7590 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				AEE14A3B278B0852002D7590 /* LocationViewController.swift */,
+				AEE14A3D278B77BC002D7590 /* LocationViewController0.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		AEF64874275F58800092AE8D = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +253,8 @@
 		AEF6487F275F58800092AE8D /* FinalReema */ = {
 			isa = PBXGroup;
 			children = (
-				AEAC8D33278AB2FA005A0620 /* Chat */,
+				AE691212278CBC290071E375 /* chat */,
+				AEE14A3A278B0831002D7590 /* Location */,
 				AED29C6827709C4E00274606 /* DetailsAdversting */,
 				AED29C6627709BFF00274606 /* Wellcome */,
 				AED29C6027709B4C00274606 /* signup */,
@@ -337,6 +354,7 @@
 			files = (
 				AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */,
 				AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */,
+				AEB8DEDB278C0854009828F7 /* UItablviewCellTableViewCell.xib in Resources */,
 				AEF64888275F58800092AE8D /* Main.storyboard in Resources */,
 				AE2D71E2276DFA74001577C5 /* GoogleService-Info.plist in Resources */,
 			);
@@ -393,16 +411,17 @@
 			files = (
 				AE4BDA2D27886C1A00C966E1 /* AdvertisingUserTVCell.swift in Sources */,
 				AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */,
-				AE374B652789F19F004E9ACC /* ChatViewController.swift in Sources */,
 				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
 				AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */,
-				AE6685AC276A170E00D715E1 /* TableDetails.swift in Sources */,
+				AEE14A3E278B77BD002D7590 /* LocationViewController0.swift in Sources */,
+				AEE68470278CD46D003A8EBF /* MessageCell.swift in Sources */,
+				AEB8DEDA278C0854009828F7 /* UItablviewCellTableViewCell.swift in Sources */,
 				AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */,
-				AE374B672789F19F004E9ACC /* MessageCell.swift in Sources */,
 				AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */,
+				AEE68471278CD46D003A8EBF /* ChatViewController.swift in Sources */,
 				AE5FEFE32770793F000561A6 /* Service.swift in Sources */,
-				AE374B662789F19F004E9ACC /* messages.swift in Sources */,
+				AEE14A3C278B0852002D7590 /* LocationViewController.swift in Sources */,
 				AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */,
 				AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */,
 				AEF64896275F5BC90092AE8D /* SignInVC.swift in Sources */,
@@ -411,6 +430,7 @@
 				AEF64898275F9CE90092AE8D /* SignUpVC.swift in Sources */,
 				AE2D71E4276E0A5D001577C5 /* K.swift in Sources */,
 				AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */,
+				AEE6846F278CD46D003A8EBF /* messages.swift in Sources */,
 				AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */,
 				AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */,
 			);

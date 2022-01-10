@@ -39,7 +39,35 @@ class DetailsTableInHome : UIViewController {
     super.viewDidLoad()
     loadImage()
     loadData()
+  }
+  @IBAction func callButtonpressed(_ sender: UIButton) {
+    if let url = URL(string: "tel://\(phoneLabel.text!)"),
+    UIApplication.shared.canOpenURL(url) {
+    UIApplication.shared.open(url, options: [:], completionHandler: nil)
     
+  }
+    
+  }
+  
+  @IBAction func shareButtonPressed(_ sender: UIButton) {  UIGraphicsBeginImageContext(view.frame.size)
+  view.layer.render(in: UIGraphicsGetCurrentContext()!)
+  let image = UIGraphicsGetImageFromCurrentImageContext()
+  UIGraphicsEndImageContext()
+
+  let textToShare = "Check out my app"
+
+  if let myWebsite = URL(string: "http://itunes.apple.com/app/idXXXXXXXXX") {
+    
+      let objectsToShare = [textToShare, myWebsite, image ?? #imageLiteral(resourceName: "app-logo")] as [Any]
+      let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+      //Excluded Activities
+      activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+    
+      activityVC.popoverPresentationController?.sourceView = sender
+      self.present(activityVC, animated: true, completion: nil)
+  }
+
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -64,25 +92,27 @@ class DetailsTableInHome : UIViewController {
       }
     }
   }
+
   
-  func loadData(){
-    db.collection("Advertising") .addSnapshotListener { (querySnapshot, erorr) in
-      if let snapshotDoc = querySnapshot?.documents{
-//        self.messages = []
-        for doc in snapshotDoc{
-          let data = doc.data()
-          if let addressD = data["lessorAddress"] as? String ,
-             let priceD = data["pricelessor"] as? String{
-            self.priceLabel.text = addressD
-            self.addressLabel.text = priceD
+  func loadData() {
+    db.collection("Advertising").getDocuments { (snapshot, error) in
+              if let error = error {
+                  print(error)
+              } else {
+                  if let snapshot = snapshot {
+                      for document in snapshot.documents {
+
+                          let data = document.data()
+                          let adres = data["lessorAddress"] as? String ?? ""
+                          let price = data["pricelessor"] as? String ?? ""
+                          self.addressLabel.text = adres
+                          self.priceLabel.text = price
+                        
+                      }
+                  }
+              }
           }
-          }
-        }
       }
-    }
-    
-  
-  
   
   
   // MARK: loadImage AD
@@ -105,9 +135,10 @@ class DetailsTableInHome : UIViewController {
   
   @IBAction func chatButton(_ sender: UIButton) {
 
-    let VC = storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-    present(VC, animated: true, completion: nil)
-    
-  }
-  
+//    let VC = storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+//    present(VC, animated: true, completion: nil)
+//    
+//  }
+}
+
 }

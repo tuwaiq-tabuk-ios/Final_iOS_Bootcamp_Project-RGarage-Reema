@@ -15,3 +15,5 @@ class AdvertisingUserTVCell: UITableViewCell {
   @IBOutlet weak var addressADuser: UILabel!
   
 }
+
+

@@ -26,18 +26,56 @@ class SignUpVC: UIViewController
   //for uoload photo for firebase
   let storage = Storage.storage().reference()
   
+  
+  var iconeClick = false
+  var imageicone = UIImageView()
+  
   @IBOutlet weak var nameUserSignUpTF: UITextField!
   @IBOutlet weak var emailUserSignUpTF: UITextField!
   @IBOutlet weak var passwordUserSignUpTF: UITextField!
   @IBOutlet weak var confirmPassUserSignUpTF: UITextField!
-  @IBOutlet weak var userSignUpButton: UIButton!
   @IBOutlet weak var phoneNumberUserSignUpTF: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+pass()
+  }
+  
+  func pass(){
+    imageicone.image = UIImage(named: "hidden")
+    let contectView = UIView()
+    contectView.addSubview(imageicone)
+    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    
+    imageicone.frame = CGRect(x: -10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    
+    passwordUserSignUpTF.rightView  = contectView
+    passwordUserSignUpTF.rightViewMode = .always
+
+    
+    
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagTapped(tapGestureRecognizer:)))
+    imageicone.isUserInteractionEnabled = true
+    imageicone.addGestureRecognizer(tapGestureRecognizer)
     
   }
   
+  
+  @objc func imagTapped(tapGestureRecognizer:UITapGestureRecognizer){
+    let tappedImage = tapGestureRecognizer.view as! UIImageView
+    if iconeClick {
+      iconeClick = false
+      tappedImage.image = UIImage(named: "view")
+      passwordUserSignUpTF.isSecureTextEntry = false
+     }
+    
+    else {
+      iconeClick = true
+      tappedImage.image = UIImage(named: "hidden")
+      passwordUserSignUpTF.isSecureTextEntry = true
+    }
+    
+  }
   
   @IBAction func ButtonToSignIn(_ sender: UIButton) {
     vc = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignInVC
@@ -85,7 +123,7 @@ class SignUpVC: UIViewController
     print("**userPassword:\(userPassword)\n")
     userConfirmPassword = confirmPassUserSignUpTF.text!
     print("**userConfirmPassword:\(userConfirmPassword)\n")
-  
+    
     
     //firebase signup
     let error = validateFields()

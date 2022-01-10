@@ -11,10 +11,11 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
+
 struct InfoLessor {
     var priceLosser: String
     var lessorAddress: String
-    var pictures = [UIImage]()
+//    var pictures = [UIImage]()
   
     var dictionary: [String: Any] {
         return [
@@ -23,8 +24,18 @@ struct InfoLessor {
     }
 }
 
-
 class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
+  
+  private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
+
+//  var dateCreated :Date
+//
+//  let dateFormatter: DateFormatter = {
+//    let formatter = DateFormatter()
+//    formatter.dateStyle = .medium
+//    formatter.timeStyle = .none
+//    return formatter
+//  }()
   
    let searchController = UISearchController()
    var infoLessorArr = [InfoLessor]()
@@ -38,13 +49,18 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
+    super.viewDidLoad()
     title = "Explore"
+    
     navigationItem.searchController = searchController
     loadData()
     
+    let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
+    
+    tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
+ 
   }
   
-
   func loadData() {
 
       db.collection("Advertising").getDocuments() { (snapshot, error) in
@@ -62,6 +78,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
                       let data = document.data()
                       let AdressD = data["lessorAddress"] as? String ?? ""
                       let PriceD = data["pricelessor"] as? String ?? ""
+                    Firestore.firestore().collection("Advertising")
                     let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD)
                       self.infoLessorArr.append(newAD)
                   }
@@ -71,7 +88,11 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
       }
   }
   
- 
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableView.automaticDimension
+  }
+  
 
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
@@ -84,17 +105,18 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cellListOfItemCarage")  as! TableDetails
+    let cell =
+    tableView.dequeueReusableCell(withIdentifier: reuseIdentifier4, for: indexPath)  as! UItablviewCellTableViewCell
     
     let infoUserAD = infoLessorArr[indexPath.row]
 
     cell.address.text = infoUserAD.lessorAddress
     cell.price.text = " the price is \(infoUserAD.priceLosser)"
-    return  cell
+     return  cell
     
   }
+  
+  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -104,4 +126,5 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   }
   
 }
+
 
