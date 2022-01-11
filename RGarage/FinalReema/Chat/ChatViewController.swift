@@ -7,15 +7,16 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
 
 class ChatViewController: UIViewController {
   
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextFeild: UITextField!
+  @IBOutlet weak var sendarName: UILabel!
   
   let db = Firestore.firestore()
   var messages :[Messages] = []
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,9 +25,11 @@ class ChatViewController: UIViewController {
     messageTableView.dataSource = self
     // Do any additional setup after loading the view.
   }
+  
+  
   // فنكشن تجيب البانات من قاعدة البيانات
   func loadData(){
-    db.collection("messages").order(by: "time").addSnapshotListener { (querySnapshot, erorr) in
+    db.collection("messages").order(by:"time").addSnapshotListener { (querySnapshot, erorr) in
       if let snapshotDoc = querySnapshot?.documents{
         self.messages = []
         for doc in snapshotDoc{
@@ -36,10 +39,10 @@ class ChatViewController: UIViewController {
             let newMessage = Messages(sender: messagSender ,
                                       body : messagText)
             self.messages.append(newMessage)
-              DispatchQueue.main.async {
+            DispatchQueue.main.async {
               self.messageTableView.reloadData()
             }
-
+            
           }
           
         }
@@ -48,12 +51,13 @@ class ChatViewController: UIViewController {
     
   }
   
+  
   @IBAction func sendButtonPressed(_ sender: UIButton) {
     if let messageText = messageTextFeild.text ,
        let messageSender = Auth.auth().currentUser?.email {
       db.collection("messages").addDocument(data:[
         "sender" : messageSender ,
-        "text"   :  messageText,
+        "text" :messageText,
         "time" :Date().timeIntervalSince1970
       ]){(error) in
         if let err = error {
@@ -74,7 +78,7 @@ extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageCell
+    let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
     cell.messageLabel.text = messages[indexPath.row].body
     cell.backgroundColor = .clear
     

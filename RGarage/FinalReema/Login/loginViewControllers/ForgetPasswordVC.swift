@@ -12,7 +12,7 @@ class ForgetPasswordVC: UIViewController {
   
   var vc = UIViewController()
   
-  @IBOutlet weak var emailResetPassword: UITextField!
+  @IBOutlet weak var emailResetPasswordTF: UITextField!
   
   @IBOutlet weak var sendButton: UIButton!
   override func viewDidLoad() {
@@ -24,7 +24,7 @@ class ForgetPasswordVC: UIViewController {
   @IBAction func sendButtonTOCheck(_ sender: UIButton) {
     let auth = Auth.auth()
     
-    auth.sendPasswordReset(withEmail: emailResetPassword.text!){ [self](error) in
+    auth.sendPasswordReset(withEmail: emailResetPasswordTF.text!){ [self](error) in
       if let error = error {
         let alert =  Service.createAleartController(title: "Error", message: error.localizedDescription)
         self.present(alert,animated: true , completion:  nil)
