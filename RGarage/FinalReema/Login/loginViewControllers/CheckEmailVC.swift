@@ -22,5 +22,4 @@ backToLoogin.layer.cornerRadius = 10
     present(vc,animated: false, completion: nil)
     
   }
-  
 }

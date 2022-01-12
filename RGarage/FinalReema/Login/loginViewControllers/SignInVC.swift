@@ -9,15 +9,20 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController ,UITextFieldDelegate {
+  
   var vc = UIViewController()
   var iconeClick = false
   var imageicone = UIImageView()
+  
   @IBOutlet weak var emailSignInTF: UITextField!
   @IBOutlet weak var passwordSignInTF: UITextField!
-  
   @IBOutlet weak var signinButton: UIButton!
   
+  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    emailSignInTF.resignFirstResponder()
+    passwordSignInTF.resignFirstResponder()
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -93,7 +98,5 @@ class SignInVC: UIViewController {
             self.view.window?.makeKeyAndVisible()
         }
     }
-}
-  
-  
+  }
 }

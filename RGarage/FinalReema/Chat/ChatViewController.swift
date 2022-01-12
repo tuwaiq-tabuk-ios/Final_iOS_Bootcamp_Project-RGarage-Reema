@@ -12,8 +12,7 @@ class ChatViewController: UIViewController {
   
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextFeild: UITextField!
-  @IBOutlet weak var sendarName: UILabel!
-  
+ 
   let db = Firestore.firestore()
   var messages :[Messages] = []
   

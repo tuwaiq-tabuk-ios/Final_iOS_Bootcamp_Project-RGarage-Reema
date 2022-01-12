@@ -21,6 +21,9 @@ class ForgetPasswordVC: UIViewController {
     
     }
     
+  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    emailResetPasswordTF.resignFirstResponder()
+  }
   @IBAction func sendButtonTOCheck(_ sender: UIButton) {
     let auth = Auth.auth()
     
@@ -37,5 +40,6 @@ class ForgetPasswordVC: UIViewController {
 
     }
   }
+  
   
 }

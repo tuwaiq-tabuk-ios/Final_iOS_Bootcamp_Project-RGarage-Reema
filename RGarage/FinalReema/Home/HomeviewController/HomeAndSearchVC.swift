@@ -15,7 +15,7 @@ import FirebaseStorage
 struct InfoLessor {
     var priceLosser: String
     var lessorAddress: String
-//    var pictures = [UIImage]()
+    var image : UIImage? = nil
   
     var dictionary: [String: Any] {
         return [
@@ -24,20 +24,14 @@ struct InfoLessor {
     }
 }
 
+
 class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
   
   private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
 
-//  var dateCreated :Date
-//
-//  let dateFormatter: DateFormatter = {
-//    let formatter = DateFormatter()
-//    formatter.dateStyle = .medium
-//    formatter.timeStyle = .none
-//    return formatter
-//  }()
   
    let searchController = UISearchController()
+  
    var infoLessorArr = [InfoLessor]()
   
   var pictures = [UIImage]()
@@ -74,19 +68,38 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
               if let snapshot = snapshot {
 
                   for document in snapshot.documents {
-
+                    print("****\(document.documentID)")
+                    
                       let data = document.data()
                       let AdressD = data["lessorAddress"] as? String ?? ""
                       let PriceD = data["pricelessor"] as? String ?? ""
-                    Firestore.firestore().collection("Advertising")
-                    let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD)
-                      self.infoLessorArr.append(newAD)
+                    let imagePath = "imagesAD/\(document.documentID).png"
+                    
+                    let pathReference = self.storage.reference(withPath: imagePath)
+                    print("\(imagePath)")
+                    pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
+                      
+                      if let error = error {
+ 
+                        print(error)
+                      }
+                      else {
+                        let image = UIImage(data: data!)
+                        
+                        Firestore.firestore().collection("Advertising")
+                        let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD , image: image)
+                          self.infoLessorArr.append(newAD)
+                      }
+                      self.tableView.reloadData()
+
+                      }
                   }
-                  self.tableView.reloadData()
               }
           }
       }
   }
+  
+  
   
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -105,26 +118,28 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell =
-    tableView.dequeueReusableCell(withIdentifier: reuseIdentifier4, for: indexPath)  as! UItablviewCellTableViewCell
-    
-    let infoUserAD = infoLessorArr[indexPath.row]
+    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier4,
+                                             for: indexPath)  as! UItablviewCellTableViewCell
 
+    let infoUserAD = infoLessorArr[indexPath.row]
     cell.address.text = infoUserAD.lessorAddress
     cell.price.text = " the price is \(infoUserAD.priceLosser)"
+    cell.imageDetails.image = infoUserAD.image
      return  cell
     
+    
   }
-  
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsTableInHome
-        
-    self.navigationController?.pushViewController(controller, animated: true)
+       
+      controller.imageD = infoLessorArr[indexPath.row].image
+      controller.addressD = infoLessorArr[indexPath.row].lessorAddress
+      controller.priceD = infoLessorArr[indexPath.row].priceLosser
+      
+      self.navigationController?.pushViewController(controller, animated: true)
   }
   
 }
-
-

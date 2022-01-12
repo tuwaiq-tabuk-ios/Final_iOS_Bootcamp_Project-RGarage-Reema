@@ -21,12 +21,12 @@ class SignUpVC: UIViewController
   var userPassword: String = ""
   var userConfirmPassword : String = ""
   
-  //data
+  //vaiable data
   var vc = UIViewController()
   //for uoload photo for firebase
   let storage = Storage.storage().reference()
   
-  
+  //variable password hidden and shaw
   var iconeClick = false
   var imageicone = UIImageView()
   
@@ -38,44 +38,18 @@ class SignUpVC: UIViewController
   
   override func viewDidLoad() {
     super.viewDidLoad()
-pass()
+    passwordshowAndHidden()
   }
-  
-  func pass(){
-    imageicone.image = UIImage(named: "hidden")
-    let contectView = UIView()
-    contectView.addSubview(imageicone)
-    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
     
-    imageicone.frame = CGRect(x: -10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
-    
-    passwordUserSignUpTF.rightView  = contectView
-    passwordUserSignUpTF.rightViewMode = .always
-
-    
-    
-    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagTapped(tapGestureRecognizer:)))
-    imageicone.isUserInteractionEnabled = true
-    imageicone.addGestureRecognizer(tapGestureRecognizer)
+    nameUserSignUpTF.resignFirstResponder()
+    emailUserSignUpTF.resignFirstResponder()
+    passwordUserSignUpTF.resignFirstResponder()
+    confirmPassUserSignUpTF.resignFirstResponder()
+    phoneNumberUserSignUpTF.resignFirstResponder()
     
   }
   
-  
-  @objc func imagTapped(tapGestureRecognizer:UITapGestureRecognizer){
-    let tappedImage = tapGestureRecognizer.view as! UIImageView
-    if iconeClick {
-      iconeClick = false
-      tappedImage.image = UIImage(named: "view")
-      passwordUserSignUpTF.isSecureTextEntry = false
-     }
-    
-    else {
-      iconeClick = true
-      tappedImage.image = UIImage(named: "hidden")
-      passwordUserSignUpTF.isSecureTextEntry = true
-    }
-    
-  }
   
   @IBAction func ButtonToSignIn(_ sender: UIButton) {
     vc = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignInVC
@@ -126,8 +100,9 @@ pass()
     
     
     //firebase signup
-    let error = validateFields()
-    if error != nil {
+    let textFieldSignUP = validateFields()
+    
+    if textFieldSignUP != nil {
       
     }
     else {
@@ -137,53 +112,76 @@ pass()
       let confirmPass = confirmPassUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let phoneNumber  = phoneNumberUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       
+      
       if confirmPass == password {
-        
-        Auth.auth().createUser(withEmail: email, password: password )  { (result, err) in
+        Auth.auth().createUser(withEmail: email, password: password )  { (authDataResult, err) in
           if err != nil {
+            print("Error creating user" )
             
-            let alert =  Service.createAleartController(title: "Error", message: "Error creating user")
-            self.present(alert,animated: true , completion:  nil)
-            
-            
-          }else {
-            
-            
+          } else {
             let db = Firestore.firestore()
             let id = Auth.auth().currentUser?.uid
             db.collection("users").document(id!).setData(["FullName":fullName,
                                                           "Email" :email ,
                                                           "Password":password,
                                                           "PhoneNumber": phoneNumber,
-                                                          "uid": result!.user.uid ]) { (error) in
+                                                          "uid": authDataResult!.user.uid ]) { (error) in
               
               if error != nil {
-                // Show error message
-                let alert =  Service.createAleartController(title: "Error"
-                                                            , message: "Error saving user data"
-                )
-                self.present(alert,animated: true , completion:  nil)
+                print("Error saving user data")
+                
               }
             }
-            // Transition to the home screen
-            self.transitionToHome()
-            
+            self.tapbarVC()
           }
-          
         }
-      } else{
-        let alert =  Service.createAleartController(title: "Error", message: "password not mach"
-        )
+      }else{
+        let alert =  Service.createAleartController(title: "Error", message: "password not mach")
         self.present(alert,animated: true , completion:  nil)
+
       }
     }
-    
   }
   
-  func transitionToHome() {
+  
+  //MARK: segue to tapbarVC
+  
+  func tapbarVC() {
     let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
     view.window?.rootViewController = tapbarVC
     view.window?.makeKeyAndVisible()
+  }
+  
+  //MARK: show and hidden password
+  func passwordshowAndHidden(){
+    imageicone.image = UIImage(named: "hidden")
+    let contectView = UIView()
+    contectView.addSubview(imageicone)
+    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    
+    imageicone.frame = CGRect(x: -10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    
+    passwordUserSignUpTF.rightView  = contectView
+    passwordUserSignUpTF.rightViewMode = .always
+    
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagTapped(tapGestureRecognizer:)))
+    imageicone.isUserInteractionEnabled = true
+    imageicone.addGestureRecognizer(tapGestureRecognizer)
+   }
+  
+  @objc func imagTapped(tapGestureRecognizer:UITapGestureRecognizer){
+    let tappedImage = tapGestureRecognizer.view as! UIImageView
+    if iconeClick {
+      iconeClick = false
+      tappedImage.image = UIImage(named: "view")
+      passwordUserSignUpTF.isSecureTextEntry = false
+    }
+    else {
+      iconeClick = true
+      tappedImage.image = UIImage(named: "hidden")
+      passwordUserSignUpTF.isSecureTextEntry = true
+    }
+    
   }
   
 }
