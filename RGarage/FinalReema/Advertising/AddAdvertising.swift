@@ -55,13 +55,16 @@ class AddAdvertising : UIViewController
     if let addressUserD = addressAD.text,
        let priceUserD = priceAD.text,
        let  userLogin = Auth.auth().currentUser?.email {
+      
+      let id = Auth.auth().currentUser?.uid
 
       var dataInfo :DocumentReference? = nil
       dataInfo =  db.collection("Advertising").addDocument(data: [
 
         "lessor": userLogin,
         "lessorAddress" : addressUserD ,
-        "pricelessor" : priceUserD]) {(error)in
+        "pricelessor" : priceUserD,
+        "lessorID" : id!]) {(error)in
           
         if let err = error {
           print(err)

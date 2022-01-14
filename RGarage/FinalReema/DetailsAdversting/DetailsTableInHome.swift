@@ -25,7 +25,7 @@ class DetailsTableInHome : UIViewController {
   var imageD : UIImage? = nil
   var addressD: String = ""
   var priceD : String = ""
-
+  
   @IBOutlet weak var chatButton: UIButton!
   @IBOutlet weak var DetailsView: UIView!
   
@@ -81,9 +81,28 @@ class DetailsTableInHome : UIViewController {
     
   }
   //MARK: informations lessor
-     
+  
   override func viewWillAppear(_ animated: Bool) {
-
+ 
+    var lessorID = ""
+    db.collection("Advertising").getDocuments() { (snapshot, error) in
+            if let error = error {
+        print(error.localizedDescription)
+      } else {
+        
+        if let snapshot = snapshot {
+      
+          for document in snapshot.documents {
+            print("****\(document.documentID)")
+            
+            let data = document.data()
+            lessorID = data["lessorID"] as? String ?? ""
+            print("\n\n ** LessorID from Adv Inside= \(lessorID)")
+          }}
+      }}
+    
+    print("\n\n ** LessorID from Adv outside= \(lessorID)")
+    
     if let currentUser  = user {
       db.collection("users").document(currentUser.uid).getDocument { doc , err in
         if err != nil {
@@ -91,19 +110,19 @@ class DetailsTableInHome : UIViewController {
         }
         else{
           let data = doc!.data()!
-
+          
           self.nameD  = data["FullName"] as! String
           self.phoneD = data["PhoneNumber"] as! String
-
+          
           print("**********DATA :  \(data)")
           self.phoneLabel.text = self.phoneD
           self.nameLessor.text = "By Lessor : \(self.nameD)"
-
+          
         }
       }
     }
   }
-
+  
   
   @IBAction func chatButton(_ sender: UIButton) {
     

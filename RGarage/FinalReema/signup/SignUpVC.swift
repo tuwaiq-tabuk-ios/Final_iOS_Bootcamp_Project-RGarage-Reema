@@ -116,6 +116,10 @@ class SignUpVC: UIViewController
       if confirmPass == password {
         Auth.auth().createUser(withEmail: email, password: password )  { (authDataResult, err) in
           if err != nil {
+            let alert =  Service.createAleartController(title: "Error"
+                                                        , message:" your Email was uesed")
+            self.present(alert,animated: true , completion:  nil)
+            
             print("Error creating user" )
             
           } else {
@@ -180,8 +184,6 @@ class SignUpVC: UIViewController
       iconeClick = true
       tappedImage.image = UIImage(named: "hidden")
       passwordUserSignUpTF.isSecureTextEntry = true
-    }
-    
+    }    
   }
-  
 }

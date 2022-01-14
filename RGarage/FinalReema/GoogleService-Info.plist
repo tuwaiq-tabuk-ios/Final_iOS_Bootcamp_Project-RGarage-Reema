@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>807923798226-3ku6qb0ndp2c8gi1a90mnjm4tkblh9uv.apps.googleusercontent.com</string>
+	<string>826712342757-ku0jo1e3mpbsaj4cgvh1b0c89ug38iqm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.807923798226-3ku6qb0ndp2c8gi1a90mnjm4tkblh9uv</string>
+	<string>com.googleusercontent.apps.826712342757-ku0jo1e3mpbsaj4cgvh1b0c89ug38iqm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBaHT-mzXpphbNSZHJIt3lvEIoe4aAHys8</string>
+	<string>AIzaSyAy7xRKHpkg9J7HzcuD8IyCMkdt8s9Jors</string>
 	<key>GCM_SENDER_ID</key>
-	<string>807923798226</string>
+	<string>826712342757</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>reema.com.RGarage</string>
 	<key>PROJECT_ID</key>
-	<string>rgarage-41f98</string>
+	<string>rgarage-e8120</string>
 	<key>STORAGE_BUCKET</key>
-	<string>rgarage-41f98.appspot.com</string>
+	<string>rgarage-e8120.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:807923798226:ios:004530feb314e927a05d0b</string>
+	<string>1:826712342757:ios:56cd5cab4e34a95af2940c</string>
 </dict>
 </plist>

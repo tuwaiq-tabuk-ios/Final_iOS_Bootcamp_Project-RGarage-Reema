@@ -47,12 +47,15 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     title = "Explore"
     
     navigationItem.searchController = searchController
-    loadData()
+
     
     let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
     
     tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
  
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    loadData()
   }
   
   func loadData() {
@@ -73,7 +76,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
                       let data = document.data()
                       let AdressD = data["lessorAddress"] as? String ?? ""
                       let PriceD = data["pricelessor"] as? String ?? ""
-                    let imagePath = "imagesAD/\(document.documentID).png"
+                     let imagePath = "imagesAD/\(document.documentID).png"
                     
                     let pathReference = self.storage.reference(withPath: imagePath)
                     print("\(imagePath)")

@@ -37,7 +37,6 @@ class AccountVC: UIViewController ,
   var infoLessorAdverstisements = [InfoLessorAdverstisement]()
   
   
-  @IBOutlet weak var tableViewAccount: UITableView!
   @IBOutlet weak var profilePhoto: UIImageView!
   @IBOutlet weak var nameUser: UILabel!
   
@@ -51,11 +50,7 @@ class AccountVC: UIViewController ,
     
     
     
-    let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
-    
-    tableViewAccount.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
-    
-    
+   
     loadImage()
     loadImage()
     

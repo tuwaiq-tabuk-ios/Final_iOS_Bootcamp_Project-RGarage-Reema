@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE2D71E2276DFA74001577C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */; };
 		AE2D71E4276E0A5D001577C5 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E3276E0A5C001577C5 /* K.swift */; };
 		AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */; };
 		AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */; };
 		AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */; };
 		AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71EB276F1C1A001577C5 /* Navigation.swift */; };
 		AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */; };
-		AE4BDA2D27886C1A00C966E1 /* AdvertisingUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */; };
 		AE5FEFE32770793F000561A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5FEFE22770793F000561A6 /* Service.swift */; };
+		AE666D5A2790156F0013D888 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE666D592790156F0013D888 /* GoogleService-Info.plist */; };
+		AE666D5C27901C4B0013D888 /* chatsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE666D5B27901C4B0013D888 /* chatsRoom.swift */; };
 		AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A02769DD4200D715E1 /* AddAdvertising.swift */; };
 		AE901DAE2760944B00CC7586 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAD2760944B00CC7586 /* AccountVC.swift */; };
 		AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */; };
@@ -44,15 +44,16 @@
 /* Begin PBXFileReference section */
 		207C10FC6EF096AF8E65CDDA /* Pods-FinalReema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.release.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.release.xcconfig"; sourceTree = "<group>"; };
 		47B58215C88030BF6100FE9C /* Pods-FinalReema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.debug.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.debug.xcconfig"; sourceTree = "<group>"; };
-		AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE13A6A22791B05A00EC5B00 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		AE2D71E3276E0A5C001577C5 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailVC.swift; sourceTree = "<group>"; };
 		AE2D71E9276F1B3E001577C5 /* tapbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tapbarVC.swift; sourceTree = "<group>"; };
 		AE2D71EB276F1C1A001577C5 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdvertaisment.swift; sourceTree = "<group>"; };
-		AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingUserTVCell.swift; sourceTree = "<group>"; };
 		AE5FEFE22770793F000561A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		AE666D592790156F0013D888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE666D5B27901C4B0013D888 /* chatsRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatsRoom.swift; sourceTree = "<group>"; };
 		AE6685A02769DD4200D715E1 /* AddAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdvertising.swift; sourceTree = "<group>"; };
 		AE901DAD2760944B00CC7586 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearchVC.swift; sourceTree = "<group>"; };
@@ -92,6 +93,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE13A6A72791BD2B00EC5B00 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		AE6685A42769DD6D00D715E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,9 +112,10 @@
 		AE691212278CBC290071E375 /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				AEE6846C278CD46D003A8EBF /* messages.swift */,
+				AE666D5B27901C4B0013D888 /* chatsRoom.swift */,
 				AEE6846E278CD46D003A8EBF /* ChatViewController.swift */,
 				AEE6846D278CD46D003A8EBF /* MessageCell.swift */,
-				AEE6846C278CD46D003A8EBF /* messages.swift */,
 				AEE68472278D7FFB003A8EBF /* ChatsUsersTVC.swift */,
 				AEE68474278D803F003A8EBF /* ChatusersCell.swift */,
 			);
@@ -162,8 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				AED29C6227709BA900274606 /* HomeviewController */,
-				AED29C6427709BD000274606 /* Navagation */,
-				AED29C6327709BBC00274606 /* Tabbar */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -200,7 +207,6 @@
 				AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */,
 				AE901DAD2760944B00CC7586 /* AccountVC.swift */,
 				AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */,
-				AE4BDA2C27886C1A00C966E1 /* AdvertisingUserTVCell.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -259,20 +265,23 @@
 		AEF6487F275F58800092AE8D /* FinalReema */ = {
 			isa = PBXGroup;
 			children = (
+				AE13A6A72791BD2B00EC5B00 /* Localization */,
+				AE901DAF276095DD00CC7586 /* Suport */,
+				AED29C6627709BFF00274606 /* Wellcome */,
 				AE691212278CBC290071E375 /* chat */,
 				AEE14A3A278B0831002D7590 /* Location */,
 				AED29C6827709C4E00274606 /* DetailsAdversting */,
-				AED29C6627709BFF00274606 /* Wellcome */,
 				AED29C6027709B4C00274606 /* signup */,
 				AED29C5E27709AF700274606 /* Login */,
 				AED29C6127709B7B00274606 /* Home */,
 				AED29C6727709C1A00274606 /* Advertising */,
 				AED29C6527709BE600274606 /* Account */,
+				AED29C6427709BD000274606 /* Navagation */,
+				AED29C6327709BBC00274606 /* Tabbar */,
 				AED29C5D277098B800274606 /* Constant */,
 				AE6685A42769DD6D00D715E1 /* View */,
-				AE901DAF276095DD00CC7586 /* Suport */,
 				AEF6488E275F58820092AE8D /* Info.plist */,
-				AE2D71E1276DFA74001577C5 /* GoogleService-Info.plist */,
+				AE666D592790156F0013D888 /* GoogleService-Info.plist */,
 			);
 			path = FinalReema;
 			sourceTree = "<group>";
@@ -340,6 +349,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = AEF64874275F58800092AE8D;
 			packageReferences = (
@@ -360,9 +370,9 @@
 			files = (
 				AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */,
 				AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */,
+				AE666D5A2790156F0013D888 /* GoogleService-Info.plist in Resources */,
 				AEB8DEDB278C0854009828F7 /* UItablviewCellTableViewCell.xib in Resources */,
 				AEF64888275F58800092AE8D /* Main.storyboard in Resources */,
-				AE2D71E2276DFA74001577C5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,9 +425,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE4BDA2D27886C1A00C966E1 /* AdvertisingUserTVCell.swift in Sources */,
 				AEE68473278D7FFB003A8EBF /* ChatsUsersTVC.swift in Sources */,
 				AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */,
+				AE666D5C27901C4B0013D888 /* chatsRoom.swift in Sources */,
 				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
 				AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */,
@@ -451,6 +461,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AEF64887275F58800092AE8D /* Base */,
+				AE13A6A22791B05A00EC5B00 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -470,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -531,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
