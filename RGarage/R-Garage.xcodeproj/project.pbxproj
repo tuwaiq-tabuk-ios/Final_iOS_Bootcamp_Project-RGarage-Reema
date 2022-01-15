@@ -22,8 +22,6 @@
 		AEB8DEDA278C0854009828F7 /* UItablviewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8DED8278C0854009828F7 /* UItablviewCellTableViewCell.swift */; };
 		AEB8DEDB278C0854009828F7 /* UItablviewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEB8DED9278C0854009828F7 /* UItablviewCellTableViewCell.xib */; };
 		AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */; };
-		AEE14A3C278B0852002D7590 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE14A3B278B0852002D7590 /* LocationViewController.swift */; };
-		AEE14A3E278B77BD002D7590 /* LocationViewController0.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE14A3D278B77BC002D7590 /* LocationViewController0.swift */; };
 		AEE6846F278CD46D003A8EBF /* messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE6846C278CD46D003A8EBF /* messages.swift */; };
 		AEE68470278CD46D003A8EBF /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE6846D278CD46D003A8EBF /* MessageCell.swift */; };
 		AEE68471278CD46D003A8EBF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE6846E278CD46D003A8EBF /* ChatViewController.swift */; };
@@ -44,7 +42,7 @@
 /* Begin PBXFileReference section */
 		207C10FC6EF096AF8E65CDDA /* Pods-FinalReema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.release.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.release.xcconfig"; sourceTree = "<group>"; };
 		47B58215C88030BF6100FE9C /* Pods-FinalReema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.debug.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.debug.xcconfig"; sourceTree = "<group>"; };
-		AE13A6A22791B05A00EC5B00 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		AE13A6A22791B05A00EC5B00 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
 		AE2D71E3276E0A5C001577C5 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailVC.swift; sourceTree = "<group>"; };
@@ -60,8 +58,6 @@
 		AEB8DED8278C0854009828F7 /* UItablviewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UItablviewCellTableViewCell.swift; sourceTree = "<group>"; };
 		AEB8DED9278C0854009828F7 /* UItablviewCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UItablviewCellTableViewCell.xib; sourceTree = "<group>"; };
 		AED05CB52760E54D0045EFF9 /* DetailsTableInHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableInHome.swift; sourceTree = "<group>"; };
-		AEE14A3B278B0852002D7590 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		AEE14A3D278B77BC002D7590 /* LocationViewController0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController0.swift; sourceTree = "<group>"; };
 		AEE6846C278CD46D003A8EBF /* messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messages.swift; sourceTree = "<group>"; };
 		AEE6846D278CD46D003A8EBF /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		AEE6846E278CD46D003A8EBF /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -93,13 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AE13A6A72791BD2B00EC5B00 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Localization;
-			sourceTree = "<group>";
-		};
 		AE6685A42769DD6D00D715E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,15 +224,6 @@
 			path = DetailsAdversting;
 			sourceTree = "<group>";
 		};
-		AEE14A3A278B0831002D7590 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				AEE14A3B278B0852002D7590 /* LocationViewController.swift */,
-				AEE14A3D278B77BC002D7590 /* LocationViewController0.swift */,
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
 		AEF64874275F58800092AE8D = {
 			isa = PBXGroup;
 			children = (
@@ -265,11 +245,9 @@
 		AEF6487F275F58800092AE8D /* FinalReema */ = {
 			isa = PBXGroup;
 			children = (
-				AE13A6A72791BD2B00EC5B00 /* Localization */,
 				AE901DAF276095DD00CC7586 /* Suport */,
 				AED29C6627709BFF00274606 /* Wellcome */,
 				AE691212278CBC290071E375 /* chat */,
-				AEE14A3A278B0831002D7590 /* Location */,
 				AED29C6827709C4E00274606 /* DetailsAdversting */,
 				AED29C6027709B4C00274606 /* signup */,
 				AED29C5E27709AF700274606 /* Login */,
@@ -431,14 +409,12 @@
 				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
 				AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */,
-				AEE14A3E278B77BD002D7590 /* LocationViewController0.swift in Sources */,
 				AEE68470278CD46D003A8EBF /* MessageCell.swift in Sources */,
 				AEB8DEDA278C0854009828F7 /* UItablviewCellTableViewCell.swift in Sources */,
 				AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */,
 				AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */,
 				AEE68471278CD46D003A8EBF /* ChatViewController.swift in Sources */,
 				AE5FEFE32770793F000561A6 /* Service.swift in Sources */,
-				AEE14A3C278B0852002D7590 /* LocationViewController.swift in Sources */,
 				AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */,
 				AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */,
 				AEF64896275F5BC90092AE8D /* SignInVC.swift in Sources */,
@@ -606,7 +582,10 @@
 				DEVELOPMENT_TEAM = AQQ2YBW9F8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalReema/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allowed to access to ypuy photo";
+				INFOPLIST_KEY_CFBundleDisplayName = RGarage;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow to use yout Cemera.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to get yout current location.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow to use yout Photo Library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -636,7 +615,10 @@
 				DEVELOPMENT_TEAM = AQQ2YBW9F8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalReema/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allowed to access to ypuy photo";
+				INFOPLIST_KEY_CFBundleDisplayName = RGarage;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow to use yout Cemera.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to get yout current location.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow to use yout Photo Library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

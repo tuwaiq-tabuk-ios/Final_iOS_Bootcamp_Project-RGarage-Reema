@@ -153,7 +153,7 @@
 "jZm-1C-FeT.placeholder" = "اضف السعر اليومي";
 
 /* Class = "UIButton"; configuration.title = "Update Profile"; ObjectID = "m42-H1-fRR"; */
-"m42-H1-fRR.configuration.title" = "Update Profile";
+"m42-H1-fRR.configuration.title" = "تعديل الملف الشخصي ";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "m42-H1-fRR"; */
 "m42-H1-fRR.normalTitle" = "Button";

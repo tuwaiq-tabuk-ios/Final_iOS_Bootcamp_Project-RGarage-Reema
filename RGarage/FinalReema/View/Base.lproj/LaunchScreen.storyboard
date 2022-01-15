@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5s-Nj-MEE">
-                                <rect key="frame" x="100" y="410" width="214" height="76"/>
+                                <rect key="frame" x="100" y="416.5" width="214" height="63"/>
                                 <attributedString key="attributedText">
                                     <fragment content="RGarage">
                                         <attributes>
@@ -27,7 +27,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Car" translatesAutoresizingMaskIntoConstraints="NO" id="dOm-iN-tbo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="By my car-pana" translatesAutoresizingMaskIntoConstraints="NO" id="dOm-iN-tbo">
                                 <rect key="frame" x="0.0" y="537" width="414" height="268"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="268" id="ySd-4v-Am5"/>
@@ -40,7 +40,6 @@
                             <constraint firstItem="W5s-Nj-MEE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="18t-eF-Fqg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dOm-iN-tbo" secondAttribute="bottom" constant="57" id="71y-B5-Ttd"/>
                             <constraint firstItem="dOm-iN-tbo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hp6-Iv-QIS"/>
-                            <constraint firstItem="dOm-iN-tbo" firstAttribute="top" secondItem="W5s-Nj-MEE" secondAttribute="bottom" constant="51" id="Hxc-Rb-00T"/>
                             <constraint firstItem="dOm-iN-tbo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="q3p-FW-xOG"/>
                             <constraint firstItem="W5s-Nj-MEE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="r6S-u1-FnU"/>
                         </constraints>
@@ -52,7 +51,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Car" width="2000" height="2000"/>
+        <image name="By my car-pana" width="2000" height="2000"/>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

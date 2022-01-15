@@ -11,7 +11,6 @@ import FirebaseStorage
 import FirebaseFirestore
 
 class AddAdvertising : UIViewController
-,UIImagePickerControllerDelegate
 , UINavigationControllerDelegate {
   
   
@@ -47,16 +46,13 @@ class AddAdvertising : UIViewController
   @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
     priceAD.resignFirstResponder()
     addressAD.resignFirstResponder()
-    
   }
   
   @IBAction func btnAddAdvertising(_ sender: Any) {
-//    let user = Auth.auth().currentUser?.uid
     if let addressUserD = addressAD.text,
        let priceUserD = priceAD.text,
        let  userLogin = Auth.auth().currentUser?.email {
-      
-      let id = Auth.auth().currentUser?.uid
+       let id = Auth.auth().currentUser?.uid
 
       var dataInfo :DocumentReference? = nil
       dataInfo =  db.collection("Advertising").addDocument(data: [
@@ -70,13 +66,9 @@ class AddAdvertising : UIViewController
           print(err)
         }
         else{
-//          print("****\n\n\n \(dataInfo?.documentID)")
-          
           guard let imagData = self.addImageAD?.image?.pngData() else {
             return
           }
-//          guard let currentUser  = self.user else  {return}
-          
           let imageName = dataInfo!.documentID
           self.storage.child("imagesAD/\(imageName).png").putData(imagData,
                                                              metadata: nil,
@@ -100,40 +92,63 @@ class AddAdvertising : UIViewController
     present(tapbar, animated: true, completion: nil)
   }
   
+
   @IBAction func addphotoButon(_ sender: Any) {
     
+    presentPhotoActionSheet()
+  }
+}
+
+
+extension AddAdvertising : UIImagePickerControllerDelegate {
+  func presentPhotoActionSheet(){
+    
+    let actionSheet = UIAlertController(
+      title: "Advertising Picture",
+      message: "How would you like to select a picture",
+      preferredStyle: .actionSheet)
+     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {[weak self] _ in
+      self?.presenCamera()
+    } ))
+    actionSheet.addAction(UIAlertAction(title: "Chose Photo", style: .default, handler: {[weak self ] _ in
+      self?.presentPhotoPicker()
+    }))
+    present(actionSheet , animated: true)
+  }
+  
+  func presenCamera (){
+    let addImge = UIImagePickerController()
+    addImge.sourceType = .camera
+    addImge.delegate = self
+    addImge.allowsEditing = true
+    present(addImge, animated: true)
+  }
+  
+  
+  func presentPhotoPicker(){
     let addImge = UIImagePickerController()
     addImge.sourceType = .photoLibrary
     addImge.delegate = self
     addImge.allowsEditing = true
     present(addImge, animated: true)
-    
   }
   
-  func imagePickerController(
-    _ picker: UIImagePickerController,
-    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info:
+                             [UIImagePickerController.InfoKey : Any]) {
     
-  ){
-    
-    
-    if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-      print(url)
-    }
-    
+    picker.dismiss(animated: true, completion: nil)
     guard let selectedImage =
             info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-              return
-            }
-
-    let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-    addImageAD.image = image
+      return
+    }
     self.addImageAD.image  = selectedImage
-    
-    self.dismiss(animated: true, completion: nil)
-
   }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
 }
-
-
-
