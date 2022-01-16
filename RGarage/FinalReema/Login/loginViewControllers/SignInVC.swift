@@ -26,40 +26,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    signinButton.layer.cornerRadius = 10
-    imageicone.image = UIImage(named: "hidden")
-    let contectView = UIView()
-    contectView.addSubview(imageicone)
-    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
-
-    imageicone.frame = CGRect(x: -10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
-
-    passwordSignInTF.rightView  = contectView
-    passwordSignInTF.rightViewMode = .always
-   
-    
-    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagTapped(tapGestureRecognizer:)))
-    imageicone.isUserInteractionEnabled = true
-    imageicone.addGestureRecognizer(tapGestureRecognizer)
-
-  }
-  
-  @objc func imagTapped(tapGestureRecognizer:UITapGestureRecognizer){
-    let tappedImage = tapGestureRecognizer.view as! UIImageView
-    if iconeClick {
-      iconeClick = false
-      tappedImage.image = UIImage(named: "view")
-      passwordSignInTF.isSecureTextEntry = false
-
-     
-      
-    }
-    else {
-      iconeClick = true
-      tappedImage.image = UIImage(named: "hidden")
-      passwordSignInTF.isSecureTextEntry = true
-
-    }
+    passwordshowAndHiddenSignIn()
   }
   
   
@@ -97,6 +64,37 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
             self.view.window?.rootViewController = tapbarVC
             self.view.window?.makeKeyAndVisible()
         }
+    }
+  }
+  
+  //MARK: show and hidden password
+  func passwordshowAndHiddenSignIn(){
+    imageicone.image = UIImage(named: "hidden")
+    let contectView = UIView()
+    contectView.addSubview(imageicone)
+    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    
+    imageicone.frame = CGRect(x: -2, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    
+    passwordSignInTF.rightView  = contectView
+    passwordSignInTF.rightViewMode = .always
+    
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagTapped(tapGestureRecognizer:)))
+    imageicone.isUserInteractionEnabled = true
+    imageicone.addGestureRecognizer(tapGestureRecognizer)
+   }
+  
+  @objc func imagTapped(tapGestureRecognizer:UITapGestureRecognizer){
+    let tappedImage = tapGestureRecognizer.view as! UIImageView
+    if iconeClick {
+      iconeClick = false
+      tappedImage.image = UIImage(named: "view")
+      passwordSignInTF.isSecureTextEntry = false
+    }
+    else {
+      iconeClick = true
+      tappedImage.image = UIImage(named: "hidden")
+      passwordSignInTF.isSecureTextEntry = true
     }
   }
 }

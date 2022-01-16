@@ -1421,7 +1421,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="RA5-pQ-gWI"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="My Advertisment"/>
                                         <connections>
@@ -1458,7 +1458,6 @@
                                     <constraint firstAttribute="trailing" secondItem="A0Q-b9-Kgb" secondAttribute="trailing" constant="130" id="Obv-vs-41m"/>
                                     <constraint firstItem="aZa-vJ-UDS" firstAttribute="top" secondItem="QR3-Ua-0Qx" secondAttribute="bottom" constant="36.5" id="UfH-X2-w6v"/>
                                     <constraint firstItem="QR3-Ua-0Qx" firstAttribute="top" secondItem="A0Q-b9-Kgb" secondAttribute="bottom" constant="8" id="au4-eM-gXe"/>
-                                    <constraint firstItem="aZa-vJ-UDS" firstAttribute="leading" secondItem="eH2-KA-AoT" secondAttribute="leading" constant="140" id="bXd-Lr-xRu"/>
                                     <constraint firstItem="A0Q-b9-Kgb" firstAttribute="leading" secondItem="eH2-KA-AoT" secondAttribute="leading" constant="130" id="meB-Kd-MWv"/>
                                     <constraint firstItem="A0Q-b9-Kgb" firstAttribute="leading" secondItem="60G-6C-m2K" secondAttribute="trailing" constant="40.5" id="sEG-Fj-rZ5"/>
                                     <constraint firstItem="QR3-Ua-0Qx" firstAttribute="centerX" secondItem="eH2-KA-AoT" secondAttribute="centerX" id="xz5-ha-N18"/>
@@ -1640,7 +1639,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="BGColor"/>
                                 <constraints>
                                     <constraint firstItem="m42-H1-fRR" firstAttribute="top" secondItem="7LI-jS-ifa" secondAttribute="top" constant="8" id="RDy-5A-OfU"/>
                                     <constraint firstItem="m42-H1-fRR" firstAttribute="centerX" secondItem="7LI-jS-ifa" secondAttribute="centerX" id="fwX-t1-UVt"/>
@@ -2019,9 +2018,6 @@
         <namedColor name="BGColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

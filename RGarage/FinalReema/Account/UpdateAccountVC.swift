@@ -21,7 +21,7 @@ class UpdateAccountVC: UIViewController,
   let user = Auth.auth().currentUser
   let storage = Storage.storage().reference()
   let profileImagesRef = Storage.storage().reference().child("images/")
-  
+
   //variabls
   var userFullNameUPdate : String = ""
   var userEmailUPdate : String = ""
@@ -41,7 +41,7 @@ class UpdateAccountVC: UIViewController,
     updateUserPhoto.layer.borderColor = UIColor.lightGray.cgColor
     
   }
-  
+
   // MARK: Show user Information in update VC
   override func viewWillAppear(_ animated: Bool) {
     
@@ -75,7 +75,7 @@ class UpdateAccountVC: UIViewController,
     emailUpdate.resignFirstResponder()
     numberUserUpdataTF.resignFirstResponder()
   }
-  
+
   @IBAction func BackButtonPressedtoAccountVC(_ sender: UIButton) {
     let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
     view.window?.rootViewController = tapbarVC
@@ -116,12 +116,9 @@ class UpdateAccountVC: UIViewController,
             print("Document successfully updated")
           }
         }
-        
       }
-      
     }
   }
-  
   // MARK: update user photo
   
   @IBAction func updateUserPhotoButton(_ sender: Any) {
@@ -138,17 +135,14 @@ class UpdateAccountVC: UIViewController,
     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
   ) {
     guard let selectedImage =
-            info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-              return
-            }
+            info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
 
     let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
     updateUserPhoto.image = image
     
     self.updateUserPhoto.image  = selectedImage
-    guard let imagData = selectedImage.pngData() else {
-      return
-    }
+    guard let imagData = selectedImage.pngData() else {return}
+
     guard let currentUser  = user else  {return}
     let imageName = currentUser.uid
     
@@ -157,8 +151,8 @@ class UpdateAccountVC: UIViewController,
                   metadata: nil,completion: { _, error in
         guard error == nil else {
         print ("Fieled")
-        return
-      }
+        return}
+        
       self.dismiss(animated: true, completion: nil)
     })
   }

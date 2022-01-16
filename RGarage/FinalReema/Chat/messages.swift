@@ -16,13 +16,13 @@
 
 
 import UIKit
-//
+
 //struct Messages{
 //  let sender : String
 //  let message : String
 //  let reciever : String
 //}
-//
+
 
 
 struct Messages{

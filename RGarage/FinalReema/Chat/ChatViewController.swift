@@ -9,10 +9,10 @@ import UIKit
 import Firebase
 
 class ChatViewController: UIViewController {
-  
+
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextFeild: UITextField!
-  
+
   let db = Firestore.firestore()
 //
 //  var messages = [Messages]()
@@ -22,11 +22,11 @@ class ChatViewController: UIViewController {
     super.viewDidLoad()
     title = "Explore"
     loadData()
-   
+
   }
-  
-  
-  
+
+
+
   @IBAction func sendButtonPressed(_ sender: UIButton) {
     if let messageText = messageTextFeild.text ,
        let messageSender = Auth.auth().currentUser?.email {
@@ -40,7 +40,7 @@ class ChatViewController: UIViewController {
         }else{
           DispatchQueue.main.async {
             self.messageTextFeild.text = ""
-            
+
           }
         }
       }
@@ -80,15 +80,15 @@ extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
     let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
     cell.messageLabel.text = messages[indexPath.row].body
     cell.backgroundColor = .clear
-    
+
     let messsage = messages[indexPath.row]
     if messsage.sender == Auth.auth().currentUser?.email{
       cell.getMessageDesign(sender: .me)
-      
+
     }else{
       cell.getMessageDesign(sender: .other)
     }
-    
+
     return cell
   }
 }
