@@ -56,7 +56,7 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
           print("Error getting documents: \(err)")
         } else {
           for document in querySnapshot!.documents {
-            print("\(document.documentID) => \(document.data())")
+//            print("\(document.documentID) => \(document.data())")
             
             let data = document.data()
             let AdressD = data["lessorAddress"] as? String ?? ""
@@ -76,7 +76,6 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
                 self.infoLessorA.append(newAD)
               }
               self.tableViewAccount.reloadData()
-              
             }
           }
         }
@@ -93,7 +92,6 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
                  numberOfRowsInSection section: Int) -> Int {
     
     return infoLessorA.count
-    
   }
   
   
@@ -104,7 +102,6 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
                                              for: indexPath)  as! UItablviewCellTableViewCell
     
     let infoUserAD = infoLessorA[indexPath.row]
-    
     cell.address.text = infoUserAD.lessorAddressA
     cell.price.text = " The price is: \(infoUserAD.priceLosserA)"
     cell.imageDetails.image = infoUserAD.image

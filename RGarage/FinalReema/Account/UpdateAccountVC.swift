@@ -25,13 +25,9 @@ class UpdateAccountVC: UIViewController,
   //variabls
   var userFullNameUPdate : String = ""
   var userEmailUPdate : String = ""
-  var userPasswordUPdate: String = ""
-  var userConfirmPasswordUPdate : String = ""
-  var userImageUPdate = UIImage()
   var phoneNumber : String = ""
-  
-  var iconeClick = false
-  var imageicone = UIImageView()
+  var userImageUPdate = UIImage()
+
   
   @IBOutlet weak var nameUpdate: UITextField!
   @IBOutlet weak var emailUpdate: UITextField!
@@ -44,26 +40,7 @@ class UpdateAccountVC: UIViewController,
     updateUserPhoto.layer.borderWidth = 3
     updateUserPhoto.layer.borderColor = UIColor.lightGray.cgColor
     
-    
   }
-  
-  // MARK: dismissKeyboard
-
-  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-    
-    nameUpdate.resignFirstResponder()
-    emailUpdate.resignFirstResponder()
-    numberUserUpdataTF.resignFirstResponder()
-  }
-  
-  @IBAction func BackButtonPressedtoAccountVC(_ sender: UIButton) {
-    let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
-    view.window?.rootViewController = tapbarVC
-    view.window?.makeKeyAndVisible()
-  }
-  
-  
-
   
   // MARK: Show user Information in update VC
   override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +55,6 @@ class UpdateAccountVC: UIViewController,
           
           self.userFullNameUPdate  = data["FullName"] as! String
           self.userEmailUPdate = (self.user?.email)!
-          self.userPasswordUPdate = data["Password"] as! String
           self.phoneNumber = data["PhoneNumber"] as! String
           
           print("**********DATA :  \(data)")
@@ -86,16 +62,25 @@ class UpdateAccountVC: UIViewController,
           self.numberUserUpdataTF.text = self.phoneNumber
           self.nameUpdate.text = self.userFullNameUPdate
           self.emailUpdate.text = self.userEmailUPdate
-          
-          
         }
-        
       }
     }
-    
+}
+  
+  
+  // MARK: dismissKeyboard
+  
+  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    nameUpdate.resignFirstResponder()
+    emailUpdate.resignFirstResponder()
+    numberUserUpdataTF.resignFirstResponder()
   }
   
-
+  @IBAction func BackButtonPressedtoAccountVC(_ sender: UIButton) {
+    let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
+    view.window?.rootViewController = tapbarVC
+    view.window?.makeKeyAndVisible()
+  }
   
   // MARK: LOGOUT USER
   
@@ -125,14 +110,17 @@ class UpdateAccountVC: UIViewController,
           if let err = err {
             print("Error updating document: \(err)")
           } else {
+            let alert =  Service.createAleartController(title: "Done"
+                                                        , message:" successfully updated your profile.")
+            self.present(alert,animated: true , completion:  nil)
             print("Document successfully updated")
           }
         }
+        
       }
       
     }
   }
-
   
   // MARK: update user photo
   
@@ -153,6 +141,7 @@ class UpdateAccountVC: UIViewController,
             info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
               return
             }
+
     let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
     updateUserPhoto.image = image
     
@@ -163,11 +152,10 @@ class UpdateAccountVC: UIViewController,
     guard let currentUser  = user else  {return}
     let imageName = currentUser.uid
     
-    storage.child("images/\(imageName).png").putData(imagData,
-                                                     metadata: nil,
-                                                     completion: { _, error in
-      
-      guard error == nil else {
+    storage.child("images/\(imageName).png")
+      .putData(imagData,
+                  metadata: nil,completion: { _, error in
+        guard error == nil else {
         print ("Fieled")
         return
       }

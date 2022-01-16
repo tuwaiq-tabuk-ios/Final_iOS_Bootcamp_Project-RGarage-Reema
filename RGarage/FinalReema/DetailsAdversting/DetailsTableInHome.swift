@@ -15,10 +15,6 @@ class DetailsTableInHome : UIViewController {
   let user = Auth.auth().currentUser
   let storage = Storage.storage()
   
-  //image
-  let ADImagesRef = Storage.storage().reference().child("images/")
-  
-  //  var details :Details?
   var phoneD : String =  ""
   var nameD : String = ""
   
@@ -122,7 +118,6 @@ class DetailsTableInHome : UIViewController {
       }
     }
   }
-  
   
   @IBAction func chatButton(_ sender: UIButton) {
     

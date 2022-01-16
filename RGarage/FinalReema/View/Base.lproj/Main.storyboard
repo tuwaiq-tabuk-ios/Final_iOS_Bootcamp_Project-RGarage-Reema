@@ -1797,7 +1797,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xWr-UY-GhR" kind="relationship" relationship="rootViewController" id="QyM-Xn-N9F"/>
+                        <segue destination="xWr-UY-GhR" kind="relationship" relationship="rootViewController" id="rHf-Tg-uEM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pdr-1h-QnT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1868,10 +1868,13 @@
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ums-HD-1pT"/>
+                    <connections>
+                        <outlet property="tableChatsBetweenUsers" destination="JGy-k2-XUq" id="KFZ-QE-3MB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2xE-8s-Dnb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16" y="1586"/>
+            <point key="canvasLocation" x="-101" y="2318"/>
         </scene>
         <!--Chatoom-->
         <scene sceneID="fqT-QN-V8t">
@@ -1882,7 +1885,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ObA-dv-aPp">
-                                <rect key="frame" x="0.0" y="220" width="414" height="485"/>
+                                <rect key="frame" x="0.0" y="168" width="414" height="537"/>
                                 <color key="backgroundColor" name="BGColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" rowHeight="63" id="FpS-xW-Yhi" customClass="MessageCell" customModule="FinalReema" customModuleProvider="target">
@@ -1984,11 +1987,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vu0-aC-2GW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="MW7-ZY-gQD"/>
             </objects>
-            <point key="canvasLocation" x="795.6521739130435" y="2317.6339285714284"/>
+            <point key="canvasLocation" x="670" y="2300"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eLJ-rM-GjW"/>
+        <segue reference="rHf-Tg-uEM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Forgot password-cuate" width="2000" height="2000"/>

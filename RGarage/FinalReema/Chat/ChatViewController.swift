@@ -20,9 +20,9 @@ class ChatViewController: UIViewController {
   var messages :[Messages] = []
   override func viewDidLoad() {
     super.viewDidLoad()
+    title = "Explore"
     loadData()
-    
-    // Do any additional setup after loading the view.
+   
   }
   
   
@@ -71,12 +71,11 @@ class ChatViewController: UIViewController {
   }
 }
 
-
 extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return messages.count
   }
-  
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
     cell.messageLabel.text = messages[indexPath.row].body
@@ -85,9 +84,11 @@ extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
     let messsage = messages[indexPath.row]
     if messsage.sender == Auth.auth().currentUser?.email{
       cell.getMessageDesign(sender: .me)
+      
     }else{
       cell.getMessageDesign(sender: .other)
     }
+    
     return cell
   }
 }

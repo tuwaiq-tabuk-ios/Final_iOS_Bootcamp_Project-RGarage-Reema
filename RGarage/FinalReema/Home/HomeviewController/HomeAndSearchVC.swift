@@ -31,8 +31,6 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
   
   var infoLessorArr = [InfoLessor]()
-  var pictures = [UIImage]()
-  
   let db = Firestore.firestore()
   let storage = Storage.storage()
   
