@@ -11,20 +11,6 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
-private let reuseIdentifier3 = String(describing:UItablviewCellTableViewCell.self)
-
-struct InfoLessorAdverstisement {
-  var priceLosserAA: String
-  var lessorAddressAA: String
-  
-  var dictionary: [String: Any] {
-    return [
-      "priceLosser": priceLosserAA,
-      "lessorAddress": lessorAddressAA]
-  }
-}
-
-
 class AccountVC: UIViewController ,
                  UITableViewDelegate {
   //variable
@@ -34,13 +20,10 @@ class AccountVC: UIViewController ,
   let db = Firestore.firestore()
   let storage = Storage.storage()
   
-  var infoLessorAdverstisements = [InfoLessorAdverstisement]()
-  
-  
-  @IBOutlet weak var tableViewAccount: UITableView!
+    
   @IBOutlet weak var profilePhoto: UIImageView!
   @IBOutlet weak var nameUser: UILabel!
-  
+  @IBOutlet weak var viewInfoUser: UIView!
   override func viewDidLoad() {
     print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
     super.viewDidLoad()
@@ -48,32 +31,11 @@ class AccountVC: UIViewController ,
     profilePhoto.layer.cornerRadius = profilePhoto.frame.height/2
     profilePhoto.layer.borderWidth = 3
     profilePhoto.layer.borderColor = UIColor.lightGray.cgColor
-    
-    
-    
-    let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
-    
-    tableViewAccount.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
-    
-    
+   
     loadImage()
-    loadImage()
+    loadNameUser()
+    viewInfoUser.layer.cornerRadius = 100
     
-    //for user see his name in profile
-    let user = Auth.auth().currentUser
-    if let currentUser  = user {
-      db.collection("users").document(currentUser.uid).getDocument { doc , err in
-        if err != nil {
-          print(err!)
-        }
-        else{
-          let data = doc!.data()!
-          self.userName  = data["FullName"] as! String
-          print("\n\n* * * DATA :  \(data)")
-          self.nameUser.text = self.userName
-        }
-      }
-    }
   }
   
   @IBAction func settingButtom(_ sender: Any) {
@@ -84,6 +46,7 @@ class AccountVC: UIViewController ,
   
   
   // MARK: loadImage User
+  
   func loadImage() {
     let user = Auth.auth().currentUser
     guard let  currentUser  = user  else{return}
@@ -98,73 +61,24 @@ class AccountVC: UIViewController ,
         self.profilePhoto.image = image
       }
     }
+    
   }
   
-  func loadData() {
-    print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
-    db.collection("Advertising").getDocuments() { (snapshot, error) in
-      
-      if let error = error {
-        
-        print(error.localizedDescription)
-        
-      } else {
-        
-        if let snapshot = snapshot {
-          
-          for document in snapshot.documents {
-            
-            let data = document.data()
-            let AdressD = data["lessorAddress"] as? String ?? ""
-            let PriceD = data["pricelessor"] as? String ?? ""
-            let newAD = InfoLessorAdverstisement(priceLosserAA: PriceD, lessorAddressAA: AdressD)
-            self.infoLessorAdverstisements.append(newAD)
-            print("\n\n - - - THE LessorA ARRAY: \(self.infoLessorAdverstisements)")
-          }
-          self.tableViewAccount.reloadData()
-        }
+  func loadNameUser() {
+  //for user see his name in profile
+  let user = Auth.auth().currentUser
+  if let currentUser  = user {
+    db.collection("users").document(currentUser.uid).getDocument { doc , err in
+      if err != nil {
+        print(err!)
+      }
+      else{
+        let data = doc!.data()!
+        self.userName  = data["FullName"] as! String
+        print("\n\n* * * DATA :  \(data)")
+        self.nameUser.text = self.userName
       }
     }
   }
-}
-
-
-
-// MARK: - Table data source
-
-extension AccountVC: UITableViewDataSource {
-  
-  func tableView(_ tableView: UITableView,
-                 numberOfRowsInSection section: Int) -> Int {
- 
-    return  infoLessorAdverstisements.count
-  }
-  
-  
-  func tableView(_ tableView: UITableView,
-                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    print("\n\n\n----------------------------\(#file) \(#function)")
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ADuser") as! AdvertisingUserTVCell
-    
-    //AdvertisingUserTVCell
-    
-    let infoUserAD = infoLessorAdverstisements[indexPath.row]
-    print(" - Info user: \(infoUserAD)")
-    
-    let lessorAddress = infoUserAD.lessorAddressAA
-    
-    cell.addressADuser.text = lessorAddress
-    print("\n\n - LessorAddress- \(lessorAddress)")
-    
-    let priceADuser = infoUserAD.priceLosserAA
-    cell.priceADuser.text = " the price is \(priceADuser)"
-    print("\n\n\n - The price is: \(priceADuser)")
-    
-    return  cell
   }
 }
-
-
-
-

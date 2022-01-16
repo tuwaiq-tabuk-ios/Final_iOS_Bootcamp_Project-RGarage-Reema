@@ -12,44 +12,19 @@ class ChatViewController: UIViewController {
   
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextFeild: UITextField!
-  @IBOutlet weak var sendarName: UILabel!
   
   let db = Firestore.firestore()
+//
+//  var messages = [Messages]()
+//  var  user : chatRoom?
   var messages :[Messages] = []
-  
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     loadData()
-    messageTableView.delegate = self
-    messageTableView.dataSource = self
+    
     // Do any additional setup after loading the view.
   }
   
-  
-  // فنكشن تجيب البانات من قاعدة البيانات
-  func loadData(){
-    db.collection("messages").order(by:"time").addSnapshotListener { (querySnapshot, erorr) in
-      if let snapshotDoc = querySnapshot?.documents{
-        self.messages = []
-        for doc in snapshotDoc{
-          let data = doc.data()
-          if let messagSender = data["sender"] as? String ,
-             let messagText = data["text"] as? String {
-            let newMessage = Messages(sender: messagSender ,
-                                      body : messagText)
-            self.messages.append(newMessage)
-            DispatchQueue.main.async {
-              self.messageTableView.reloadData()
-            }
-            
-          }
-          
-        }
-      }
-    }
-    
-  }
   
   
   @IBAction func sendButtonPressed(_ sender: UIButton) {
@@ -69,9 +44,34 @@ class ChatViewController: UIViewController {
           }
         }
       }
+    }  }
+
+//  فنكشن تجيب البانات من قاعدة البيانات
+  func loadData(){
+    db.collection("messages").order(by:"time").addSnapshotListener { (querySnapshot, erorr) in
+      if let snapshotDoc = querySnapshot?.documents{
+        self.messages = []
+        for doc in snapshotDoc{
+          let data = doc.data()
+          if let messagSender = data["sender"] as? String ,
+             let messagText = data["text"] as? String {
+            let newMessage = Messages(sender: messagSender ,
+                                      body : messagText)
+            self.messages.append(newMessage)
+            DispatchQueue.main.async {
+              self.messageTableView.reloadData()
+            }
+
+          }
+
+        }
+      }
     }
+
   }
 }
+
+
 extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return messages.count

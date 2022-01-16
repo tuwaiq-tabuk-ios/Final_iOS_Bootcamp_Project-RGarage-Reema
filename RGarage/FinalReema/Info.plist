@@ -2,12 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow to use yout Photo Library.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Please allow to use yout Cemera.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please allow to get yout current location.</string>
+	<key></key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -27,7 +23,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key></key>
-	<string></string>
 </dict>
 </plist>
