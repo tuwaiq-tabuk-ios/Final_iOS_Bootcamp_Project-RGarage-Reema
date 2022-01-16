@@ -16,11 +16,12 @@ struct InfoLessor {
   var priceLosser: String
   var lessorAddress: String
   var image : UIImage? = nil
-
+  var date  : String
   var dictionary: [String: Any] {
     return [
       "priceLosser": priceLosser,
       "lessorAddress": lessorAddress]
+    
   }
   
 }
@@ -31,11 +32,9 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
   
   var infoLessorArr = [InfoLessor]()
-  var pictures = [UIImage]()
-  
   let db = Firestore.firestore()
   let storage = Storage.storage()
-  
+
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -66,8 +65,10 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
             let data = document.data()
             let AdressD = data["lessorAddress"] as? String ?? ""
             let PriceD = data["pricelessor"] as? String ?? ""
+            let dateAD = data["Date"] as? String ?? ""
             let imagePath = "imagesAD/\(document.documentID).png"
-            
+          
+            print("\n\n\n **** The add Info: \(data)")
             let pathReference = self.storage.reference(withPath: imagePath)
             print("\(imagePath)")
             pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
@@ -80,7 +81,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
                 let image = UIImage(data: data!)
                 
                 Firestore.firestore().collection("Advertising")
-                let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD , image: image)
+                let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD , image: image ,date: dateAD)
                 self.infoLessorArr.append(newAD)
               }
               self.tableView.reloadData()
@@ -115,6 +116,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     cell.address.text = infoUserAD.lessorAddress
     cell.price.text = " the price is \(infoUserAD.priceLosser)"
     cell.imageDetails.image = infoUserAD.image
+    cell.date.text = infoUserAD.date
     return  cell
     
     

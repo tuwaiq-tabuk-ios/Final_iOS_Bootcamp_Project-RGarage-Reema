@@ -147,9 +147,7 @@ class SignUpVC: UIViewController
     }
   }
   
-  
   //MARK: segue to tapbarVC
-  
   func tapbarVC() {
     let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
     view.window?.rootViewController = tapbarVC
@@ -163,7 +161,7 @@ class SignUpVC: UIViewController
     contectView.addSubview(imageicone)
     contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
-    imageicone.frame = CGRect(x: -10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    imageicone.frame = CGRect(x: -2, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
     passwordUserSignUpTF.rightView  = contectView
     passwordUserSignUpTF.rightViewMode = .always
@@ -172,15 +170,15 @@ class SignUpVC: UIViewController
     imageicone.isUserInteractionEnabled = true
     imageicone.addGestureRecognizer(tapGestureRecognizer)
    }
-  
+
   @objc func imagTapped(tapGestureRecognizer:UITapGestureRecognizer){
     let tappedImage = tapGestureRecognizer.view as! UIImageView
     if iconeClick {
       iconeClick = false
       tappedImage.image = UIImage(named: "view")
       passwordUserSignUpTF.isSecureTextEntry = false
-    }
-    else {
+    }else{
+      
       iconeClick = true
       tappedImage.image = UIImage(named: "hidden")
       passwordUserSignUpTF.isSecureTextEntry = true

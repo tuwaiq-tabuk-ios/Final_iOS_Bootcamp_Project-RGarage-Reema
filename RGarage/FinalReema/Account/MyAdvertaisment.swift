@@ -15,7 +15,8 @@ struct LessorinfoA{
   var priceLosserA: String
   var lessorAddressA: String
   var image : UIImage? = nil
-  
+  var date  : String
+
   var dictionary: [String: Any] {
     return [
       "priceLosser": priceLosserA,
@@ -56,11 +57,12 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
           print("Error getting documents: \(err)")
         } else {
           for document in querySnapshot!.documents {
-            print("\(document.documentID) => \(document.data())")
+//            print("\(document.documentID) => \(document.data())")
             
             let data = document.data()
             let AdressD = data["lessorAddress"] as? String ?? ""
             let PriceD = data["pricelessor"] as? String ?? ""
+            let dateAD = data["Date"] as? String ?? ""
             let imagePath = "imagesAD/\(document.documentID).png"
             
             let pathReference = self.storage.reference(withPath: imagePath)
@@ -72,11 +74,10 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
               }else {
                 let image = UIImage(data: data!)
                 Firestore.firestore().collection("Advertising")
-                let newAD = LessorinfoA(priceLosserA: PriceD, lessorAddressA: AdressD , image: image)
+                let newAD = LessorinfoA(priceLosserA: PriceD, lessorAddressA: AdressD , image: image,date: dateAD)
                 self.infoLessorA.append(newAD)
               }
               self.tableViewAccount.reloadData()
-              
             }
           }
         }
@@ -93,7 +94,6 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
                  numberOfRowsInSection section: Int) -> Int {
     
     return infoLessorA.count
-    
   }
   
   
@@ -104,10 +104,11 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
                                              for: indexPath)  as! UItablviewCellTableViewCell
     
     let infoUserAD = infoLessorA[indexPath.row]
-    
     cell.address.text = infoUserAD.lessorAddressA
     cell.price.text = " The price is: \(infoUserAD.priceLosserA)"
     cell.imageDetails.image = infoUserAD.image
+    cell.date.text = infoUserAD.date
+
     return  cell
     
     
