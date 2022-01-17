@@ -36,6 +36,7 @@ class AccountVC: UIViewController ,
     loadNameUser()
     viewInfoUser.layer.cornerRadius = 100
     
+     
   }
   
   @IBAction func settingButtom(_ sender: Any) {

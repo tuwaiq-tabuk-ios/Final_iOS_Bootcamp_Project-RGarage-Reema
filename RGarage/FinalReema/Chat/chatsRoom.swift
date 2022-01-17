@@ -8,8 +8,13 @@
 import Foundation
 
 struct chatRoom{
-  
+    
       var name : String?
-      var id : String? 
-}
+      var id : String?
+  }
 
+//var names :[String]
+//    var id : String?
+//var message : [Messages]
+//
+//}

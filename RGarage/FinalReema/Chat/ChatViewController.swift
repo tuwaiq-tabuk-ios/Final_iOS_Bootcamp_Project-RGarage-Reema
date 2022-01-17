@@ -20,7 +20,6 @@ class ChatViewController: UIViewController {
   var messages :[Messages] = []
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Explore"
     loadData()
 
   }

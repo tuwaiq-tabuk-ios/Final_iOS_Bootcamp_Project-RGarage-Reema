@@ -17,21 +17,21 @@ struct InfoLessor {
   var lessorAddress: String
   var image : UIImage? = nil
   var date  : String
+  var id : String
+  
   var dictionary: [String: Any] {
     return [
       "priceLosser": priceLosser,
       "lessorAddress": lessorAddress]
     
   }
-  
 }
-
-
 class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
   
   private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
   
   var infoLessorArr = [InfoLessor]()
+  
   let db = Firestore.firestore()
   let storage = Storage.storage()
 
@@ -40,7 +40,8 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    title = "Explore"
+
     loadData()
     let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
     tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
@@ -67,25 +68,23 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
             let PriceD = data["pricelessor"] as? String ?? ""
             let dateAD = data["Date"] as? String ?? ""
             let imagePath = "imagesAD/\(document.documentID).png"
-          
+            let id  = document.documentID
+            
             print("\n\n\n **** The add Info: \(data)")
             let pathReference = self.storage.reference(withPath: imagePath)
             print("\(imagePath)")
             pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
-              
-              if let error = error {
-                
+                            if let error = error {
                 print(error)
               }
               else {
                 let image = UIImage(data: data!)
                 
                 Firestore.firestore().collection("Advertising")
-                let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD , image: image ,date: dateAD)
+                let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD , image: image ,date: dateAD, id: id)
                 self.infoLessorArr.append(newAD)
               }
               self.tableView.reloadData()
-              
             }
           }
         }
@@ -131,6 +130,8 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     controller.imageD = infoLessorArr[indexPath.row].image
     controller.addressD = infoLessorArr[indexPath.row].lessorAddress
     controller.priceD = infoLessorArr[indexPath.row].priceLosser
+    
+    controller.id = infoLessorArr[indexPath.row].id
     
     self.navigationController?.pushViewController(controller, animated: true)
   }
