@@ -13,96 +13,86 @@ import FirebaseFirestore
 import FirebaseStorage
 
 
-struct InfoChatLessor {
-  var name: String
-  var image : UIImage? = nil
-  
-  var dictionary: [String: Any] {
-    return [
-      "FullName": name]
-  }
-  
-}
-class ChatsUsersTVC: UITableViewController {
-  var infoChatLessor = [InfoChatLessor]()
+class ChatsUsersTVC: UIViewController {
+  var conversations: [ChatRoom] = []
   let db = Firestore.firestore()
-  let storage = Storage.storage()
+  
+  var selectedConversation: ChatRoom?
   @IBOutlet weak var tableChatsBetweenUsers: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    loadData()
+    title = "ChatsRoom"
   }
   
-  func loadData() {
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    loadData()
+  }
 
-    db.collection("users").getDocuments() { (snapshot, error) in
-      
+  func loadData() {
+    db.collection("conversations").whereField("usersIds", arrayContains: user.uid).getDocuments() { (snapshot, error) in
+      self.conversations.removeAll()
       if let error = error {
-        
-        print(error.localizedDescription)
-        
+        fatalError(error.localizedDescription)
       } else {
         
-        if let snapshot = snapshot {
+        if let docs = snapshot?.documents {
           
-          for document in snapshot.documents {
-//            print("****\(document.documentID)")
-
-            let user = Auth.auth().currentUser
-            guard let  currentUser  = user  else{return}
-            
-            let data = document.data()
-            let nameLessorInChat = data["FullName"] as? String ?? ""
-            let imagePath = "images/\(currentUser.uid).png"
-            let pathReference = self.storage.reference(withPath: imagePath)
-            print("\(imagePath)")
-            pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
-              if let error = error {
-                print(error)
-              }
-              
-              else {
-                let image = UIImage(data: data!)
-                Firestore.firestore().collection("Advertising")
-                let newAD = InfoChatLessor(name: nameLessorInChat,image: image)
-                self.infoChatLessor.append(newAD)
-              }
-              self.tableChatsBetweenUsers.reloadData()
-              
+          for doc in docs {
+            do {
+              try self.conversations.append(doc.data(as: ChatRoom.self)!)
+            } catch {
+              fatalError(error.localizedDescription)
             }
           }
+          self.tableChatsBetweenUsers.reloadData()
         }
       }
     }
   }
-  
-  
-  // MARK: - Table view data source
-  
-  
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+}
+
+
+extension ChatsUsersTVC: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    return  infoChatLessor.count
-
+    return conversations.count
+    
   }
-
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = tableView.dequeueReusableCell(withIdentifier:"ChatusersCell") as! ChatusersCell
-    cell.userName.text = infoChatLessor[indexPath.row].name
-    cell.imageUser.image = infoChatLessor[indexPath.row].image
+    
+    let conversation = conversations[indexPath.row]
+    let oUser = conversation.users.first { usr in
+      usr.id != user.uid
+    }!
+      cell.userName.text = oUser.name
+    if let lastMessage = conversation.message.last {
+      cell.lastmessageLabel?.text = lastMessage.body
+    }
+
+    if let imgURL = oUser.imgURL
+    {
+      if imgURL != "" {
+        cell.imageUser.load(url: URL(string: imgURL)!)
+      }
+      
+//      self.nameLessor.text = "Lessor Name : \(self.adUser!.fullName)"
+    }
     
     return cell
   }
   
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    storyboard.instantiateViewController(withIdentifier: "ChatusersCell") as! ChatusersCell
-    
-    
+    let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+    print(conversations[indexPath.row].docID)
+    controller.selectedConversation = conversations[indexPath.row]
+    self.navigationController?.pushViewController(controller, animated: true)
   }
-  
 }

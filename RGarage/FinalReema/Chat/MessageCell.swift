@@ -33,11 +33,11 @@ class MessageCell: UITableViewCell {
     case .me :
       backGroundColor  = .gray
       messageBubble.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMaxXMaxYCorner,.layerMaxXMaxYCorner ]
-      textLabel?.textAlignment = .right
+      messageLabel.textAlignment = .right
     case .other :
       backGroundColor = .systemYellow
       messageBubble.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMaxYCorner , .layerMaxXMinYCorner]
-      textLabel?.textAlignment = .left
+      messageLabel.textAlignment = .left
     }
     
     

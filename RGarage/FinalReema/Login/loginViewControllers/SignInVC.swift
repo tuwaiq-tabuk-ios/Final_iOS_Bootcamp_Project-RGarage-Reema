@@ -8,9 +8,11 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseFirestoreSwift
 
 class SignInVC: UIViewController ,UITextFieldDelegate {
   
+  let db = Firestore.firestore()
   var vc = UIViewController()
   var iconeClick = false
   var imageicone = UIImageView()
@@ -56,14 +58,26 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
       if let error = error {
         let alert =  Service.createAleartController(title: "Error", message: error.localizedDescription)
         self.present(alert,animated: true , completion:  nil)
-        
+        //??
       } else {
-            
-            let tapbarVC = self.storyboard?.instantiateViewController(identifier: "tapbarVC") as? tapbarVC
-            
-            self.view.window?.rootViewController = tapbarVC
-            self.view.window?.makeKeyAndVisible()
+            // fetch user profile
+        guard let id = result?.user.uid else { fatalError() }
+        self.db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
+          if let error = error {
+            fatalError(error.localizedDescription)
+          }
+           if let doc = snapshot?.documents.first {
+            do {
+              try user = doc.data(as: UserModel.self)
+              let tapbarVC = self.storyboard?.instantiateViewController(identifier: "tapbarVC") as? tapbarVC
+              self.view.window?.rootViewController = tapbarVC
+              self.view.window?.makeKeyAndVisible()
+            }catch {
+              fatalError(error.localizedDescription)
+            }
+          }
         }
+      }
     }
   }
   
@@ -72,9 +86,9 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
     imageicone.image = UIImage(named: "hidden")
     let contectView = UIView()
     contectView.addSubview(imageicone)
-    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
-    imageicone.frame = CGRect(x: -2, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    imageicone.frame = CGRect(x: -10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
     passwordSignInTF.rightView  = contectView
     passwordSignInTF.rightViewMode = .always

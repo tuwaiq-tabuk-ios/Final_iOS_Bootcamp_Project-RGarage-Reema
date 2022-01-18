@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-
+//MARK: password conditions
 class K {
   static func isPasswordValid(_ password : String) -> Bool {
     

@@ -14,57 +14,60 @@ class ChatViewController: UIViewController {
   @IBOutlet weak var messageTextFeild: UITextField!
 
   let db = Firestore.firestore()
-//
-//  var messages = [Messages]()
-//  var  user : chatRoom?
+  
+  var selectedConversation: ChatRoom?
+
   var messages :[Messages] = []
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    print(selectedConversation?.usersIds)
+    
     loadData()
 
   }
-
-
+  
+  
+  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    messageTextFeild.resignFirstResponder()
+  }
 
   @IBAction func sendButtonPressed(_ sender: UIButton) {
-    if let messageText = messageTextFeild.text ,
-       let messageSender = Auth.auth().currentUser?.email {
-      db.collection("messages").addDocument(data:[
-        "sender" : messageSender ,
-        "text" :messageText,
-        "time" :Date().timeIntervalSince1970
-      ]){(error) in
-        if let err = error {
-          print(err)
-        }else{
-          DispatchQueue.main.async {
-            self.messageTextFeild.text = ""
-
+    if let messageText = messageTextFeild.text {
+      let message = Messages(senderID: user.uid, body: messageText)
+      selectedConversation?.message.append(message)
+      
+      do {
+        try db.collection("conversations").document(selectedConversation!.docID!).setData(from: selectedConversation, merge: true) { error in
+          if let error = error {
+            fatalError(error.localizedDescription)
           }
+          //
+          self.messageTextFeild.text = ""
         }
+      } catch {
+        fatalError(error.localizedDescription)
       }
-    }  }
+
+    }
+    
+  }
 
 //  فنكشن تجيب البانات من قاعدة البيانات
   func loadData(){
-    db.collection("messages").order(by:"time").addSnapshotListener { (querySnapshot, erorr) in
-      if let snapshotDoc = querySnapshot?.documents{
-        self.messages = []
-        for doc in snapshotDoc{
-          let data = doc.data()
-          if let messagSender = data["sender"] as? String ,
-             let messagText = data["text"] as? String {
-            let newMessage = Messages(sender: messagSender ,
-                                      body : messagText)
-            self.messages.append(newMessage)
-            DispatchQueue.main.async {
-              self.messageTableView.reloadData()
-            }
-
-          }
-
+    db.collection("conversations").document(selectedConversation!.docID!).addSnapshotListener { snapshot, error in
+      if let error = error {
+        fatalError(error.localizedDescription)
+      }
+      if let snapshot = snapshot {
+        do {
+          self.selectedConversation = try snapshot.data(as: ChatRoom.self)!
+          self.messageTableView.reloadData()
+        } catch {
+          fatalError(error.localizedDescription)
         }
       }
+      
     }
 
   }
@@ -72,18 +75,18 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return messages.count
+    return (selectedConversation?.message.count)!
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
-    cell.messageLabel.text = messages[indexPath.row].body
+    
+
+    guard let message = selectedConversation?.message[indexPath.row] else { return cell }
+    cell.messageLabel.text = message.body
     cell.backgroundColor = .clear
-
-    let messsage = messages[indexPath.row]
-    if messsage.sender == Auth.auth().currentUser?.email{
+    if message.senderID == user.uid {
       cell.getMessageDesign(sender: .me)
-
     }else{
       cell.getMessageDesign(sender: .other)
     }
