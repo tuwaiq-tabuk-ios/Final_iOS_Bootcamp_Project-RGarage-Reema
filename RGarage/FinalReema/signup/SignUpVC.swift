@@ -149,9 +149,10 @@ class SignUpVC: UIViewController
   
   //MARK: segue to tapbarVC
   func tapbarVC() {
-    let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
+    let tapbarVC = storyboard?.instantiateViewController(identifier:"SignInVC") as? SignInVC
     view.window?.rootViewController = tapbarVC
     view.window?.makeKeyAndVisible()
+    
   }
   
   //MARK: show and hidden password

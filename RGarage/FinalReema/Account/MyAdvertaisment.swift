@@ -44,10 +44,11 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
     let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
     
     tableViewAccount.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
-    
-    
-    loadData()
+      loadData()
   }
+  
+
+  
   
   func loadData() {
     guard let user = Auth.auth().currentUser?.uid else { return }
@@ -57,7 +58,6 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
           print("Error getting documents: \(err)")
         } else {
           for document in querySnapshot!.documents {
-//            print("\(document.documentID) => \(document.data())")
             
             let data = document.data()
             let AdressD = data["lessorAddress"] as? String ?? ""

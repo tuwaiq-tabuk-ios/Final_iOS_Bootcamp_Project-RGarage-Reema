@@ -61,6 +61,7 @@ class AddAdvertising : UIViewController
         "lessorAddress" : addressUserD ,
         "pricelessor" : priceUserD,
         "lessorID" : id! ,
+        
         "Date" : (DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .medium))  as String   ]) {(error)in
           
         if let err = error {
