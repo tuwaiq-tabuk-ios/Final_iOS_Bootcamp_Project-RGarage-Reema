@@ -12,25 +12,12 @@ import FirebaseFirestore
 import FirebaseStorage
 
 
-struct InfoLessor {
-  var priceLosser: String
-  var lessorAddress: String
-  var image : UIImage? = nil
-  var date  : String
-  var id : String
-  
-  var dictionary: [String: Any] {
-    return [
-      "priceLosser": priceLosser,
-      "lessorAddress": lessorAddress]
-    
-  }
-}
 class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
   
   private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
   
-  var infoLessorArr = [InfoLessor]()
+  var data: [AdModel] = []
+  var loading: Bool = false
   
   let db = Firestore.firestore()
   let storage = Storage.storage()
@@ -42,68 +29,44 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     super.viewDidLoad()
     title = "Explore"
 
-    loadData()
     let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
     tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
     
   }
   
-  func loadData() {
-    
-    db.collection("Advertising").getDocuments() { (snapshot, error) in
-      
-      if let error = error {
-        
-        print(error.localizedDescription)
-        
-      } else {
-        
-        if let snapshot = snapshot {
-          
-          for document in snapshot.documents {
-            print("****\(document.documentID)")
-            
-            let data = document.data()
-            let AdressD = data["lessorAddress"] as? String ?? ""
-            let PriceD = data["pricelessor"] as? String ?? ""
-            let dateAD = data["Date"] as? String ?? ""
-            let imagePath = "imagesAD/\(document.documentID).png"
-            let id  = document.documentID
-            
-            print("\n\n\n **** The add Info: \(data)")
-            let pathReference = self.storage.reference(withPath: imagePath)
-            print("\(imagePath)")
-            pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
-                            if let error = error {
-                print(error)
-              }
-              else {
-                let image = UIImage(data: data!)
-                
-                Firestore.firestore().collection("Advertising")
-                let newAD = InfoLessor(priceLosser: PriceD, lessorAddress: AdressD , image: image ,date: dateAD, id: id)
-                self.infoLessorArr.append(newAD)
-              }
-              self.tableView.reloadData()
-            }
-          }
-        }
-      }
-    }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    loadData()
   }
   
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
+  func loadData() {
+    loading = true
+    data.removeAll()
+    
+    db.collection("advertises").getDocuments { snapshot, error in
+      if let error = error {
+        fatalError(error.localizedDescription)
+      }
+      
+      guard let docs = snapshot?.documents else { return }
+      for doc in docs {
+        do {
+          try self.data.append(doc.data(as: AdModel.self)!)
+        } catch {
+          fatalError(error.localizedDescription)
+        }
+      }
+      self.tableView.reloadData()
+      self.loading = false
+    }
   }
   
   
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
     
-    return infoLessorArr.count
+    return data.count
   }
-  
   
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,28 +74,30 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier4,
                                              for: indexPath)  as! UItablviewCellTableViewCell
     
-    let infoUserAD = infoLessorArr[indexPath.row]
-    cell.address.text = infoUserAD.lessorAddress
-    cell.price.text = " the price is \(infoUserAD.priceLosser)"
-    cell.imageDetails.image = infoUserAD.image
-    cell.date.text = infoUserAD.date
-    return  cell
+    let ad = data[indexPath.row]
+    cell.address.text = ad.address
+    cell.price.text = " the price is \(ad.price)"
+    
+    if let imgURL = ad.imageURL {
+      if imgURL != "" {
+        cell.imageDetails.load(url: URL(string: imgURL)!)
+      }
+    }
+    cell.date.text = DateFormatter.localizedString(from: ad.date , dateStyle: .long, timeStyle: .medium)
+    
+     return  cell
     
     
   }
-  
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+      if loading { return }
     
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsTableInHome
-    
-    controller.imageD = infoLessorArr[indexPath.row].image
-    controller.addressD = infoLessorArr[indexPath.row].lessorAddress
-    controller.priceD = infoLessorArr[indexPath.row].priceLosser
-    
-    controller.id = infoLessorArr[indexPath.row].id
-    
+      
+     controller.ad = data[indexPath.row]
+      
     self.navigationController?.pushViewController(controller, animated: true)
   }
 }

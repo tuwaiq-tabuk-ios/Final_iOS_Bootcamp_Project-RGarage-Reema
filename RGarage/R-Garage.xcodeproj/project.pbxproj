@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE1C658B2795F0F100DAA8B4 /* WelComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C658A2795F0F100DAA8B4 /* WelComeViewController.swift */; };
+		AE1C658D2795F99500DAA8B4 /* AdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C658C2795F99500DAA8B4 /* AdModel.swift */; };
+		AE1C65902796030100DAA8B4 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C658F2796030100DAA8B4 /* UIImageView+.swift */; };
 		AE2D71E4276E0A5D001577C5 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E3276E0A5C001577C5 /* K.swift */; };
 		AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */; };
 		AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */; };
@@ -17,6 +20,8 @@
 		AE666D5A2790156F0013D888 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE666D592790156F0013D888 /* GoogleService-Info.plist */; };
 		AE666D5C27901C4B0013D888 /* chatsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE666D5B27901C4B0013D888 /* chatsRoom.swift */; };
 		AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A02769DD4200D715E1 /* AddAdvertising.swift */; };
+		AE776CA62795E39000CD252E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE776CA52795E38F00CD252E /* GlobalVariables.swift */; };
+		AE776CA92795E41000CD252E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE776CA82795E41000CD252E /* UserModel.swift */; };
 		AE901DAE2760944B00CC7586 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE901DAD2760944B00CC7586 /* AccountVC.swift */; };
 		AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */; };
 		AEB8DEDA278C0854009828F7 /* UItablviewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB8DED8278C0854009828F7 /* UItablviewCellTableViewCell.swift */; };
@@ -30,7 +35,7 @@
 		AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1CCE0276C965400DD8DB9 /* UpdateAccountVC.swift */; };
 		AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64880275F58800092AE8D /* AppDelegate.swift */; };
 		AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64882275F58800092AE8D /* SceneDelegate.swift */; };
-		AEF64885275F58800092AE8D /* Wellcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64884275F58800092AE8D /* Wellcome.swift */; };
+		AEF64885275F58800092AE8D /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64884275F58800092AE8D /* Welcome.swift */; };
 		AEF64888275F58800092AE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF64886275F58800092AE8D /* Main.storyboard */; };
 		AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEF64889275F58820092AE8D /* Assets.xcassets */; };
 		AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF6488B275F58820092AE8D /* LaunchScreen.storyboard */; };
@@ -42,6 +47,9 @@
 /* Begin PBXFileReference section */
 		207C10FC6EF096AF8E65CDDA /* Pods-FinalReema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.release.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.release.xcconfig"; sourceTree = "<group>"; };
 		47B58215C88030BF6100FE9C /* Pods-FinalReema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalReema.debug.xcconfig"; path = "Target Support Files/Pods-FinalReema/Pods-FinalReema.debug.xcconfig"; sourceTree = "<group>"; };
+		AE1C658A2795F0F100DAA8B4 /* WelComeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelComeViewController.swift; sourceTree = "<group>"; };
+		AE1C658C2795F99500DAA8B4 /* AdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdModel.swift; sourceTree = "<group>"; };
+		AE1C658F2796030100DAA8B4 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		AE2D71E3276E0A5C001577C5 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		AE2D71E5276F07BB001577C5 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		AE2D71E7276F0F1F001577C5 /* CheckEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailVC.swift; sourceTree = "<group>"; };
@@ -52,6 +60,8 @@
 		AE666D592790156F0013D888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE666D5B27901C4B0013D888 /* chatsRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatsRoom.swift; sourceTree = "<group>"; };
 		AE6685A02769DD4200D715E1 /* AddAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdvertising.swift; sourceTree = "<group>"; };
+		AE776CA52795E38F00CD252E /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		AE776CA82795E41000CD252E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE7E7F7F2794175600846BAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE901DAD2760944B00CC7586 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearchVC.swift; sourceTree = "<group>"; };
@@ -67,7 +77,7 @@
 		AEF6487D275F58800092AE8D /* FinalReema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalReema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF64880275F58800092AE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEF64882275F58800092AE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AEF64884275F58800092AE8D /* Wellcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wellcome.swift; sourceTree = "<group>"; };
+		AEF64884275F58800092AE8D /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		AEF64889275F58820092AE8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEF6488C275F58820092AE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEF6488E275F58820092AE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE1C658E279602DA00DAA8B4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C658F2796030100DAA8B4 /* UIImageView+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AE6685A42769DD6D00D715E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,14 +118,23 @@
 		AE691212278CBC290071E375 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				AEE6846C278CD46D003A8EBF /* messages.swift */,
-				AE666D5B27901C4B0013D888 /* chatsRoom.swift */,
 				AEE6846E278CD46D003A8EBF /* ChatViewController.swift */,
-				AEE6846D278CD46D003A8EBF /* MessageCell.swift */,
 				AEE68472278D7FFB003A8EBF /* ChatsUsersTVC.swift */,
+				AEE6846D278CD46D003A8EBF /* MessageCell.swift */,
 				AEE68474278D803F003A8EBF /* ChatusersCell.swift */,
 			);
 			path = chat;
+			sourceTree = "<group>";
+		};
+		AE776CA72795E3D200CD252E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEE6846C278CD46D003A8EBF /* messages.swift */,
+				AE666D5B27901C4B0013D888 /* chatsRoom.swift */,
+				AE776CA82795E41000CD252E /* UserModel.swift */,
+				AE1C658C2795F99500DAA8B4 /* AdModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		AE901DAF276095DD00CC7586 /* Suport */ = {
@@ -202,7 +229,8 @@
 		AED29C6627709BFF00274606 /* Wellcome */ = {
 			isa = PBXGroup;
 			children = (
-				AEF64884275F58800092AE8D /* Wellcome.swift */,
+				AEF64884275F58800092AE8D /* Welcome.swift */,
+				AE1C658A2795F0F100DAA8B4 /* WelComeViewController.swift */,
 			);
 			path = Wellcome;
 			sourceTree = "<group>";
@@ -244,6 +272,8 @@
 		AEF6487F275F58800092AE8D /* FinalReema */ = {
 			isa = PBXGroup;
 			children = (
+				AE1C658E279602DA00DAA8B4 /* Extensions */,
+				AE776CA72795E3D200CD252E /* Models */,
 				AE901DAF276095DD00CC7586 /* Suport */,
 				AED29C6627709BFF00274606 /* Wellcome */,
 				AE691212278CBC290071E375 /* chat */,
@@ -259,6 +289,7 @@
 				AE6685A42769DD6D00D715E1 /* View */,
 				AEF6488E275F58820092AE8D /* Info.plist */,
 				AE666D592790156F0013D888 /* GoogleService-Info.plist */,
+				AE776CA52795E38F00CD252E /* GlobalVariables.swift */,
 			);
 			path = FinalReema;
 			sourceTree = "<group>";
@@ -404,20 +435,25 @@
 				AEE68473278D7FFB003A8EBF /* ChatsUsersTVC.swift in Sources */,
 				AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */,
 				AE666D5C27901C4B0013D888 /* chatsRoom.swift in Sources */,
-				AEF64885275F58800092AE8D /* Wellcome.swift in Sources */,
+				AEF64885275F58800092AE8D /* Welcome.swift in Sources */,
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
 				AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */,
 				AEE68470278CD46D003A8EBF /* MessageCell.swift in Sources */,
 				AEB8DEDA278C0854009828F7 /* UItablviewCellTableViewCell.swift in Sources */,
 				AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */,
 				AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */,
+				AE1C658D2795F99500DAA8B4 /* AdModel.swift in Sources */,
 				AEE68471278CD46D003A8EBF /* ChatViewController.swift in Sources */,
 				AE5FEFE32770793F000561A6 /* Service.swift in Sources */,
 				AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */,
+				AE1C658B2795F0F100DAA8B4 /* WelComeViewController.swift in Sources */,
 				AEF1CCE1276C965400DD8DB9 /* UpdateAccountVC.swift in Sources */,
+				AE776CA62795E39000CD252E /* GlobalVariables.swift in Sources */,
 				AEF64896275F5BC90092AE8D /* SignInVC.swift in Sources */,
 				AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */,
 				AE901DAE2760944B00CC7586 /* AccountVC.swift in Sources */,
+				AE1C65902796030100DAA8B4 /* UIImageView+.swift in Sources */,
+				AE776CA92795E41000CD252E /* UserModel.swift in Sources */,
 				AEF64898275F9CE90092AE8D /* SignUpVC.swift in Sources */,
 				AE2D71E4276E0A5D001577C5 /* K.swift in Sources */,
 				AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */,

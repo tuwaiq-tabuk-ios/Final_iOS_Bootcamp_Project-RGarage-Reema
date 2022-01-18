@@ -44,7 +44,7 @@
                                             <constraint firstAttribute="width" constant="150" id="wez-go-uBM"/>
                                             <constraint firstAttribute="height" constant="25" id="yqD-BC-Cvl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" systemColor="labelColor"/>
                                     </label>
@@ -67,7 +67,7 @@
                                             <constraint firstAttribute="width" constant="150" id="D1v-Uv-8Gt"/>
                                             <constraint firstAttribute="height" constant="25" id="dt7-aP-0XE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" systemColor="labelColor"/>
                                     </label>
@@ -91,7 +91,7 @@
                                             <constraint firstAttribute="width" constant="150" id="Ii4-17-sV5"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="iw1-uy-uX8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" systemColor="labelColor"/>
                                     </label>

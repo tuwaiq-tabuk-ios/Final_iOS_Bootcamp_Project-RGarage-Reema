@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import FirebaseStorage
 
 class SignUpVC: UIViewController
@@ -98,10 +99,10 @@ class SignUpVC: UIViewController
     userConfirmPassword = confirmPassUserSignUpTF.text!
     print("**userConfirmPassword:\(userConfirmPassword)\n")
     
-    
     //firebase signup
-    let textFieldSignUP = validateFields()
     
+    let textFieldSignUP = validateFields()
+
     if textFieldSignUP != nil {
       
     }
@@ -112,12 +113,11 @@ class SignUpVC: UIViewController
       let confirmPass = confirmPassUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let phoneNumber  = phoneNumberUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       
-      
       if confirmPass == password {
         Auth.auth().createUser(withEmail: email, password: password )  { (authDataResult, err) in
           if err != nil {
             let alert =  Service.createAleartController(title: "Error"
-                                                        , message:" your Email was uesed")
+                                                        , message:"Error creating user")
             self.present(alert,animated: true , completion:  nil)
             
             print("Error creating user" )
@@ -125,22 +125,41 @@ class SignUpVC: UIViewController
           } else {
             let db = Firestore.firestore()
             let id = Auth.auth().currentUser?.uid
-            db.collection("users").document(id!).setData(["FullName":fullName,
-                                                          "Email" :email ,
-                                                          "Password":password,
-                                                          "PhoneNumber": phoneNumber,
-                                                          "uid": authDataResult!.user.uid ]) { (error) in
-              
-              if error != nil {
-                print("Error saving user data")
-                
+            
+            let userModel = UserModel(uid: id!,
+                                 email: email,
+                                 fullName: fullName,
+                                 phoneNumber: phoneNumber)
+            
+            do {
+              try db.collection("users").addDocument(from: userModel) { error in
+                if error != nil {
+                  print("Error saving user data")
+                }
+                user = userModel
+                self.tapbarVC()
               }
+            } catch {
+              fatalError(error.localizedDescription)
             }
-            self.tapbarVC()
+            
+            
+//            db.collection("users").document(id!).setData(["FullName":fullName,
+//                                                          "Email" :email ,
+//                                                          "Password":password,
+//                                                          "PhoneNumber": phoneNumber,
+//                                                          "uid": authDataResult!.user.uid ]) { (error) in
+//
+//              if error != nil {
+//                print("Error saving user data")
+//
+//              }
+//            }
+            
           }
         }
       }else{
-        let alert =  Service.createAleartController(title: "Error", message: "password not mach")
+        let alert = Service.createAleartController(title: "Error", message: "password not mach")
         self.present(alert,animated: true , completion:  nil)
 
       }
@@ -149,7 +168,7 @@ class SignUpVC: UIViewController
   
   //MARK: segue to tapbarVC
   func tapbarVC() {
-    let tapbarVC = storyboard?.instantiateViewController(identifier:"SignInVC") as? SignInVC
+    let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
     view.window?.rootViewController = tapbarVC
     view.window?.makeKeyAndVisible()
     
@@ -162,7 +181,7 @@ class SignUpVC: UIViewController
     contectView.addSubview(imageicone)
     contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
-    imageicone.frame = CGRect(x: -2, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    imageicone.frame = CGRect(x: 10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
     passwordUserSignUpTF.rightView  = contectView
     passwordUserSignUpTF.rightViewMode = .always
