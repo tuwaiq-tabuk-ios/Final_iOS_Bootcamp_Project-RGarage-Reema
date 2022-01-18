@@ -59,16 +59,16 @@ class AddAdvertising : UIViewController
                             address: addressUserD,
                             date: Date(),
                             imageURL: imageURL)
-      
+//      advertisements
       do {
-        try db.collection("advertises").addDocument(from: adModel) { error in
+        try db.collection("advertisements").addDocument(from: adModel) { error in
           if let error = error {
             fatalError(error.localizedDescription)
           }
-          
-          // next
-          
           // alert
+          let alert =  Service.createAleartController(title: "Done"
+                                                      , message:"Your advertising has been uploaded successfully.")
+          self.present(alert,animated: true , completion:  nil)
           self.addressAD.text = ""
           self.priceAD.text = ""
           let tapbar = self.storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! tapbarVC

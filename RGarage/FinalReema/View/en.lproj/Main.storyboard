@@ -1598,11 +1598,20 @@
                                             <constraint firstItem="AGp-b3-aRa" firstAttribute="width" secondItem="6AN-uU-fqU" secondAttribute="width" id="60J-sR-w5u"/>
                                         </constraints>
                                     </stackView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wiN-lx-wMY">
+                                        <rect key="frame" x="150.5" y="297" width="73" height="32"/>
+                                        <segments>
+                                            <segment title="AR"/>
+                                            <segment title="EN"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96688343109999997" green="0.80784590830000003" blue="0.27849984909999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="umc-Ag-0o9" firstAttribute="centerX" secondItem="8FB-kO-40g" secondAttribute="centerX" id="1zS-xh-lFW"/>
+                                    <constraint firstItem="wiN-lx-wMY" firstAttribute="top" secondItem="umc-Ag-0o9" secondAttribute="bottom" constant="49" id="6Fu-va-x0J"/>
                                     <constraint firstAttribute="trailing" secondItem="umc-Ag-0o9" secondAttribute="trailing" constant="8" id="CfA-9c-Hkm"/>
+                                    <constraint firstItem="wiN-lx-wMY" firstAttribute="centerX" secondItem="8FB-kO-40g" secondAttribute="centerX" id="ER9-1x-Y4X"/>
                                     <constraint firstItem="umc-Ag-0o9" firstAttribute="leading" secondItem="8FB-kO-40g" secondAttribute="leading" constant="8" id="vra-mi-dnp"/>
                                     <constraint firstItem="umc-Ag-0o9" firstAttribute="top" secondItem="8FB-kO-40g" secondAttribute="top" constant="42" id="w4c-sj-udq"/>
                                 </constraints>
@@ -1707,7 +1716,6 @@
                             <constraint firstAttribute="bottom" secondItem="8FB-kO-40g" secondAttribute="bottom" constant="200" id="S3e-Hu-7Ri"/>
                             <constraint firstItem="8FB-kO-40g" firstAttribute="top" secondItem="JOa-u1-Vrt" secondAttribute="bottom" constant="22" id="WaY-c7-02Y"/>
                             <constraint firstItem="JOa-u1-Vrt" firstAttribute="height" secondItem="abD-6g-8ER" secondAttribute="height" multiplier="0.172991" id="XYR-gE-Ogg"/>
-                            <constraint firstItem="JOa-u1-Vrt" firstAttribute="width" secondItem="abD-6g-8ER" secondAttribute="width" multiplier="0.410628" id="h9J-K4-VYf"/>
                             <constraint firstItem="YRe-Xf-g1E" firstAttribute="top" secondItem="lX8-F0-y7v" secondAttribute="top" constant="28" id="mJX-VR-FaQ"/>
                             <constraint firstItem="8FB-kO-40g" firstAttribute="leading" secondItem="lX8-F0-y7v" secondAttribute="leading" constant="20" id="nbm-vM-aP5"/>
                             <constraint firstItem="8FB-kO-40g" firstAttribute="top" secondItem="lX8-F0-y7v" secondAttribute="top" constant="205" id="ovZ-MF-wKx"/>
@@ -1823,8 +1831,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UD7-Er-yml" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="phone.bubble.left.fill" catalog="system" id="nBJ-lc-nxX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qbF-DN-MgJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="qbF-DN-MgJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1916,7 +1924,7 @@
                             <constraint firstItem="JGy-k2-XUq" firstAttribute="top" secondItem="UJN-Lg-Ne0" secondAttribute="top" id="fKf-yV-WEM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ums-HD-1pT"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="Ums-HD-1pT"/>
                     <connections>
                         <outlet property="tableChatsBetweenUsers" destination="JGy-k2-XUq" id="KFZ-QE-3MB"/>
                     </connections>
@@ -1925,7 +1933,7 @@
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="2317.6339285714284"/>
         </scene>
-        <!--Chatoom-->
+        <!--Chat View Controller-->
         <scene sceneID="fqT-QN-V8t">
             <objects>
                 <viewController storyboardIdentifier="ChatViewController" id="xWr-UY-GhR" customClass="ChatViewController" customModule="FinalReema" customModuleProvider="target" sceneMemberID="viewController">
@@ -2027,7 +2035,7 @@
                             <outletCollection property="gestureRecognizers" destination="MW7-ZY-gQD" appends="YES" id="H8s-L8-6Xj"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Chatoom" id="vCu-v1-B7b"/>
+                    <navigationItem key="navigationItem" id="vCu-v1-B7b"/>
                     <connections>
                         <outlet property="messageTableView" destination="ObA-dv-aPp" id="RK2-1i-axZ"/>
                         <outlet property="messageTextFeild" destination="Iu3-A7-3tJ" id="D2n-Yh-8e4"/>

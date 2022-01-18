@@ -70,7 +70,6 @@ class UpdateAccountVC: UIViewController,
       print ("Error signing out: %@", signOutError)
     }
   }
-  //??
   
   // MARK: update user Information
   

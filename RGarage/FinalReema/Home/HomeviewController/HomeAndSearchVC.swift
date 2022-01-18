@@ -43,7 +43,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     loading = true
     data.removeAll()
     
-    db.collection("advertises").getDocuments { snapshot, error in
+    db.collection("advertisements").getDocuments { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
       }

@@ -25,6 +25,7 @@ class WelComeViewController: UIViewController {
           }
           if let doc = snapshot?.documents.first {
             do {
+              //??
               try user = doc.data(as: UserModel.self)
               let tapbarVC = self.storyboard?.instantiateViewController(identifier: "tapbarVC") as? tapbarVC
               
