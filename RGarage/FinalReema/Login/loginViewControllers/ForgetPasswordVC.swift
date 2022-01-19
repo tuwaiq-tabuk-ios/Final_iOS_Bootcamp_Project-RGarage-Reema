@@ -7,26 +7,26 @@
 
 import UIKit
 import FirebaseAuth
+
 class ForgetPasswordVC: UIViewController {
-  
   
   var vc = UIViewController()
   
   @IBOutlet weak var emailResetPasswordTF: UITextField!
-  
   @IBOutlet weak var sendButton: UIButton!
+  
   override func viewDidLoad() {
         super.viewDidLoad()
     sendButton.layer.cornerRadius = 10
-    
-    }
+  }
     
   @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
     emailResetPasswordTF.resignFirstResponder()
   }
-  @IBAction func sendButtonTOCheck(_ sender: UIButton) {
-    let auth = Auth.auth()
+  
+  @IBAction func sendButtonToCheckEmail(_ sender: UIButton) {
     
+    let auth = Auth.auth()
     auth.sendPasswordReset(withEmail: emailResetPasswordTF.text!){ [self](error) in
       if let error = error {
         let alert =  Service.createAleartController(title: "Error", message: error.localizedDescription)

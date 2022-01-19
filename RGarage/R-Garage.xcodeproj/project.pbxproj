@@ -17,6 +17,7 @@
 		AE2D71EC276F1C1A001577C5 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D71EB276F1C1A001577C5 /* Navigation.swift */; };
 		AE4BDA2B278863F100C966E1 /* MyAdvertaisment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BDA2A278863F100C966E1 /* MyAdvertaisment.swift */; };
 		AE5FEFE32770793F000561A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5FEFE22770793F000561A6 /* Service.swift */; };
+		AE63924B2798196500E28514 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE63924D2798196500E28514 /* Main.storyboard */; };
 		AE666D5A2790156F0013D888 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE666D592790156F0013D888 /* GoogleService-Info.plist */; };
 		AE666D5C27901C4B0013D888 /* chatsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE666D5B27901C4B0013D888 /* chatsRoom.swift */; };
 		AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6685A02769DD4200D715E1 /* AddAdvertising.swift */; };
@@ -36,11 +37,12 @@
 		AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64880275F58800092AE8D /* AppDelegate.swift */; };
 		AEF64883275F58800092AE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64882275F58800092AE8D /* SceneDelegate.swift */; };
 		AEF64885275F58800092AE8D /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64884275F58800092AE8D /* Welcome.swift */; };
-		AEF64888275F58800092AE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF64886275F58800092AE8D /* Main.storyboard */; };
 		AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEF64889275F58820092AE8D /* Assets.xcassets */; };
 		AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEF6488B275F58820092AE8D /* LaunchScreen.storyboard */; };
 		AEF64896275F5BC90092AE8D /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64895275F5BC90092AE8D /* SignInVC.swift */; };
 		AEF64898275F9CE90092AE8D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF64897275F9CE80092AE8D /* SignUpVC.swift */; };
+		AEF9AF2027985F960075AB62 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9AF1F27985F960075AB62 /* SearchTableViewController.swift */; };
+		AEF9AF2327986A270075AB62 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9AF2227986A270075AB62 /* Spinner.swift */; };
 		F3E7BACBFE325B58EE9D22F0 /* Pods_FinalReema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4341ABC2665BE5C7DEED643 /* Pods_FinalReema.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +64,6 @@
 		AE6685A02769DD4200D715E1 /* AddAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdvertising.swift; sourceTree = "<group>"; };
 		AE776CA52795E38F00CD252E /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		AE776CA82795E41000CD252E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		AE7E7F7F2794175600846BAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE901DAD2760944B00CC7586 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		AEA34E09277FB29500FCBA6F /* HomeAndSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndSearchVC.swift; sourceTree = "<group>"; };
 		AEB8DED8278C0854009828F7 /* UItablviewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UItablviewCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +84,9 @@
 		AEF6488E275F58820092AE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEF64895275F5BC90092AE8D /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		AEF64897275F9CE80092AE8D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		AEF9AF1F27985F960075AB62 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		AEF9AF2227986A270075AB62 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		AEFDA8052798216500BC958D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4341ABC2665BE5C7DEED643 /* Pods_FinalReema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalReema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,10 +102,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE1B032A279730DD008CBE5C /* CHatVC */ = {
+			isa = PBXGroup;
+			children = (
+				AEE6846E278CD46D003A8EBF /* ChatViewController.swift */,
+				AEE68472278D7FFB003A8EBF /* ChatsUsersTVC.swift */,
+			);
+			name = CHatVC;
+			path = "ذاشفءئ";
+			sourceTree = "<group>";
+		};
+		AE1B032B279730F2008CBE5C /* ChatCell */ = {
+			isa = PBXGroup;
+			children = (
+				AEE6846D278CD46D003A8EBF /* MessageCell.swift */,
+				AEE68474278D803F003A8EBF /* ChatusersCell.swift */,
+			);
+			path = ChatCell;
+			sourceTree = "<group>";
+		};
 		AE1C658E279602DA00DAA8B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				AE1C658F2796030100DAA8B4 /* UIImageView+.swift */,
+				AEF9AF2227986A270075AB62 /* Spinner.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -109,8 +133,8 @@
 		AE6685A42769DD6D00D715E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AE63924D2798196500E28514 /* Main.storyboard */,
 				AEF6488B275F58820092AE8D /* LaunchScreen.storyboard */,
-				AEF64886275F58800092AE8D /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,10 +142,7 @@
 		AE691212278CBC290071E375 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				AEE6846E278CD46D003A8EBF /* ChatViewController.swift */,
-				AEE68472278D7FFB003A8EBF /* ChatsUsersTVC.swift */,
-				AEE6846D278CD46D003A8EBF /* MessageCell.swift */,
-				AEE68474278D803F003A8EBF /* ChatusersCell.swift */,
+				AE1B032A279730DD008CBE5C /* CHatVC */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -150,6 +171,7 @@
 		AED29C5D277098B800274606 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				AE776CA52795E38F00CD252E /* GlobalVariables.swift */,
 				AE2D71E3276E0A5C001577C5 /* K.swift */,
 				AE5FEFE22770793F000561A6 /* Service.swift */,
 			);
@@ -272,9 +294,9 @@
 		AEF6487F275F58800092AE8D /* FinalReema */ = {
 			isa = PBXGroup;
 			children = (
+				AEF9AF2727987FFE0075AB62 /* cells */,
 				AE1C658E279602DA00DAA8B4 /* Extensions */,
 				AE776CA72795E3D200CD252E /* Models */,
-				AE901DAF276095DD00CC7586 /* Suport */,
 				AED29C6627709BFF00274606 /* Wellcome */,
 				AE691212278CBC290071E375 /* chat */,
 				AED29C6827709C4E00274606 /* DetailsAdversting */,
@@ -283,15 +305,32 @@
 				AED29C6127709B7B00274606 /* Home */,
 				AED29C6727709C1A00274606 /* Advertising */,
 				AED29C6527709BE600274606 /* Account */,
+				AEF9AF1E27985F730075AB62 /* Search */,
 				AED29C6427709BD000274606 /* Navagation */,
 				AED29C6327709BBC00274606 /* Tabbar */,
 				AED29C5D277098B800274606 /* Constant */,
 				AE6685A42769DD6D00D715E1 /* View */,
+				AE901DAF276095DD00CC7586 /* Suport */,
 				AEF6488E275F58820092AE8D /* Info.plist */,
 				AE666D592790156F0013D888 /* GoogleService-Info.plist */,
-				AE776CA52795E38F00CD252E /* GlobalVariables.swift */,
 			);
 			path = FinalReema;
+			sourceTree = "<group>";
+		};
+		AEF9AF1E27985F730075AB62 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9AF1F27985F960075AB62 /* SearchTableViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		AEF9AF2727987FFE0075AB62 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				AE1B032B279730F2008CBE5C /* ChatCell */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		BE9F042A377CE39348125F39 /* Pods */ = {
@@ -376,10 +415,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEF6488D275F58820092AE8D /* LaunchScreen.storyboard in Resources */,
+				AE63924B2798196500E28514 /* Main.storyboard in Resources */,
 				AEF6488A275F58820092AE8D /* Assets.xcassets in Resources */,
 				AE666D5A2790156F0013D888 /* GoogleService-Info.plist in Resources */,
 				AEB8DEDB278C0854009828F7 /* UItablviewCellTableViewCell.xib in Resources */,
-				AEF64888275F58800092AE8D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +478,7 @@
 				AED05CB62760E54D0045EFF9 /* DetailsTableInHome.swift in Sources */,
 				AEA34E0A277FB29600FCBA6F /* HomeAndSearchVC.swift in Sources */,
 				AEE68470278CD46D003A8EBF /* MessageCell.swift in Sources */,
+				AEF9AF2027985F960075AB62 /* SearchTableViewController.swift in Sources */,
 				AEB8DEDA278C0854009828F7 /* UItablviewCellTableViewCell.swift in Sources */,
 				AEF64881275F58800092AE8D /* AppDelegate.swift in Sources */,
 				AE6685A12769DD4200D715E1 /* AddAdvertising.swift in Sources */,
@@ -458,6 +498,7 @@
 				AE2D71E4276E0A5D001577C5 /* K.swift in Sources */,
 				AE2D71E8276F0F1F001577C5 /* CheckEmailVC.swift in Sources */,
 				AEE6846F278CD46D003A8EBF /* messages.swift in Sources */,
+				AEF9AF2327986A270075AB62 /* Spinner.swift in Sources */,
 				AE2D71EA276F1B3E001577C5 /* tapbarVC.swift in Sources */,
 				AEE68475278D8040003A8EBF /* ChatusersCell.swift in Sources */,
 				AE2D71E6276F07BB001577C5 /* ForgetPasswordVC.swift in Sources */,
@@ -467,10 +508,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AEF64886275F58800092AE8D /* Main.storyboard */ = {
+		AE63924D2798196500E28514 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AE7E7F7F2794175600846BAE /* en */,
+				AEFDA8052798216500BC958D /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

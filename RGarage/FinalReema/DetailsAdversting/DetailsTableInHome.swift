@@ -12,7 +12,6 @@ import Firebase
 class DetailsTableInHome : UIViewController {
   //data
   let db = Firestore.firestore()
-  //let storage = Storage.storage()
   
   var ad: AdModel?
   var adUser: UserModel?
@@ -23,42 +22,41 @@ class DetailsTableInHome : UIViewController {
   @IBOutlet weak var orlabelbetweenchatway: UILabel!
   @IBOutlet weak var whatsAppCHatButton: UIButton!
   
-  @IBOutlet weak var imageDeatailTableHome: UIImageView!
+  @IBOutlet weak var advertisementImage: UIImageView!
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var phoneLabel: UILabel!
-  @IBOutlet weak var nameLessor: UILabel!
+  @IBOutlet weak var nameLessorLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     loadUser()
+    // Hide the chat method if the advertiser enters the personal ad, he cannot communicate with himself
     
     guard let ad = ad else {
       return
     }
-    
     if ad.userID == user.uid {
       chatButton.isHidden = true
       whatsAppCHatButton.isHidden = true
       orlabelbetweenchatway.isHidden = true
     }
     
+    //MARK: informations AD Address ,Price ,Image
     
-    //MARK: informations lessor
-    
-    //imageDeatailTableHome.load(url: URL(string: ad!.imageURL!)!)
     addressLabel.text! =  ad.address
     priceLabel.text! = "\(ad.price)"
     
-    //    print("******* Image \(String(describing: imageD))")
     if let imgURL = ad.imageURL {
       if imgURL != "" {
-        imageDeatailTableHome.load(url: URL(string: imgURL)!)
+        advertisementImage.load(url: URL(string: imgURL)!)
       }
     }
   }
   
+  
+  //MARK: informations lessor
   func loadUser() {
     db.collection("users").whereField("uid", isEqualTo: ad!.userID).getDocuments { snapshot, error in
       if let error = error {
@@ -68,7 +66,7 @@ class DetailsTableInHome : UIViewController {
       
       do {
         self.adUser = try doc.data(as: UserModel.self)!
-        self.nameLessor.text = "Lessor Name : \(self.adUser!.fullName)"
+        self.nameLessorLabel.text = "Lessor Name : \(self.adUser!.fullName)"
         self.phoneLabel.text = self.adUser!.phoneNumber
       } catch {
         fatalError(error.localizedDescription)
@@ -111,15 +109,13 @@ class DetailsTableInHome : UIViewController {
   }
   
   
-  
+  //MARK: user can cshat with whatsAPP
   
   @IBAction func whatsAppButtonPressed(_ sender: UIButton) {
-    
     let phoneNumber = "\(phoneLabel.text!)"
-    
     let shareableMessageText = "Hi Lessor"
-    let whatsApp = "https://wa.me/\(phoneNumber)/?text=\(shareableMessageText)"
     
+    let whatsApp = "https://wa.me/\(phoneNumber)/?text=\(shareableMessageText)"
     if let urlString = whatsApp.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
       if let whatsappURL = NSURL(string: urlString) {
         if UIApplication.shared.canOpenURL(whatsappURL as URL) {
@@ -131,37 +127,53 @@ class DetailsTableInHome : UIViewController {
     }
   }
   
+  //MARK: send Message Button
   
   @IBAction func ChatButtonPressed(_ sender: UIButton) {
-    //
+    
     print(ad!.userID, user.uid)
-    db.collection("conversations").whereField("usersIds", arrayContainsAny: [user.uid, ad!.userID]).getDocuments { snapshot, error in
+    db.collection("conversations").whereField("usersIds", arrayContainsAny: [user.uid]).getDocuments { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
       }
-      print(snapshot?.documents.count , "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-      guard let doc = snapshot?.documents.first else {
-        self.createConversation()
+      guard let docs = snapshot?.documents else {
+//        self.createConversation()
         return
       }
-      do {
-        let conversation = try doc.data(as: ChatRoom.self)!
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        controller.selectedConversation = conversation
-        self.navigationController?.pushViewController(controller, animated: true)
-      } catch {
-        fatalError(error.localizedDescription)
+      for doc in docs {
+        do {
+          let conversation = try doc.data(as: ChatRoom.self)!
+          
+          if conversation.usersIds.contains(where: { $0 == self.ad!.userID}) {
+            self.gotoConversation(conversation: conversation)
+            return
+          }
+          
+          
+        } catch {
+          fatalError(error.localizedDescription)
+        }
       }
+      self.createConversation()
+      
     }
     
   }
   
+  func gotoConversation(conversation: ChatRoom) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+    controller.selectedConversation = conversation
+    self.navigationController?.pushViewController(controller, animated: true)
+  }
+  
+  //MARK: function great conversation
   
   private func createConversation() {
-    var users: [ChatRoomUser] = []
-    users.append(ChatRoomUser(id: user!.uid, name: user.fullName, imgURL: user.imgURL))
     
+    var users: [ChatRoomUser] = []
+    
+    users.append(ChatRoomUser(id: user!.uid, name: user.fullName, imgURL: user.imgURL))
     users.append(ChatRoomUser(id: adUser!.uid, name: adUser!.fullName, imgURL: adUser!.imgURL))
     
     var conversation = ChatRoom(users: users, usersIds: [user!.uid, adUser!.uid], id: UUID().uuidString, message: [])
@@ -171,13 +183,10 @@ class DetailsTableInHome : UIViewController {
         if let error = error {
           fatalError(error.localizedDescription)
         }
-        // segue to chat details -> conversation
         
+        // segue to chat details -- conversation
         conversation.docID = ref.documentID
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        controller.selectedConversation = conversation
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.gotoConversation(conversation: conversation)
       }
     } catch {
       fatalError(error.localizedDescription)

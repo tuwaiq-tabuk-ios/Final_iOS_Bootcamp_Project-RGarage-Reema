@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-//user inside  conversation
+ 
 struct ChatRoomUser: Codable {
   var id: String
   var name: String
@@ -17,7 +17,6 @@ struct ChatRoomUser: Codable {
 
 
 
-//conversation
 struct ChatRoom: Codable {
   @DocumentID var docID: String?
   var users :[ChatRoomUser]

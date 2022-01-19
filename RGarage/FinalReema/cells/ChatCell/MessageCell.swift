@@ -26,6 +26,7 @@ class MessageCell: UITableViewCell {
     case me , other
   }
   
+//Design Chat for me and other
   
   func getMessageDesign (sender:sender){
     var backGroundColor : UIColor?

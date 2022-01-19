@@ -11,8 +11,11 @@
 /* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "1UL-fU-myd"; */
 "1UL-fU-myd.placeholder" = "E-mail";
 
-/* Class = "UITabBarItem"; title = "Home "; ObjectID = "3C8-Wf-uDo"; */
-"3C8-Wf-uDo.title" = "Home ";
+/* Class = "UIButton"; configuration.title = " whatsApp"; ObjectID = "372-df-ROZ"; */
+"372-df-ROZ.configuration.title" = " whatsApp";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "372-df-ROZ"; */
+"372-df-ROZ.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "60G-6C-m2K"; */
 "60G-6C-m2K.normalTitle" = "Button";
@@ -20,17 +23,20 @@
 /* Class = "UITextField"; placeholder = "Name"; ObjectID = "6AN-uU-fqU"; */
 "6AN-uU-fqU.placeholder" = "Name";
 
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9Zn-Im-aT1"; */
+"9Zn-Im-aT1.normalTitle" = "Button";
+
 /* Class = "UILabel"; text = "We have sent a password recovery instructions to your email."; ObjectID = "9eG-xJ-U44"; */
 "9eG-xJ-U44.text" = "We have sent a password recovery instructions to your email.";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "AGp-b3-aRa"; */
 "AGp-b3-aRa.placeholder" = "Email";
 
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "AVx-NY-iqO"; */
+"AVx-NY-iqO.normalTitle" = "Button";
+
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Bjn-Hq-u7A"; */
 "Bjn-Hq-u7A.normalTitle" = "Button";
-
-/* Class = "UITabBarItem"; title = "Account"; ObjectID = "CFk-hD-zkA"; */
-"CFk-hD-zkA.title" = "Account";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "DVs-Xy-NXs"; */
 "DVs-Xy-NXs.placeholder" = "Password";
@@ -44,6 +50,9 @@
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Elu-Ia-Ifo"; */
 "Elu-Ia-Ifo.normalTitle" = "Button";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "GXn-bA-ZCd"; */
+"GXn-bA-ZCd.text" = "Label";
+
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Gqt-fE-jPy"; */
 "Gqt-fE-jPy.normalTitle" = "Button";
 
@@ -53,8 +62,17 @@
 /* Class = "UITextField"; placeholder = "write here ...."; ObjectID = "Iu3-A7-3tJ"; */
 "Iu3-A7-3tJ.placeholder" = "write here ....";
 
+/* Class = "UIButton"; configuration.title = "LogOut"; ObjectID = "KxR-kg-GPV"; */
+"KxR-kg-GPV.configuration.title" = "LogOut";
+
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "KxR-kg-GPV"; */
 "KxR-kg-GPV.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "chaange Language "; ObjectID = "LLo-1U-7nc"; */
+"LLo-1U-7nc.configuration.title" = "chaange Language ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LLo-1U-7nc"; */
+"LLo-1U-7nc.normalTitle" = "Button";
 
 /* Class = "UIButton"; configuration.title = "SignIn"; ObjectID = "PMI-pt-aD6"; */
 "PMI-pt-aD6.configuration.title" = "SignIn";
@@ -107,6 +125,9 @@
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "W0E-oI-33E"; */
 "W0E-oI-33E.normalTitle" = "Button";
 
+/* Class = "UILabel"; text = "OR"; ObjectID = "WAU-vV-Vpq"; */
+"WAU-vV-Vpq.text" = "OR";
+
 /* Class = "UILabel"; text = "Don't have account ? "; ObjectID = "XTX-4N-F5r"; */
 "XTX-4N-F5r.text" = "Don't have account ? ";
 
@@ -149,11 +170,11 @@
 /* Class = "UINavigationItem"; title = "Sign In"; ObjectID = "h2x-lX-9Kz"; */
 "h2x-lX-9Kz.title" = "Sign In";
 
-/* Class = "UITextField"; placeholder = "Add Price for the day "; ObjectID = "jZm-1C-FeT"; */
+/* Class = "UITextField"; placeholder = "Add daily rate"; ObjectID = "jZm-1C-FeT"; */
 "jZm-1C-FeT.placeholder" = "Add daily rate";
 
-/* Class = "UIButton"; configuration.title = "Update Profile"; ObjectID = "m42-H1-fRR"; */
-"m42-H1-fRR.configuration.title" = "Update Profile";
+/* Class = "UIButton"; configuration.title = "Update My Profile "; ObjectID = "m42-H1-fRR"; */
+"m42-H1-fRR.configuration.title" = "Update My Profile ";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "m42-H1-fRR"; */
 "m42-H1-fRR.normalTitle" = "Button";
@@ -166,9 +187,6 @@
 
 /* Class = "UILabel"; text = "Enter your email and a reset link will be sent to you. "; ObjectID = "mwI-e6-BFG"; */
 "mwI-e6-BFG.text" = "Enter your email and a reset link will be sent to you. ";
-
-/* Class = "UITabBarItem"; title = "chat"; ObjectID = "nBJ-lc-nxX"; */
-"nBJ-lc-nxX.title" = "chat";
 
 /* Class = "UITextField"; placeholder = "Add Your City"; ObjectID = "rAW-OR-MEi"; */
 "rAW-OR-MEi.placeholder" = "Add Your City";
@@ -185,14 +203,11 @@
 /* Class = "UITextField"; placeholder = "phoneNumber"; ObjectID = "snA-k6-ioC"; */
 "snA-k6-ioC.placeholder" = "phoneNumber";
 
-/* Class = "UINavigationItem"; title = "Chatoom"; ObjectID = "vCu-v1-B7b"; */
-"vCu-v1-B7b.title" = "Chatoom";
-
 /* Class = "UITextField"; placeholder = "Phone Number "; ObjectID = "vQO-SA-2SD"; */
 "vQO-SA-2SD.placeholder" = "Phone Number ";
 
-/* Class = "UITextField"; placeholder = "Name"; ObjectID = "wSq-rm-v4a"; */
-"wSq-rm-v4a.placeholder" = "Name";
+/* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "wSq-rm-v4a"; */
+"wSq-rm-v4a.placeholder" = "Full Name";
 
 /* Class = "UILabel"; text = "Forget Password?"; ObjectID = "xVw-Zo-qWh"; */
 "xVw-Zo-qWh.text" = "Forget Password?";

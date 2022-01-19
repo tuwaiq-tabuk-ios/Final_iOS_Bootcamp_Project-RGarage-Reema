@@ -39,7 +39,13 @@ class UpdateAccountVC: UIViewController,
     self.emailUpdate.text = user?.email
     
   }
+
   
+  
+  @IBAction func changeLanguagButtonpressed(_ sender: Any) {
+    
+    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+  }
   
   // MARK: dismissKeyboard
   @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -97,11 +103,8 @@ class UpdateAccountVC: UIViewController,
     } catch {
       fatalError(error.localizedDescription)
     }
-    
-    
   }
   
-  // MARK: update user photo
   
   @IBAction func updateUserPhotoButton(_ sender: Any) {
     
@@ -147,9 +150,9 @@ class UpdateAccountVC: UIViewController,
         @unknown default:
             fatalError()
         }
-    
   }
-  
+
+
   fileprivate func goToSetting() {
       let title = "Oooooops!"
       let message = "Hi man, for use this App press Go To settings and enabled access to Pohto Gallery... Check read and write option and relaunch the App!"
@@ -177,7 +180,7 @@ class UpdateAccountVC: UIViewController,
       })
   }
   
-  
+  // MARK: update user photo
   func imagePickerController(
     _ picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
@@ -205,11 +208,9 @@ class UpdateAccountVC: UIViewController,
           guard let url = url else { return }
           self.imageURL = url.absoluteString
           self.uploading = false
-          
         }
       }
     })
     self.dismiss(animated: true, completion: nil)
-    
   }
 }
