@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  Welcome.swift
 //  FinalReema
 //
 //  Created by Reema Mousa on 03/05/1443 AH.

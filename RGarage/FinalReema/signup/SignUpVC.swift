@@ -41,6 +41,8 @@ class SignUpVC: UIViewController
     super.viewDidLoad()
     passwordshowAndHidden()
   }
+  
+  
   @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
     
     nameUserSignUpTF.resignFirstResponder()
@@ -58,7 +60,8 @@ class SignUpVC: UIViewController
     present(vc,animated: false, completion: nil)
   }
   
-  
+  //MARK: validateFields
+
   func validateFields () -> String? {
     if nameUserSignUpTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         emailUserSignUpTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -70,35 +73,23 @@ class SignUpVC: UIViewController
                                                   , message:"Please fill in all fields.")
       self.present(alert,animated: true , completion:  nil)
     }
-    
+
     let cleanedPassword = passwordUserSignUpTF.text!
       .trimmingCharacters(in: .whitespacesAndNewlines)
-    
+
     if K.isPasswordValid(cleanedPassword) == false  {
       let alert =  Service.createAleartController(title: "Error"
                                                   , message:"Please make sure your password is at least 8 characters, contains a special character and a number.")
       
-      
       self.present(alert,animated: true , completion:  nil)
-      
     }
+    
     return nil
   }
   
-  
+  //MARK: firebase signup
+
   @IBAction func signUpTapped(_ sender: Any) {
-    
-    userFullName = nameUserSignUpTF.text!
-    print("**userFullName:\(userFullName)\n")
-    userEmail = emailUserSignUpTF.text!
-    print("**userEmail:\(userEmail)\n")
-    userPhone = phoneNumberUserSignUpTF.text!
-    print("**userEmail:\(userPhone)\n")
-    userPassword = passwordUserSignUpTF.text!
-    print("**userPassword:\(userPassword)\n")
-    userConfirmPassword = confirmPassUserSignUpTF.text!
-    print("**userConfirmPassword:\(userConfirmPassword)\n")
-    
     //firebase signup
     
     let textFieldSignUP = validateFields()
@@ -111,6 +102,7 @@ class SignUpVC: UIViewController
       let email = emailUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let password = passwordUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let confirmPass = confirmPassUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      
       let phoneNumber  = phoneNumberUserSignUpTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       
       if confirmPass == password {
@@ -143,19 +135,6 @@ class SignUpVC: UIViewController
               fatalError(error.localizedDescription)
             }
             
-            
-//            db.collection("users").document(id!).setData(["FullName":fullName,
-//                                                          "Email" :email ,
-//                                                          "Password":password,
-//                                                          "PhoneNumber": phoneNumber,
-//                                                          "uid": authDataResult!.user.uid ]) { (error) in
-//
-//              if error != nil {
-//                print("Error saving user data")
-//
-//              }
-//            }
-            
           }
         }
       }else{
@@ -182,7 +161,7 @@ class SignUpVC: UIViewController
     contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
     imageicone.frame = CGRect(x: 10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
-    
+     
     passwordUserSignUpTF.rightView  = contectView
     passwordUserSignUpTF.rightViewMode = .always
     

@@ -26,26 +26,29 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
     passwordSignInTF.resignFirstResponder()
   }
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     passwordshowAndHiddenSignIn()
   }
   
-  
+  //MARK: VC signup
+
   @IBAction func ButtonToSignUp(_ sender: UIButton) {
     vc = self.storyboard?.instantiateViewController(withIdentifier:"SignUp") as! SignUpVC
     vc.modalPresentationStyle = .fullScreen
     present(vc,animated: false, completion: nil)
   }
-  
+  //MARK: VC forgetPassword
+
   @IBAction func forgetPasswordButton(_ sender: UIButton) {
     
     vc = self.storyboard?.instantiateViewController(withIdentifier:"ForgetPasswordVC") as! ForgetPasswordVC
     vc.modalPresentationStyle = .fullScreen
     present(vc,animated: false, completion: nil)
-    
   }
   
+  //MARK: signIn withFirebase
   
   @IBAction func signInPressed(_ sender: Any) {
     
@@ -53,6 +56,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
     let password = passwordSignInTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     
     // Signing in the user
+    self.startLoading()
     Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
         
       if let error = error {
@@ -62,6 +66,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
       } else {
             // fetch user profile
         guard let id = result?.user.uid else { fatalError() }
+        
         self.db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
           if let error = error {
             fatalError(error.localizedDescription)
@@ -69,6 +74,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
            if let doc = snapshot?.documents.first {
             do {
               try user = doc.data(as: UserModel.self)
+              self.stopLoading()
               let tapbarVC = self.storyboard?.instantiateViewController(identifier: "tapbarVC") as? tapbarVC
               self.view.window?.rootViewController = tapbarVC
               self.view.window?.makeKeyAndVisible()

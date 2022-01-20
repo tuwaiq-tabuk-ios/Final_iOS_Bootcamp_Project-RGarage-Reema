@@ -22,25 +22,23 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   let db = Firestore.firestore()
   let storage = Storage.storage()
 
-  
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Explore"
-
+  
     let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
     tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
     
   }
-  
-  override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     loadData()
   }
   
   func loadData() {
-    loading = true
+    self.startLoading()
     data.removeAll()
     
     db.collection("advertisements").getDocuments { snapshot, error in
@@ -57,7 +55,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
         }
       }
       self.tableView.reloadData()
-      self.loading = false
+      self.stopLoading()
     }
   }
   
@@ -96,8 +94,10 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsTableInHome
       
-     controller.ad = data[indexPath.row]
-      
+    controller.ad = data[indexPath.row]
     self.navigationController?.pushViewController(controller, animated: true)
+
   }
 }
+
+

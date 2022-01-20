@@ -20,8 +20,6 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
   let db = Firestore.firestore()
   let storage = Storage.storage()
   
-  
-  
   @IBOutlet weak var tableViewAccount: UITableView!
   
   override func viewDidLoad() {
@@ -29,7 +27,7 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
     let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
     
     tableViewAccount.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
-      loadData()
+    loadData()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +55,7 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
     }
   }
   
-
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
   }
@@ -65,7 +63,6 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
   
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    
     return data.count
   }
   
@@ -80,7 +77,7 @@ class MyAdvertaisment: UIViewController,UITabBarDelegate,UITableViewDataSource{
     cell.address.text = ad.address
     cell.price.text = " the price is \(ad.price)"
     cell.date.text = DateFormatter.localizedString(from: ad.date , dateStyle: .long, timeStyle: .medium)
-
+    
     if let imgURL = ad.imageURL {
       if imgURL != "" {
         cell.imageDetails.load(url: URL(string: imgURL)!)

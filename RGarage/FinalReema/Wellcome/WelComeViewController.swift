@@ -13,8 +13,8 @@ class WelComeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
       if let usr = Auth.auth().currentUser {
+        self.startLoading()
         print(usr.uid)
         let id = usr.uid
         let db = Firestore.firestore()
@@ -25,10 +25,10 @@ class WelComeViewController: UIViewController {
           }
           if let doc = snapshot?.documents.first {
             do {
-              //??
+            
               try user = doc.data(as: UserModel.self)
+              self.stopLoading()
               let tapbarVC = self.storyboard?.instantiateViewController(identifier: "tapbarVC") as? tapbarVC
-              
               self.view.window?.rootViewController = tapbarVC
               self.view.window?.makeKeyAndVisible()
             } catch {
