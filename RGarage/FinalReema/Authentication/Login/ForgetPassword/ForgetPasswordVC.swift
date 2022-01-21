@@ -10,7 +10,7 @@ import FirebaseAuth
 
 class ForgetPasswordVC: UIViewController {
   
-  var vc = UIViewController()
+
   
   @IBOutlet weak var emailResetPasswordTF: UITextField!
   @IBOutlet weak var sendButton: UIButton!
@@ -33,13 +33,14 @@ class ForgetPasswordVC: UIViewController {
         self.present(alert,animated: true , completion:  nil)
         return
       } else {
-        self.vc = self.storyboard?.instantiateViewController(withIdentifier:"CheckEmailVC") as! CheckEmailVC
-        self.vc.modalPresentationStyle = .fullScreen
-        present(vc,animated: false, completion: nil)
+    
+        let VC = self.storyboard?
+          .instantiateViewController(identifier:K.Storyboard.checkEmailVC)
+        self.view.window?.rootViewController = VC
+        self.view.window?.makeKeyAndVisible()
+
       }
 
     }
   }
-  
-  
 }

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  R-Garage
+
+  Created by Reema Mousa on 17/06/1443 AH.
+  
+*/
+
+"lessorName"  = "Lessor Name";
+
+"chaangeLanguage" = "  Change Language";
+
+"MyAdvertisments" = "My Advertisments" ;
+
+"LogOut" = "Log Out";
+
+"Youradvertisinghasbeenuploadedsuccessfully." = "Your advertising has been uploaded successfully.";

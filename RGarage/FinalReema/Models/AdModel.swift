@@ -7,11 +7,14 @@
 
 import Foundation
 
+
 struct AdModel: Codable {
+  
   var id: String
   var userID: String
   var price: Double
   var address: String
   var date: Date
   var imageURL: String?
+  
 }

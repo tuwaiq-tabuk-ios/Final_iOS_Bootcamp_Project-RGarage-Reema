@@ -16,12 +16,12 @@ struct ChatRoomUser: Codable {
 }
 
 
-
 struct ChatRoom: Codable {
   @DocumentID var docID: String?
+  
   var users :[ChatRoomUser]
   var usersIds: [String]
-  var id : String? //for wh
-  var message : [Messages]
+  var id : String?
+  var message : [Message]
   
 }

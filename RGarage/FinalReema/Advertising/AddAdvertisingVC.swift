@@ -12,11 +12,8 @@ import FirebaseFirestore
 
 class AddAdvertisingVC : UIViewController
 , UINavigationControllerDelegate {
+
   
-  
-  // Database
-  let db = Firestore.firestore()
-  let storage = Storage.storage().reference()
   var uploading  :Bool = false
   var imageURL: String?
   
@@ -26,7 +23,7 @@ class AddAdvertisingVC : UIViewController
   @IBOutlet weak var priceAD: UITextField!
   @IBOutlet weak var btnAddAdvertising: UIButton!
   @IBOutlet weak var BasicView: UIView!
-  
+  @IBOutlet weak var AddPhotoForGarage:UIButton!
   
   override func viewDidLoad() {
     
@@ -40,6 +37,9 @@ class AddAdvertisingVC : UIViewController
     BasicView.layer.shadowOffset = .zero
     BasicView.layer.shadowRadius = 150
     BasicView.layer.shouldRasterize = true
+    //buttons
+    btnAddAdvertising.layer.cornerRadius = 10
+    AddPhotoForGarage.layer.cornerRadius = 10
     
   }
   
@@ -142,7 +142,7 @@ extension AddAdvertisingVC : UIImagePickerControllerDelegate {
     
     guard let jpegData = selectedImage.jpegData(compressionQuality: 0.25) else { return }
     
-    let ref = storage.child("images/\(UUID().uuidString).png")
+    let ref = storageImage.child("images/\(UUID().uuidString).png")
     
     ref.putData(jpegData, metadata: nil, completion: { meta, error in
       if let error = error {

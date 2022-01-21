@@ -12,8 +12,6 @@ import FirebaseFirestoreSwift
 
 class SignInVC: UIViewController ,UITextFieldDelegate {
   
-  let db = Firestore.firestore()
-  var vc = UIViewController()
   var iconeClick = false
   var imageicone = UIImageView()
   
@@ -21,31 +19,47 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
   @IBOutlet weak var passwordSignInTF: UITextField!
   @IBOutlet weak var signinButton: UIButton!
   
+  @IBOutlet weak var dontHaveAccountLabel: UILabel!
+  @IBOutlet weak var signUpButton: UIButton!
+  
   @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    
     emailSignInTF.resignFirstResponder()
     passwordSignInTF.resignFirstResponder()
+    
+   
   }
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
     passwordshowAndHiddenSignIn()
+    
+    signinButton.layer.cornerRadius = 10
+    
+    // for  Localizable
+     signUpButton.setTitle(NSLocalizedString("sign UP", comment: ""), for: .normal)
+     dontHaveAccountLabel.text = NSLocalizedString("Don't have Acount?", comment: "")
   }
   
+  
   //MARK: VC signup
-
   @IBAction func ButtonToSignUp(_ sender: UIButton) {
-    vc = self.storyboard?.instantiateViewController(withIdentifier:"SignUp") as! SignUpVC
-    vc.modalPresentationStyle = .fullScreen
-    present(vc,animated: false, completion: nil)
-  }
-  //MARK: VC forgetPassword
-
-  @IBAction func forgetPasswordButton(_ sender: UIButton) {
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.signUpVC)
     
-    vc = self.storyboard?.instantiateViewController(withIdentifier:"ForgetPasswordVC") as! ForgetPasswordVC
-    vc.modalPresentationStyle = .fullScreen
-    present(vc,animated: false, completion: nil)
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
+
+  }
+
+  
+  //MARK: VC forgetPassword
+  @IBAction func forgetPasswordButton(_ sender: UIButton) {
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.forgetPasswordVC)
+    
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
   }
   
   //MARK: signIn withFirebase
@@ -67,7 +81,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
             // fetch user profile
         guard let id = result?.user.uid else { fatalError() }
         
-        self.db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
+       db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
           if let error = error {
             fatalError(error.localizedDescription)
           }
@@ -75,7 +89,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
             do {
               try user = doc.data(as: UserModel.self)
               self.stopLoading()
-              let tapbarVC = self.storyboard?.instantiateViewController(identifier: "tapbarVC") as? tapbarVC
+              let tapbarVC = self.storyboard?.instantiateViewController(identifier: "TapbarVC") as? TapbarVC
               self.view.window?.rootViewController = tapbarVC
               self.view.window?.makeKeyAndVisible()
             }catch {
@@ -94,7 +108,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
     contectView.addSubview(imageicone)
     
     contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
-    imageicone.frame = CGRect(x: -10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    imageicone.frame = CGRect(x: 2, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
     passwordSignInTF.rightView  = contectView
     passwordSignInTF.rightViewMode = .always
@@ -103,7 +117,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
     imageicone.isUserInteractionEnabled = true
     imageicone.addGestureRecognizer(tapGestureRecognizer)
    }
-  
+
   @objc func imagTapped(tapGestureRecognizer:UITapGestureRecognizer){
     let tappedImage = tapGestureRecognizer.view as! UIImageView
     if iconeClick {

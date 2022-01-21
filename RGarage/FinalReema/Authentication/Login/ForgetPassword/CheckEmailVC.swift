@@ -8,7 +8,7 @@
 import UIKit
 
 class CheckEmailVC: UIViewController {
-var vc = UIViewController()
+
   @IBOutlet weak var backToLoogin: UIButton!
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +17,12 @@ backToLoogin.layer.cornerRadius = 10
     
 
   @IBAction func bacToLoginPressed(_ sender: UIButton) {
-    vc = storyboard?.instantiateViewController(withIdentifier:"SignIn" ) as! SignInVC
-    vc.modalPresentationStyle = .fullScreen
-    present(vc,animated: false, completion: nil)
+   
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.signInVC)
     
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
+
   }
 }

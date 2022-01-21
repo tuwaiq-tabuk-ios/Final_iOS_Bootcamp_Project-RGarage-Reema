@@ -10,8 +10,8 @@ import FirebaseFirestoreSwift
 
 
 struct UserModel: Codable {
+  
   @DocumentID var docID: String?
-
   var uid: String
   var email: String
   var fullName: String

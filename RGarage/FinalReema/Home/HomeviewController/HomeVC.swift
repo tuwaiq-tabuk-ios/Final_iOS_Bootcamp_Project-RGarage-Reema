@@ -12,16 +12,13 @@ import FirebaseFirestore
 import FirebaseStorage
 
 
-class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
+class HomeVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
   
   private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
   
   var data: [AdModel] = []
   var loading: Bool = false
   
-  let db = Firestore.firestore()
-  let storage = Storage.storage()
-
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
@@ -30,17 +27,18 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
   
     let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
     tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
-    
+   
   }
-    override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
+  
+  override func loadView() {
+    super.loadView()
     loadData()
   }
   
   func loadData() {
     self.startLoading()
-    data.removeAll()
     
+    data.removeAll()
     db.collection("advertisements").getDocuments { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
@@ -54,6 +52,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
           fatalError(error.localizedDescription)
         }
       }
+      
       self.tableView.reloadData()
       self.stopLoading()
     }
@@ -65,7 +64,7 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
     
     return data.count
   }
-  
+
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
@@ -92,10 +91,9 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
       if loading { return }
     
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsTableInHome
-      
-    controller.ad = data[indexPath.row]
+    let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsADInHome
     self.navigationController?.pushViewController(controller, animated: true)
+      controller.ad = data[indexPath.row]
 
   }
 }
