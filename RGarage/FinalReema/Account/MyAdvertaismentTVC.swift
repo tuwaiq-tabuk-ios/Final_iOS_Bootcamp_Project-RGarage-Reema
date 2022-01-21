@@ -7,9 +7,7 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-import FirebaseFirestore
-import FirebaseStorage
+
 
 class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSource{
   
@@ -17,8 +15,6 @@ class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSourc
   
   var data: [AdModel] = []
   
-  let db = Firestore.firestore()
-  let storage = Storage.storage()
   
   @IBOutlet weak var tableViewAccount: UITableView!
   
@@ -70,8 +66,7 @@ class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSourc
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier3,
-                                             for: indexPath)  as! UItablviewCellTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier3,for: indexPath)  as! UItablviewCellTableViewCell
     
     let ad = data[indexPath.row]
     cell.address.text = ad.address

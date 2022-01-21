@@ -15,11 +15,10 @@ class ChackingViewController: UIViewController {
     
     //MARK: Save Login user
     if let usr = Auth.auth().currentUser {
+      
       self.startLoading()
-      
       let id = usr.uid
-      let db = Firestore.firestore()
-      
+
       db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
         if let error = error {
           fatalError(error.localizedDescription)
@@ -28,9 +27,13 @@ class ChackingViewController: UIViewController {
           do {
             try user = doc.data(as: UserModel.self)
             self.stopLoading()
-            let tapbarVC = self.storyboard?.instantiateViewController(identifier: "TapbarVC") as? TapbarVC
-            self.view.window?.rootViewController = tapbarVC
+            
+            
+            let VC = self.storyboard?
+              .instantiateViewController(identifier:K.Storyboard.tapbarVC)
+                        self.view.window?.rootViewController = VC
             self.view.window?.makeKeyAndVisible()
+
           } catch {
             fatalError(error.localizedDescription)
           }
@@ -39,9 +42,12 @@ class ChackingViewController: UIViewController {
       }
     }
     else {
-      let ChackingVC = self.storyboard?.instantiateViewController(identifier: "ChackingVC") as? SeplashViewController
-      self.view.window?.rootViewController = ChackingVC
+      let VC = self.storyboard?
+        .instantiateViewController(identifier:K.Storyboard.seplashViewController)
+
+      self.view.window?.rootViewController = VC
       self.view.window?.makeKeyAndVisible()
+
     }
   }
 }

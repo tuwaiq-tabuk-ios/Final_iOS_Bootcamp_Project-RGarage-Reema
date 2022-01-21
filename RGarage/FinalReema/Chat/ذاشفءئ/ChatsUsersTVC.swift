@@ -14,10 +14,11 @@ import FirebaseStorage
 
 
 class ChatsUsersTVC: UIViewController {
-  var conversations: [ChatRoom] = []
-  let db = Firestore.firestore()
   
+  var conversations: [ChatRoom] = []
   var selectedConversation: ChatRoom?
+  
+  
   @IBOutlet weak var tableChatsBetweenUsers: UITableView!
   
   override func viewDidLoad() {

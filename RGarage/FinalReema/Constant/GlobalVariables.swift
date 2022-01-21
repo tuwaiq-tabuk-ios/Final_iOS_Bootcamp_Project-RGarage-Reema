@@ -6,5 +6,9 @@
 //
 
 import Foundation
+import Firebase
 
 var user: UserModel!
+let db = Firestore.firestore()
+let storage = Storage.storage()
+let storageImage = Storage.storage().reference()

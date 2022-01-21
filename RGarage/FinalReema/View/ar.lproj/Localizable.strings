@@ -30,7 +30,8 @@
 "Please make sure your password is at least 8 characters, contains a special character and a number." = "يرجى التأكد من أن كلمة المرور الخاصة بك تتكون من 8 أحرف على الأقل ، وتحتوي على حرف خاص ورقم.";
 
 
-"Error creating user" = "خطأ في إنشاء المستخدم";
+"Ooops! Email used" = "البريد الالكتروني مستخدم";
+
 "password not mach" = "كلمة السر ليست متطابقة";
 
 "Please fill in all fields.." = "يرجى تعبئة جميع الحقول..";

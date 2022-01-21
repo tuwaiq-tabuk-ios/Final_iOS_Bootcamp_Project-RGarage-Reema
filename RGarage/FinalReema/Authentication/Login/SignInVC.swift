@@ -12,8 +12,6 @@ import FirebaseFirestoreSwift
 
 class SignInVC: UIViewController ,UITextFieldDelegate {
   
-  let db = Firestore.firestore()
-  var vc = UIViewController()
   var iconeClick = false
   var imageicone = UIImageView()
   
@@ -35,6 +33,9 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     passwordshowAndHiddenSignIn()
+    
+    signinButton.layer.cornerRadius = 10
+    
     // for  Localizable
      signUpButton.setTitle(NSLocalizedString("sign UP", comment: ""), for: .normal)
      dontHaveAccountLabel.text = NSLocalizedString("Don't have Acount?", comment: "")
@@ -43,18 +44,22 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
   
   //MARK: VC signup
   @IBAction func ButtonToSignUp(_ sender: UIButton) {
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.signUpVC)
+    
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
 
-    vc = self.storyboard?.instantiateViewController(withIdentifier:"SignUp") as! SignUpVC
-    vc.modalPresentationStyle = .fullScreen
-    present(vc,animated: false, completion: nil)
   }
 
   
   //MARK: VC forgetPassword
   @IBAction func forgetPasswordButton(_ sender: UIButton) {
-    vc = self.storyboard?.instantiateViewController(withIdentifier:"ForgetPasswordVC") as! ForgetPasswordVC
-    vc.modalPresentationStyle = .fullScreen
-    present(vc,animated: false, completion: nil)
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.forgetPasswordVC)
+    
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
   }
   
   //MARK: signIn withFirebase
@@ -76,7 +81,7 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
             // fetch user profile
         guard let id = result?.user.uid else { fatalError() }
         
-        self.db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
+       db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
           if let error = error {
             fatalError(error.localizedDescription)
           }

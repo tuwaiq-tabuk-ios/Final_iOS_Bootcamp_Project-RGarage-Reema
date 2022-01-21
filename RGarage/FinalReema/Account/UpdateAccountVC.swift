@@ -7,21 +7,15 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-import FirebaseFirestore
-import FirebaseStorage
 import Photos
 
 class UpdateAccountVC: UIViewController,
                        UIImagePickerControllerDelegate ,
                        UINavigationControllerDelegate {
   
-  // Database
-  let db = Firestore.firestore()
-  let storage = Storage.storage().reference()
+
   var imageURL: String?
   var uploading  :Bool = false
-  
   
   @IBOutlet weak var logOutButton: UIButton!
   @IBOutlet weak var changeLanguageButton: UIButton!
@@ -66,9 +60,11 @@ class UpdateAccountVC: UIViewController,
   
   
   @IBAction func BackButtonPressedtoAccountVC(_ sender: UIButton) {
-    let AccountVC = storyboard?.instantiateViewController(identifier:"AccountVC") as? AccountVC
-    view.window?.rootViewController = AccountVC
-    view.window?.makeKeyAndVisible()
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.tapbarVC)
+    
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
   }
   
   // MARK: LOGOUT USER
@@ -79,9 +75,10 @@ class UpdateAccountVC: UIViewController,
       try  Auth.auth().signOut()
       
       //when user logout go to this page
-      let wellcome = self.storyboard?.instantiateViewController(identifier: "Wellcome") as? Welcome
-      self.view.window?.rootViewController = wellcome
-      //self.view.window?.makeKeyAndVisible()
+      let VC = self.storyboard?
+        .instantiateViewController(identifier:K.Storyboard.welcome)
+      self.view.window?.rootViewController = VC
+      self.view.window?.makeKeyAndVisible()
     } catch let signOutError as NSError {
       print ("Error signing out: %@", signOutError)
     }
@@ -209,7 +206,7 @@ class UpdateAccountVC: UIViewController,
     
     guard let currentUser  = user else  {return}
     let imageName = currentUser.uid
-    let ref = storage.child("images/\(imageName).png")
+    let ref = storageImage.child("images/\(imageName).png")
     
     ref.putData(jpegData, metadata: nil, completion: { meta, error in
       if let error = error {

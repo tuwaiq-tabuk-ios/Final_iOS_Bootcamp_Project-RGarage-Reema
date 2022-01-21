@@ -6,23 +6,17 @@
 //
 
 import UIKit
-import FirebaseAuth
 import Firebase
-import FirebaseFirestore
-import FirebaseFirestoreSwift
-import FirebaseStorage
+ 
 
 class SignUpVC: UIViewController
 , UINavigationControllerDelegate {
   
-
-  //vaiable data
-  var vc = UIViewController()
   
   //variable password hidden and show
   var iconeClick = false
   var imageicone = UIImageView()
-  
+
   @IBOutlet weak var nameUserSignUpTF: UITextField!
   @IBOutlet weak var emailUserSignUpTF: UITextField!
   @IBOutlet weak var passwordUserSignUpTF: UITextField!
@@ -36,6 +30,7 @@ class SignUpVC: UIViewController
     passwordshowAndHidden()
     
     
+    signUpButton.layer.cornerRadius = 10
     //MARK: Localizable buttons
 
     signInButton.setTitle(NSLocalizedString("Signin", comment: ""), for: .normal)
@@ -56,9 +51,11 @@ class SignUpVC: UIViewController
   
   
   @IBAction func ButtonToSignIn(_ sender: UIButton) {
-    vc = self.storyboard?.instantiateViewController(withIdentifier:"SignIn") as! SignInVC
-    vc.modalPresentationStyle = .fullScreen
-    present(vc,animated: false, completion: nil)
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.signInVC)
+
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
   }
   
   //MARK: validateFields
@@ -81,14 +78,14 @@ class SignUpVC: UIViewController
     let cleanedPassword = passwordUserSignUpTF.text!
       .trimmingCharacters(in: .whitespacesAndNewlines)
 
-    if K.isPasswordValid(cleanedPassword) == false  {
+    if K.Password.isPasswordValid(cleanedPassword) == false  {
       let alert =  Service.createAleartController(title: "Error"
                                                   , message:"Please make sure your password is at least 8 characters, contains a special character and a number.")
       
       alert.title = NSLocalizedString("Error", comment: "")
       alert.message = NSLocalizedString("Please make sure your password is at least 8 characters, contains a special character and a number.", comment: "")
-      
       self.present(alert,animated: true , completion:  nil)
+
     }
     return nil
   }
@@ -114,19 +111,17 @@ class SignUpVC: UIViewController
         Auth.auth().createUser(withEmail: email, password: password )  { (authDataResult, err) in
           if err != nil {
             let alert =  Service.createAleartController(title: "Error"
-                                                        , message:"Error creating user")
+                                                        , message:"Ooops! Email used")
             
             alert.title = NSLocalizedString("Error", comment: "")
-            alert.message = NSLocalizedString("Error creating user", comment: "")
+            alert.message = NSLocalizedString("Ooops! Email used", comment: "")
             
             self.present(alert,animated: true , completion:  nil)
-            
             print("Error creating user" )
             
           } else {
-            let db = Firestore.firestore()
-            let id = Auth.auth().currentUser?.uid
             
+            let id = Auth.auth().currentUser?.uid
             let userModel = UserModel(uid: id!,
                                  email: email,
                                  fullName: fullName,
@@ -137,7 +132,6 @@ class SignUpVC: UIViewController
                 if error != nil {
                   print("Error saving user data")
                 }
-                user = userModel
                 self.tapbarVC()
               }
             } catch {
@@ -159,11 +153,12 @@ class SignUpVC: UIViewController
   
   //MARK: segue to tapbarVC
   func tapbarVC() {
-    let tapbarVC = storyboard?.instantiateViewController(identifier:"TapbarVC") as? TapbarVC
-    view.window?.rootViewController = tapbarVC
-    view.window?.makeKeyAndVisible()
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.tapbarVC)
+    
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
   }
-  
   
   //MARK: show and hidden password
   func passwordshowAndHidden(){

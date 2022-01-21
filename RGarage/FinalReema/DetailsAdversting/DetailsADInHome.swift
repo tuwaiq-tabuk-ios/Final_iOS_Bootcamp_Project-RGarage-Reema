@@ -11,9 +11,6 @@ import Firebase
 
 class DetailsADInHome : UIViewController {
   
-  //data
-  let db = Firestore.firestore()
-  
   var ad: AdModel?
   var adUser: UserModel?
   
@@ -65,7 +62,9 @@ class DetailsADInHome : UIViewController {
       
       do {
         self.adUser = try doc.data(as: UserModel.self)!
+        
         self.nameLessorLabel.text = "\(NSLocalizedString("lessorName", comment: "")): \(self.adUser!.fullName)"
+        
         self.phoneLabel.text = self.adUser!.phoneNumber
       } catch {
         fatalError(error.localizedDescription)
@@ -178,7 +177,7 @@ class DetailsADInHome : UIViewController {
     
     var ref: DocumentReference!
     do {
-      ref = try self.db.collection("conversations").addDocument(from: conversation) { error in
+      ref = try db.collection("conversations").addDocument(from: conversation) { error in
         if let error = error {
           fatalError(error.localizedDescription)
         }

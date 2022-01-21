@@ -7,20 +7,13 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-import FirebaseFirestore
-import FirebaseStorage
 
 class AccountVC: UIViewController ,
                  UITableViewDelegate {
   //variable
   var avatar = UIImage()
   var userName = ""
-  //data
-  let db = Firestore.firestore()
-  let storage = Storage.storage()
-  
-    
+
   @IBOutlet weak var profilePhoto: UIImageView!
   @IBOutlet weak var nameUser: UILabel!
   @IBOutlet weak var viewInfoUser: UIView!
@@ -49,15 +42,16 @@ class AccountVC: UIViewController ,
     loadImage()
   }
   @IBAction func settingButtom(_ sender: Any) {
-    let UpdateAccountVC = storyboard?.instantiateViewController(identifier:"UpdateAccountVC") as? UpdateAccountVC
-    view.window?.rootViewController = UpdateAccountVC
-    view.window?.makeKeyAndVisible()
+    let VC = self.storyboard?
+      .instantiateViewController(identifier:K.Storyboard.updateAccountVC)
+    
+    self.view.window?.rootViewController = VC
+    self.view.window?.makeKeyAndVisible()
   }
   
   
   // MARK: loadImage User
-  
-  func loadImage() {
+    func loadImage() {
     if let imgURL = user.imgURL {
       if imgURL != "" {
         profilePhoto.load(url: URL(string: imgURL)!)

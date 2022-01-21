@@ -13,17 +13,15 @@ class ChatViewController: UIViewController {
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextFeild: UITextField!
   
-  let db = Firestore.firestore()
-  
   var selectedConversation: ChatRoom?
-  
   var messages :[Message] = []
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     
  //MARK: Kayboard  up
-    
+ 
     NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 
     NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -35,8 +33,7 @@ class ChatViewController: UIViewController {
      guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
        return
     }
-    
-     self.view.frame.origin.y = 20 - keyboardSize.height
+         self.view.frame.origin.y = 20 - keyboardSize.height
   }
 
   
@@ -65,13 +62,10 @@ class ChatViewController: UIViewController {
       } catch {
         fatalError(error.localizedDescription)
       }
-      
     }
-    
   }
   
   //MARK: loadData
-  
   func loadData(){
     db.collection("conversations").document(selectedConversation!.docID!).addSnapshotListener { snapshot, error in
       if let error = error {
@@ -94,15 +88,14 @@ class ChatViewController: UIViewController {
 //MARK: extention
 extension ChatViewController : UITableViewDataSource , UITableViewDelegate{
   
-  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (selectedConversation?.message.count)!
   }
 
-
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
     let cell = messageTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
-     
+    
     guard let message = selectedConversation?.message[indexPath.row] else { return cell }
     cell.messageLabel.text = message.body
     cell.backgroundColor = .clear
