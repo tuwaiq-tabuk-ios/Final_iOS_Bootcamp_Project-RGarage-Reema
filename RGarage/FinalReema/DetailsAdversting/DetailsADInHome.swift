@@ -6,10 +6,11 @@
 //
 
 import UIKit
-import FirebaseFirestore
 import Firebase
 
-class DetailsTableInHome : UIViewController {
+
+class DetailsADInHome : UIViewController {
+  
   //data
   let db = Firestore.firestore()
   
@@ -17,11 +18,9 @@ class DetailsTableInHome : UIViewController {
   var adUser: UserModel?
   
   @IBOutlet weak var DetailsView: UIView!
-  
   @IBOutlet weak var chatButton: UIButton!
   @IBOutlet weak var orlabelbetweenchatway: UILabel!
   @IBOutlet weak var whatsAppCHatButton: UIButton!
-  
   @IBOutlet weak var advertisementImage: UIImageView!
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
@@ -32,22 +31,20 @@ class DetailsTableInHome : UIViewController {
     super.viewDidLoad()
     
     loadUser()
+    
     // Hide the chat method if the advertiser enters the personal ad, he cannot communicate with himself
     
-    guard let ad = ad else {
-      return
-    }
-    if ad.userID == user.uid {
+    guard let ad = ad else {return}
+    
+    if ad.userID == user?.uid {
       chatButton.isHidden = true
       whatsAppCHatButton.isHidden = true
       orlabelbetweenchatway.isHidden = true
     }
     
     //MARK: informations AD Address ,Price ,Image
-    
     addressLabel.text! =  ad.address
     priceLabel.text! = "\(ad.price)"
-    
     if let imgURL = ad.imageURL {
       if imgURL != "" {
         advertisementImage.load(url: URL(string: imgURL)!)
@@ -57,7 +54,9 @@ class DetailsTableInHome : UIViewController {
   
   
   //MARK: informations lessor
+  
   func loadUser() {
+    self.startLoading()
     db.collection("users").whereField("uid", isEqualTo: ad!.userID).getDocuments { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
@@ -66,11 +65,12 @@ class DetailsTableInHome : UIViewController {
       
       do {
         self.adUser = try doc.data(as: UserModel.self)!
-        self.nameLessorLabel.text = "Lessor Name : \(self.adUser!.fullName)"
+        self.nameLessorLabel.text = "\(NSLocalizedString("lessorName", comment: "")): \(self.adUser!.fullName)"
         self.phoneLabel.text = self.adUser!.phoneNumber
       } catch {
         fatalError(error.localizedDescription)
       }
+      self.stopLoading()
     }
   }
   
@@ -127,28 +127,24 @@ class DetailsTableInHome : UIViewController {
     }
   }
   
-  //MARK: send Message Button
+  //MARK: start Message Button
   
   @IBAction func ChatButtonPressed(_ sender: UIButton) {
-    
-    print(ad!.userID, user.uid)
+ 
     db.collection("conversations").whereField("usersIds", arrayContainsAny: [user.uid]).getDocuments { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
       }
       guard let docs = snapshot?.documents else {
-//        self.createConversation()
-        return
+         return
       }
       for doc in docs {
         do {
           let conversation = try doc.data(as: ChatRoom.self)!
-          
           if conversation.usersIds.contains(where: { $0 == self.ad!.userID}) {
             self.gotoConversation(conversation: conversation)
             return
           }
-          
           
         } catch {
           fatalError(error.localizedDescription)
@@ -160,13 +156,14 @@ class DetailsTableInHome : UIViewController {
     
   }
   
+  
   func gotoConversation(conversation: ChatRoom) {
+    
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
     controller.selectedConversation = conversation
     self.navigationController?.pushViewController(controller, animated: true)
   }
-  
   //MARK: function great conversation
   
   private func createConversation() {
@@ -174,9 +171,11 @@ class DetailsTableInHome : UIViewController {
     var users: [ChatRoomUser] = []
     
     users.append(ChatRoomUser(id: user!.uid, name: user.fullName, imgURL: user.imgURL))
+    
     users.append(ChatRoomUser(id: adUser!.uid, name: adUser!.fullName, imgURL: adUser!.imgURL))
     
     var conversation = ChatRoom(users: users, usersIds: [user!.uid, adUser!.uid], id: UUID().uuidString, message: [])
+    
     var ref: DocumentReference!
     do {
       ref = try self.db.collection("conversations").addDocument(from: conversation) { error in

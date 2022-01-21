@@ -21,8 +21,10 @@ class UpdateAccountVC: UIViewController,
   let storage = Storage.storage().reference()
   var imageURL: String?
   var uploading  :Bool = false
- 
   
+  
+  @IBOutlet weak var logOutButton: UIButton!
+  @IBOutlet weak var changeLanguageButton: UIButton!
   @IBOutlet weak var nameUpdate: UITextField!
   @IBOutlet weak var emailUpdate: UITextField!
   @IBOutlet weak var updateUserPhoto: UIImageView!
@@ -34,18 +36,26 @@ class UpdateAccountVC: UIViewController,
     updateUserPhoto.layer.borderWidth = 3
     updateUserPhoto.layer.borderColor = UIColor.lightGray.cgColor
     
+    
+    //form database
     self.numberUserUpdataTF.text = user?.phoneNumber
     self.nameUpdate.text = user?.fullName
     self.emailUpdate.text = user?.email
     
+    
+    // for localizable
+    logOutButton.setTitle(NSLocalizedString("LogOut", comment: ""), for: .normal)
+    
+    changeLanguageButton.setTitle(NSLocalizedString("chaangeLanguage", comment: ""), for: .normal)
   }
-
   
-  
-  @IBAction func changeLanguagButtonpressed(_ sender: Any) {
+  //button for change language
+  @IBAction func changeLanguagButtonPressed(_ sender: Any) {
     
     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
   }
+  
+  
   
   // MARK: dismissKeyboard
   @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -56,8 +66,8 @@ class UpdateAccountVC: UIViewController,
   
   
   @IBAction func BackButtonPressedtoAccountVC(_ sender: UIButton) {
-    let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
-    view.window?.rootViewController = tapbarVC
+    let AccountVC = storyboard?.instantiateViewController(identifier:"AccountVC") as? AccountVC
+    view.window?.rootViewController = AccountVC
     view.window?.makeKeyAndVisible()
   }
   
@@ -96,7 +106,10 @@ class UpdateAccountVC: UIViewController,
         }
         // updated
         let alert =  Service.createAleartController(title: "Done"
-                                                    , message:" successfully updated your profile.")
+                                                    , message:"successfully updated your profile.")
+        alert.title = NSLocalizedString("Done", comment: "")
+        
+        alert.message = NSLocalizedString("successfully updated your profile.", comment: "")
         self.present(alert,animated: true , completion:  nil)
         print("Document successfully updated")
       }
@@ -108,83 +121,85 @@ class UpdateAccountVC: UIViewController,
   
   @IBAction func updateUserPhotoButton(_ sender: Any) {
     
+    
     let addImge = UIImagePickerController()
     addImge.sourceType = .photoLibrary
     addImge.delegate = self
     addImge.allowsEditing = true
     
     let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        switch photoAuthorizationStatus {
-        case .authorized:
-            print("Add Photo")
-            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-                print("Access is granted by user")
-                self.present(addImge, animated: true, completion: nil)
-            }
-            print("Access is granted by user")
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({
-                (newStatus) in
-                print("status is \(newStatus)")
-                if newStatus ==  PHAuthorizationStatus.authorized {
-                    /* do stuff here */
-                    DispatchQueue.main.async {
-                      self.present(addImge, animated: true, completion: nil)
-                    }
-                    print("success")
-                }
-            })
-            print("It is not determined until now")
-        case .restricted:
-            // same same
-            print("User do not have access to photo album.")
-            goToSetting()
-        case .denied:
-            // same same
-            print("Text tapped...")
-            goToSetting()
-            print("User has denied the permission.")
-        case .limited:
-            goToSetting() // the function show an alert to enable Authorization manually
-            print("User has denied the permission.")
-        @unknown default:
-            fatalError()
+    switch photoAuthorizationStatus {
+    case .authorized:
+      print("Add Photo")
+      if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+        print("Access is granted by user")
+        self.present(addImge, animated: true, completion: nil)
+      }
+      print("Access is granted by user")
+    case .notDetermined:
+      PHPhotoLibrary.requestAuthorization({
+        (newStatus) in
+        print("status is \(newStatus)")
+        if newStatus ==  PHAuthorizationStatus.authorized {
+          /* do stuff here */
+          DispatchQueue.main.async {
+            self.present(addImge, animated: true, completion: nil)
+          }
+          print("success")
         }
-  }
-
-
-  fileprivate func goToSetting() {
-      let title = "Oooooops!"
-      let message = "Hi man, for use this App press Go To settings and enabled access to Pohto Gallery... Check read and write option and relaunch the App!"
-      
-      let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-      
-      let subview = (alertController.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
-      subview.backgroundColor = UIColor(white: 0, alpha: 0.2)
-      
-      alertController.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .heavy),NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedTitle")
-      alertController.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .regular),NSAttributedString.Key.foregroundColor : UIColor.white]), forKey: "attributedMessage")
-      
-      let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
-          print("Action cancelled")
-      }
-      
-      let goToSettingPermission = UIAlertAction(title: "Go To setting", style: .default) { (action) in
-          UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-      }
-      
-      alertController.addAction(goToSettingPermission)
-      alertController.addAction(cancelAction)
-      
-      self.present(alertController, animated: true, completion: {
       })
+      print("It is not determined until now")
+    case .restricted:
+      // same same
+      print("User do not have access to photo album.")
+      goToSetting()
+    case .denied:
+      // same same
+      print("Text tapped...")
+      goToSetting()
+      print("User has denied the permission.")
+    case .limited:
+      goToSetting() // the function show an alert to enable Authorization manually
+      print("User has denied the permission.")
+    @unknown default:
+      fatalError()
+    }
+  }
+  
+  
+  fileprivate func goToSetting() {
+    let title = "Oooooops!"
+    let message = "Hi, for use this App press Go To settings and enabled access to Pohto Gallery... Check read and write option and relaunch the App!"
+    
+    let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+    
+    let subview = (alertController.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
+    subview.backgroundColor = UIColor(white: 0, alpha: 0.2)
+    
+    alertController.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .heavy),NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedTitle")
+    alertController.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .regular),NSAttributedString.Key.foregroundColor : UIColor.white]), forKey: "attributedMessage")
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+      print("Action cancelled")
+    }
+    
+    let goToSettingPermission = UIAlertAction(title: "Go To setting", style: .default) { (action) in
+      UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+    }
+    
+    alertController.addAction(goToSettingPermission)
+    alertController.addAction(cancelAction)
+    
+    self.present(alertController, animated: true, completion: {
+    })
   }
   
   // MARK: update user photo
   func imagePickerController(
     _ picker: UIImagePickerController,
-    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
-  ) {
+    didFinishPickingMediaWithInfo info:
+    [UIImagePickerController.InfoKey : Any]) {
+      
     uploading  = true
     guard let selectedImage =
             info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
@@ -200,7 +215,7 @@ class UpdateAccountVC: UIViewController,
       if let error = error {
         fatalError(error.localizedDescription)
       }
-      if let metadata = meta {
+      if let _ = meta {
         ref.downloadURL { url, error in
           if let error = error {
             fatalError(error.localizedDescription)
@@ -212,5 +227,8 @@ class UpdateAccountVC: UIViewController,
       }
     })
     self.dismiss(animated: true, completion: nil)
+  }
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
   }
 }

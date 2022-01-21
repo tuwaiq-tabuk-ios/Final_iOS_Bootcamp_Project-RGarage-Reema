@@ -34,13 +34,12 @@ class ChatsUsersTVC: UIViewController {
 
   func loadData() {
     self.startLoading()
-    db.collection("conversations").whereField("usersIds", arrayContains: user.uid).getDocuments() { (snapshot, error) in
+    db.collection("conversations").whereField("usersIds", arrayContains: user!.uid).getDocuments() { (snapshot, error) in
       self.conversations.removeAll()
       if let error = error {
         fatalError(error.localizedDescription)
         
       } else {
-        
         if let docs = snapshot?.documents {
           for doc in docs {
             do {
@@ -67,7 +66,7 @@ extension ChatsUsersTVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier:"ChatusersCell") as! ChatusersCell
+    let cell = tableView.dequeueReusableCell(withIdentifier:"ChatusersCell") as! ChatuserCell
     
     let conversation = conversations[indexPath.row]
     let oUser = conversation.users.first { usr in usr.id != user.uid

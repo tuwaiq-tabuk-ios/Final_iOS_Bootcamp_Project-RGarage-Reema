@@ -24,6 +24,9 @@ class AccountVC: UIViewController ,
   @IBOutlet weak var profilePhoto: UIImageView!
   @IBOutlet weak var nameUser: UILabel!
   @IBOutlet weak var viewInfoUser: UIView!
+  
+  @IBOutlet weak var myAdvertismentButton: UIButton!
+  
   override func viewDidLoad() {
     print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
     super.viewDidLoad()
@@ -32,7 +35,7 @@ class AccountVC: UIViewController ,
     profilePhoto.layer.borderWidth = 3
     profilePhoto.layer.borderColor = UIColor.lightGray.cgColor
    
-    
+    myAdvertismentButton.setTitle(NSLocalizedString("MyAdvertisments", comment: ""), for: .normal)
     
     nameUser.text = user?.fullName
     

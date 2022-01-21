@@ -10,7 +10,6 @@ import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
   var window: UIWindow?
 
   
@@ -19,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FirebaseApp.configure()
     let db = Firestore.firestore()
     print(db)
-    
+    UITabBar.appearance().tintColor = .systemYellow
+    UINavigationBar.appearance().tintColor = .systemYellow
     return true
   }
 

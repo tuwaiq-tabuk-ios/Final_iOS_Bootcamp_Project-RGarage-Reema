@@ -21,8 +21,7 @@ class Welcome: UIViewController {
      signInButton.layer.cornerRadius = 20
      signUPButton.layer.cornerRadius = 20
      
-
-    }
+   }
 
   @IBAction func WelcomeButtons(_ sender: UIButton) {
     print(#function)

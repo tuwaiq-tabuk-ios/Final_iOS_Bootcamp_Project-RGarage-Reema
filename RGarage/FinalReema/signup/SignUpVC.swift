@@ -15,19 +15,11 @@ import FirebaseStorage
 class SignUpVC: UIViewController
 , UINavigationControllerDelegate {
   
-  //variable
-  var userFullName : String = ""
-  var userEmail : String = ""
-  var userPhone : String = ""
-  var userPassword: String = ""
-  var userConfirmPassword : String = ""
-  
+
   //vaiable data
   var vc = UIViewController()
-  //for uoload photo for firebase
-  let storage = Storage.storage().reference()
   
-  //variable password hidden and shaw
+  //variable password hidden and show
   var iconeClick = false
   var imageicone = UIImageView()
   
@@ -36,10 +28,19 @@ class SignUpVC: UIViewController
   @IBOutlet weak var passwordUserSignUpTF: UITextField!
   @IBOutlet weak var confirmPassUserSignUpTF: UITextField!
   @IBOutlet weak var phoneNumberUserSignUpTF: UITextField!
-  
+  @IBOutlet weak var signUpButton : UIButton!
+  @IBOutlet weak var signInButton : UIButton!
+ 
   override func viewDidLoad() {
     super.viewDidLoad()
     passwordshowAndHidden()
+    
+    
+    //MARK: Localizable buttons
+
+    signInButton.setTitle(NSLocalizedString("Signin", comment: ""), for: .normal)
+    signUpButton.setTitle(NSLocalizedString("SignUP", comment: ""), for: .normal)
+    
   }
   
   
@@ -71,6 +72,9 @@ class SignUpVC: UIViewController
       
       let alert =  Service.createAleartController(title: "Error"
                                                   , message:"Please fill in all fields.")
+      
+      alert.title = NSLocalizedString("Error", comment: "")
+      alert.message = NSLocalizedString("Please fill in all fields..", comment: "")
       self.present(alert,animated: true , completion:  nil)
     }
 
@@ -81,14 +85,15 @@ class SignUpVC: UIViewController
       let alert =  Service.createAleartController(title: "Error"
                                                   , message:"Please make sure your password is at least 8 characters, contains a special character and a number.")
       
+      alert.title = NSLocalizedString("Error", comment: "")
+      alert.message = NSLocalizedString("Please make sure your password is at least 8 characters, contains a special character and a number.", comment: "")
+      
       self.present(alert,animated: true , completion:  nil)
     }
-    
     return nil
   }
   
   //MARK: firebase signup
-
   @IBAction func signUpTapped(_ sender: Any) {
     //firebase signup
     
@@ -110,6 +115,10 @@ class SignUpVC: UIViewController
           if err != nil {
             let alert =  Service.createAleartController(title: "Error"
                                                         , message:"Error creating user")
+            
+            alert.title = NSLocalizedString("Error", comment: "")
+            alert.message = NSLocalizedString("Error creating user", comment: "")
+            
             self.present(alert,animated: true , completion:  nil)
             
             print("Error creating user" )
@@ -139,6 +148,9 @@ class SignUpVC: UIViewController
         }
       }else{
         let alert = Service.createAleartController(title: "Error", message: "password not mach")
+        alert.title = NSLocalizedString("Error", comment: "")
+        alert.message = NSLocalizedString("password not mach", comment: "")
+        
         self.present(alert,animated: true , completion:  nil)
 
       }
@@ -147,11 +159,11 @@ class SignUpVC: UIViewController
   
   //MARK: segue to tapbarVC
   func tapbarVC() {
-    let tapbarVC = storyboard?.instantiateViewController(identifier:"tapbarVC") as? tapbarVC
+    let tapbarVC = storyboard?.instantiateViewController(identifier:"TapbarVC") as? TapbarVC
     view.window?.rootViewController = tapbarVC
     view.window?.makeKeyAndVisible()
-    
   }
+  
   
   //MARK: show and hidden password
   func passwordshowAndHidden(){
@@ -160,7 +172,7 @@ class SignUpVC: UIViewController
     contectView.addSubview(imageicone)
     contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
     
-    imageicone.frame = CGRect(x: 10, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    imageicone.frame = CGRect(x: 2, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
      
     passwordUserSignUpTF.rightView  = contectView
     passwordUserSignUpTF.rightViewMode = .always

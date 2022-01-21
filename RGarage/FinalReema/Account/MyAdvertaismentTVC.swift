@@ -1,8 +1,8 @@
 //
-//  HomeAndSearchVC.swift
+//  ViewController.swift
 //  FinalReema
 //
-//  Created by Reema Mousa on 28/05/1443 AH.
+//  Created by Reema Mousa on 04/06/1443 AH.
 //
 
 import UIKit
@@ -11,37 +11,34 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
-
-class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
+class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSource{
   
-  private let reuseIdentifier4 = String(describing:UItablviewCellTableViewCell.self)
+  private let reuseIdentifier3 = String(describing:UItablviewCellTableViewCell.self)
   
   var data: [AdModel] = []
-  var loading: Bool = false
   
   let db = Firestore.firestore()
   let storage = Storage.storage()
-
-  @IBOutlet weak var tableView: UITableView!
+  
+  @IBOutlet weak var tableViewAccount: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Explore"
-  
-    let nib2 = UINib(nibName: reuseIdentifier4, bundle: nil)
-    tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier4)
+    let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
     
+    tableViewAccount.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
+//    loadData()
   }
-    override func viewDidAppear(_ animated: Bool) {
+  
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     loadData()
   }
   
   func loadData() {
-    self.startLoading()
     data.removeAll()
     
-    db.collection("advertisements").getDocuments { snapshot, error in
+    db.collection("advertisements").whereField("userID", isEqualTo: user?.uid).getDocuments { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
       }
@@ -54,50 +51,38 @@ class HomeAndSearchVC: UIViewController ,UITableViewDelegate,UITableViewDataSour
           fatalError(error.localizedDescription)
         }
       }
-      self.tableView.reloadData()
-      self.stopLoading()
+      self.tableViewAccount.reloadData()
     }
+  }
+  
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableView.automaticDimension
   }
   
   
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    
     return data.count
   }
+  
   
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier4,
+    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier3,
                                              for: indexPath)  as! UItablviewCellTableViewCell
     
     let ad = data[indexPath.row]
     cell.address.text = ad.address
     cell.price.text = " the price is \(ad.price)"
+    cell.date.text = DateFormatter.localizedString(from: ad.date , dateStyle: .long, timeStyle: .medium)
     
     if let imgURL = ad.imageURL {
       if imgURL != "" {
         cell.imageDetails.load(url: URL(string: imgURL)!)
       }
     }
-    cell.date.text = DateFormatter.localizedString(from: ad.date , dateStyle: .long, timeStyle: .medium)
-    
-     return  cell
-    
-    
-  }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
-      if loading { return }
-    
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsTableInHome
-      
-    controller.ad = data[indexPath.row]
-    self.navigationController?.pushViewController(controller, animated: true)
-
+    return  cell
   }
 }
-
-
