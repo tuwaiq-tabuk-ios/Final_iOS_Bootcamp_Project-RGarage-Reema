@@ -7,13 +7,14 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestoreSwift
+ 
 
-class SearchTableViewController: UITableViewController,UISearchBarDelegate {
+class SearchTableViewController: UITableViewController
+,UISearchBarDelegate {
   
   private let reuseIdentifier = String(describing:UItablviewCellTableViewCell.self)
   
-  let  db = Firestore.firestore()
+ 
   var data : [AdModel] = []
   var filterData :[AdModel] = []
   
@@ -22,18 +23,21 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate {
     
     let nib2 = UINib(nibName: reuseIdentifier, bundle: nil)
     tableView.register(nib2, forCellReuseIdentifier: reuseIdentifier)
-    
   }
 
   override func viewDidAppear(_ animated: Bool) {
     loadData()
   }
-  
+
+
   //MARK: Load data for search
   func loadData() {
     data.removeAll()
     self.startLoading()
-    db.collection("advertisements").getDocuments { snapshot, error in
+    db
+      .collection("advertisements")
+      .getDocuments { snapshot, error in
+        
       if let error = error {
         fatalError(error.localizedDescription)
       }
@@ -44,8 +48,7 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate {
             try
             self.data.append(doc.data(as: AdModel.self)!)
           }catch{
-            
-            fatalError(error.localizedDescription)
+           fatalError(error.localizedDescription)
           }
         }
         self.stopLoading()
@@ -73,14 +76,17 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate {
     return 1
   }
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView,
+                          numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
     return filterData.count
   }
   
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView,
+                          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+    let cell = tableView
+      .dequeueReusableCell(withIdentifier: reuseIdentifier,
                                              for: indexPath)  as! UItablviewCellTableViewCell
     let ad = filterData[indexPath.row]
     
@@ -92,20 +98,24 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate {
         cell.imageDetails.load(url: URL(string: imgURL)!)
       }
     }
-    cell.date.text = DateFormatter.localizedString(from: ad.date , dateStyle: .long, timeStyle: .medium)
+    cell.date.text = DateFormatter.localizedString(from: ad.date
+                                                   , dateStyle: .long, timeStyle: .medium)
     
     return  cell
-    
-    
   }
   
+  
+  //go to DetailsTableIn Search
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let controller = storyboard.instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsADInHome
+    let controller = storyboard
+      .instantiateViewController(withIdentifier: "DetailsTableInHome") as! DetailsADInHome
     
     controller.ad = filterData[indexPath.row]
-    self.navigationController?.pushViewController(controller, animated: true)
+    self.navigationController?
+      .pushViewController(controller,
+                          animated: true)
     
   }
 }

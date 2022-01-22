@@ -11,9 +11,8 @@ class MessageCell: UITableViewCell {
   
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var messageBubble: UIView!
-  
-
-  
+  @IBOutlet weak var timeSendMsg: UILabel!
+    
   enum sender {
     case me , other
   }
@@ -23,22 +22,36 @@ class MessageCell: UITableViewCell {
   func getMessageDesign (sender:sender){
     var backGroundColor : UIColor?
     switch sender{
-    case .me :
-      backGroundColor  = .gray
-      messageBubble.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMaxXMaxYCorner,.layerMaxXMaxYCorner ]
-      messageLabel.textAlignment = .right
     case .other :
-      backGroundColor = .systemYellow
-      messageBubble.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMaxYCorner , .layerMaxXMinYCorner]
+      backGroundColor  = UIColor.otherMessage
+      messageBubble.layer.maskedCorners = [.layerMinXMaxYCorner
+                                           ,.layerMinXMaxYCorner
+                                           ,.layerMinXMaxYCorner ]
+      messageBubble.layer.borderWidth = 1
+      messageLabel.textAlignment = .right
+   
+    case .me :
+      backGroundColor = UIColor.meMessage
+      messageBubble.layer.maskedCorners = [.layerMaxXMaxYCorner
+                                           ,.layerMaxXMaxYCorner
+                                           ,.layerMaxXMinYCorner]
+      messageBubble.layer.borderWidth = 1
       messageLabel.textAlignment = .left
     }
-    
-    
     messageBubble.backgroundColor = backGroundColor
-    messageBubble.layer.cornerRadius = messageLabel.frame.size.height/2.5
+    messageBubble.layer.cornerRadius = 20
     messageBubble.layer.shadowOpacity = 0.1
-    
-    
   }
+  
+  override func layoutSubviews() {
+      super.layoutSubviews()
+
+      contentView.frame = contentView
+                   .frame.inset(by: UIEdgeInsets(top: 5
+                                                 , left: 0
+                                                 , bottom: 5
+                                                 , right: 0))
+  }
+
 }
 

@@ -18,18 +18,9 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
   @IBOutlet weak var emailSignInTF: UITextField!
   @IBOutlet weak var passwordSignInTF: UITextField!
   @IBOutlet weak var signinButton: UIButton!
-  
   @IBOutlet weak var dontHaveAccountLabel: UILabel!
   @IBOutlet weak var signUpButton: UIButton!
-  
-  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-    
-    emailSignInTF.resignFirstResponder()
-    passwordSignInTF.resignFirstResponder()
-    
-   
-  }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     passwordshowAndHiddenSignIn()
@@ -37,17 +28,32 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
     signinButton.layer.cornerRadius = 10
     
     // for  Localizable
-     signUpButton.setTitle(NSLocalizedString("sign UP", comment: ""), for: .normal)
-     dontHaveAccountLabel.text = NSLocalizedString("Don't have Acount?", comment: "")
+     signUpButton.setTitle(NSLocalizedString("SignUP"
+                                             , comment: "")
+                                               , for: .normal)
+    signinButton.setTitle(NSLocalizedString("Signin"
+                                            , comment: "")
+                                              , for: .normal)
+     dontHaveAccountLabel.text = NSLocalizedString("Don't have Acount?"
+                                                   , comment: "")
   }
   
   
+  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    
+    emailSignInTF.resignFirstResponder()
+    passwordSignInTF.resignFirstResponder()
+
+  }
+  
   //MARK: VC signup
   @IBAction func ButtonToSignUp(_ sender: UIButton) {
-    let VC = self.storyboard?
-      .instantiateViewController(identifier:K.Storyboard.signUpVC)
+    let vc = self.storyboard?
+      .instantiateViewController(identifier:K
+                                  .Storyboard
+                                  .signUpVC)
     
-    self.view.window?.rootViewController = VC
+    self.view.window?.rootViewController = vc
     self.view.window?.makeKeyAndVisible()
 
   }
@@ -55,10 +61,12 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
   
   //MARK: VC forgetPassword
   @IBAction func forgetPasswordButton(_ sender: UIButton) {
-    let VC = self.storyboard?
-      .instantiateViewController(identifier:K.Storyboard.forgetPasswordVC)
+    let vc = self.storyboard?
+      .instantiateViewController(identifier:K
+                                  .Storyboard
+                                  .forgetPasswordVC)
     
-    self.view.window?.rootViewController = VC
+    self.view.window?.rootViewController = vc
     self.view.window?.makeKeyAndVisible()
   }
   
@@ -66,32 +74,48 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
   
   @IBAction func signInPressed(_ sender: Any) {
     
-    let email = emailSignInTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-    let password = passwordSignInTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    let email = emailSignInTF.text!
+      .trimmingCharacters(in: .whitespacesAndNewlines)
     
-    // Signing in the user
-    self.startLoading()
-    Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+    let password = passwordSignInTF.text!
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+    
+    Auth
+      .auth()
+      .signIn(withEmail: email
+              , password: password) { (result, error) in
         
       if let error = error {
-        let alert =  Service.createAleartController(title: "Error", message: error.localizedDescription)
-        self.present(alert,animated: true , completion:  nil)
-        //??
+        let alert =  Service.createAlertController(title: "Error"
+                                                    , message: error.localizedDescription)
+        self.present(alert,animated: true
+                     , completion:  nil)
+        
+        
       } else {
             // fetch user profile
         guard let id = result?.user.uid else { fatalError() }
+        // Signing in the user
+        self.startLoading()
         
-       db.collection("users").whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
+       db
+          .collection("users")
+          .whereField("uid", isEqualTo: id)
+          .getDocuments { snapshot, error in
+            
           if let error = error {
             fatalError(error.localizedDescription)
           }
+            
            if let doc = snapshot?.documents.first {
             do {
               try user = doc.data(as: UserModel.self)
               self.stopLoading()
-              let tapbarVC = self.storyboard?.instantiateViewController(identifier: "TapbarVC") as? TapbarVC
+              let tapbarVC = self.storyboard?
+                .instantiateViewController(identifier: "TapbarVC") as? TapbarVC
               self.view.window?.rootViewController = tapbarVC
               self.view.window?.makeKeyAndVisible()
+              
             }catch {
               fatalError(error.localizedDescription)
             }
@@ -107,13 +131,23 @@ class SignInVC: UIViewController ,UITextFieldDelegate {
     let contectView = UIView()
     contectView.addSubview(imageicone)
     
-    contectView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
-    imageicone.frame = CGRect(x: 2, y: 0, width: UIImage(named: "hidden")!.size.width, height: UIImage(named: "hidden")!.size.height)
+    contectView.frame = CGRect(x: 0
+                               , y: 0
+                               , width: UIImage(named: "hidden")!
+                                .size.width
+                               , height: UIImage(named: "hidden")!
+                                .size.height)
+    imageicone.frame = CGRect(x: 2
+                              , y: 0
+                              , width: UIImage(named: "hidden")!
+                                .size.width, height: UIImage(named: "hidden")!
+                                .size.height)
     
     passwordSignInTF.rightView  = contectView
     passwordSignInTF.rightViewMode = .always
     
-    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagTapped(tapGestureRecognizer:)))
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self
+                                                      , action: #selector(imagTapped(tapGestureRecognizer:)))
     imageicone.isUserInteractionEnabled = true
     imageicone.addGestureRecognizer(tapGestureRecognizer)
    }

@@ -18,10 +18,12 @@ backToLoogin.layer.cornerRadius = 10
 
   @IBAction func bacToLoginPressed(_ sender: UIButton) {
    
-    let VC = self.storyboard?
-      .instantiateViewController(identifier:K.Storyboard.signInVC)
+    let vc = self.storyboard?
+      .instantiateViewController(identifier:K
+                                  .Storyboard
+                                  .signInVC)
     
-    self.view.window?.rootViewController = VC
+    self.view.window?.rootViewController = vc
     self.view.window?.makeKeyAndVisible()
 
   }

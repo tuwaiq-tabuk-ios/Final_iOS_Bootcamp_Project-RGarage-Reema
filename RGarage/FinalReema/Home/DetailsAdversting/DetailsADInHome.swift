@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 
-
 class DetailsADInHome : UIViewController {
   
   var ad: AdModel?
@@ -26,7 +25,7 @@ class DetailsADInHome : UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    chatButton.layer.cornerRadius = 10
     loadUser()
     
     // Hide the chat method if the advertiser enters the personal ad, he cannot communicate with himself
@@ -54,28 +53,31 @@ class DetailsADInHome : UIViewController {
   
   func loadUser() {
     self.startLoading()
-    db.collection("users").whereField("uid", isEqualTo: ad!.userID).getDocuments { snapshot, error in
-      if let error = error {
-        fatalError(error.localizedDescription)
-      }
-      guard let doc = snapshot?.documents.first else { return }
-      
-      do {
-        self.adUser = try doc.data(as: UserModel.self)!
+    db
+      .collection("users").whereField("uid", isEqualTo: ad!.userID)
+      .getDocuments { snapshot, error in
         
-        self.nameLessorLabel.text = "\(NSLocalizedString("lessorName", comment: "")): \(self.adUser!.fullName)"
+        if let error = error {
+          fatalError(error.localizedDescription)
+        }
+        guard let doc = snapshot?.documents.first else { return }
         
-        self.phoneLabel.text = self.adUser!.phoneNumber
-      } catch {
-        fatalError(error.localizedDescription)
+        do {
+          self.adUser = try doc.data(as: UserModel.self)!
+          self.nameLessorLabel.text = "\(NSLocalizedString("lessorName",comment: "")): \(self.adUser!.fullName)"
+          self.phoneLabel.text = self.adUser!.phoneNumber
+          
+        } catch {
+          fatalError(error.localizedDescription)
+        }
+        self.stopLoading()
       }
-      self.stopLoading()
-    }
   }
   
   //MARK: user can make phone call
   
   @IBAction func callButtonpressed(_ sender: UIButton) {
+    
     if let url = URL(string: "tel://\(phoneLabel.text!)"),
        UIApplication.shared.canOpenURL(url) {
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -85,7 +87,6 @@ class DetailsADInHome : UIViewController {
   
   //MARK: user can share advertisement
   @IBAction func shareButtonPressed(_ sender: UIButton) {
-    
     UIGraphicsBeginImageContext(view.frame.size)
     view.layer.render(in: UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -94,13 +95,12 @@ class DetailsADInHome : UIViewController {
     let textToShare = "Check out my app"
     
     if let myWebsite = URL(string: "http://itunes.apple.com/app/idXXXXXXXXX") {
-      
       let objectsToShare = [textToShare, myWebsite, image ?? #imageLiteral(resourceName: "app-logo")] as [Any]
-      let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-      
+      let activityVC = UIActivityViewController(activityItems: objectsToShare
+                                                , applicationActivities: nil)
       //Excluded Activities
-      activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-      
+      activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop
+                                          , UIActivity.ActivityType.addToReadingList]
       activityVC.popoverPresentationController?.sourceView = sender
       self.present(activityVC, animated: true, completion: nil)
     }
@@ -129,63 +129,81 @@ class DetailsADInHome : UIViewController {
   //MARK: start Message Button
   
   @IBAction func ChatButtonPressed(_ sender: UIButton) {
- 
-    db.collection("conversations").whereField("usersIds", arrayContainsAny: [user.uid]).getDocuments { snapshot, error in
-      if let error = error {
-        fatalError(error.localizedDescription)
-      }
-      guard let docs = snapshot?.documents else {
-         return
-      }
-      for doc in docs {
-        do {
-          let conversation = try doc.data(as: ChatRoom.self)!
-          if conversation.usersIds.contains(where: { $0 == self.ad!.userID}) {
-            self.gotoConversation(conversation: conversation)
-            return
-          }
-          
-        } catch {
+    
+    db
+      .collection("conversations")
+      .whereField("usersIds", arrayContainsAny: [user.uid])
+      .getDocuments { snapshot, error in
+        
+        if let error = error {
           fatalError(error.localizedDescription)
         }
-      }
-      self.createConversation()
-      
+        guard let docs = snapshot?.documents else {
+          return
+        }
+        for doc in docs {
+          do {
+            let conversation = try doc.data(as: ChatRoom.self)!
+            
+            if conversation.usersIds.contains(where: { $0 == self.ad!.userID }) {
+              self.gotoConversation(conversation: conversation)
+              return
+            }
+          } catch {
+            fatalError(error.localizedDescription)
+          }
+        }
+        self.createConversation()
+        
     }
-    
   }
   
   
   func gotoConversation(conversation: ChatRoom) {
     
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+    let storyboard = UIStoryboard(name: "Main",
+                                  bundle: nil)
+    let controller = storyboard
+      .instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+    
     controller.selectedConversation = conversation
     self.navigationController?.pushViewController(controller, animated: true)
   }
-  //MARK: function great conversation
   
+  //MARK: function great conversation
   private func createConversation() {
     
     var users: [ChatRoomUser] = []
     
-    users.append(ChatRoomUser(id: user!.uid, name: user.fullName, imgURL: user.imgURL))
+    users.append(ChatRoomUser(id: user!.uid,
+                              name: user.fullName,
+                              imgURL: user.imgURL))
     
-    users.append(ChatRoomUser(id: adUser!.uid, name: adUser!.fullName, imgURL: adUser!.imgURL))
+    users.append(ChatRoomUser(id: adUser!.uid,
+                              name: adUser!.fullName,
+                              imgURL: adUser!.imgURL))
     
-    var conversation = ChatRoom(users: users, usersIds: [user!.uid, adUser!.uid], id: UUID().uuidString, message: [])
-    
+    var conversation = ChatRoom(users: users,
+                                usersIds: [user!.uid,adUser!.uid],
+                                id: UUID().uuidString,
+                                message: [])
     var ref: DocumentReference!
     do {
-      ref = try db.collection("conversations").addDocument(from: conversation) { error in
-        if let error = error {
-          fatalError(error.localizedDescription)
+      
+      ref = try
+      db
+        .collection("conversations")
+        .addDocument(from: conversation) { error in
+          
+          if let error = error {
+            fatalError(error.localizedDescription)
+          }
+          
+          // segue to chat details -- conversation
+          conversation.docID = ref.documentID
+          self.gotoConversation(conversation: conversation)
         }
-        
-        // segue to chat details -- conversation
-        conversation.docID = ref.documentID
-        self.gotoConversation(conversation: conversation)
-      }
+      
     } catch {
       fatalError(error.localizedDescription)
     }

@@ -12,6 +12,8 @@ class ChatuserCell: UITableViewCell {
   @IBOutlet weak var userName: UILabel!
   @IBOutlet weak var imageUser: UIImageView!
   @IBOutlet weak var lastmessageLabel : UILabel!
+  
+  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
