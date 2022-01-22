@@ -28,5 +28,7 @@ Lessor and the lessee
 ## User stories - Lessor and Lesse
    - Users sign up with login and password the first time they use the app. Later everytime they use the app they sign in and can also logout. Whenever needed, they can also modify their profiles.
    - Communication throug an in-app chat.
+   - Users can make communication with whatsapp
    - Lessors can also use the app as clients of other garages.
    - Users can change language of App for"Arabic ,Enaglis"
+
