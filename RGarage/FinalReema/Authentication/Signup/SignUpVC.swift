@@ -157,7 +157,7 @@ class SignUpVC: UIViewController
       }else{
         let alert = Service
           .createAlertController(title: "Error"
-                                  , message: "password not mach")
+                                  , message: "password not match")
         
         alert
           .title = NSLocalizedString("Error", comment: "")
