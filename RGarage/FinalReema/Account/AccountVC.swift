@@ -10,31 +10,26 @@ import Firebase
 
 class AccountVC: UIViewController ,
                  UITableViewDelegate {
-  //variable
-  var avatar = UIImage()
-  var userName = ""
+  
 
   @IBOutlet weak var profilePhoto: UIImageView!
   @IBOutlet weak var nameUser: UILabel!
   @IBOutlet weak var viewInfoUser: UIView!
-  
   @IBOutlet weak var myAdvertismentButton: UIButton!
   
   override func viewDidLoad() {
-    print("\n\n\n* * * * * * * * * * \(#file) \(#function)")
     super.viewDidLoad()
     
     profilePhoto.layer.cornerRadius = profilePhoto.frame.width/2
     profilePhoto.layer.borderWidth = 3
     profilePhoto.layer.borderColor = UIColor.lightGray.cgColor
    
-    myAdvertismentButton.setTitle(NSLocalizedString("MyAdvertisments", comment: ""), for: .normal)
+    myAdvertismentButton.setTitle(NSLocalizedString("MyAdvertisments"
+                                                    , comment: ""), for: .normal)
     
     nameUser.text = user?.fullName
-    
-    //loadNameUser()
     viewInfoUser.layer.cornerRadius = 10
-     
+    myAdvertismentButton.layer.cornerRadius = 10
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -42,14 +37,14 @@ class AccountVC: UIViewController ,
     loadImage()
   }
   @IBAction func settingButtom(_ sender: Any) {
-    let VC = self.storyboard?
-      .instantiateViewController(identifier:K.Storyboard.updateAccountVC)
-    
-    self.view.window?.rootViewController = VC
+    let vc = self.storyboard?
+      .instantiateViewController(identifier:K
+                                  .Storyboard
+                                  .updateAccountVC)
+    self.view.window?.rootViewController = vc
     self.view.window?.makeKeyAndVisible()
   }
-  
-  
+
   // MARK: loadImage User
     func loadImage() {
     if let imgURL = user.imgURL {

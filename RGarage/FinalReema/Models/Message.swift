@@ -8,6 +8,8 @@
 import UIKit
 
 struct Message: Codable {
+  
   let senderID : String
   let body : String
+  let date : Date
  }

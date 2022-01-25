@@ -9,21 +9,21 @@ import UIKit
 import Firebase
 
 
-class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSource{
+class MyAdvertaismentTVC: UIViewController,
+                          UITabBarDelegate,
+                          UITableViewDataSource{
   
-  private let reuseIdentifier3 = String(describing:UItablviewCellTableViewCell.self)
+  private let reuseIdentifier2 = String(describing:UItablviewCellTableViewCell.self)
   
   var data: [AdModel] = []
-  
-  
   @IBOutlet weak var tableViewAccount: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let nib2 = UINib(nibName: reuseIdentifier3, bundle: nil)
+    let nib2 = UINib(nibName: reuseIdentifier2, bundle: nil)
     
-    tableViewAccount.register(nib2, forCellReuseIdentifier: reuseIdentifier3)
-//    loadData()
+    tableViewAccount.register(nib2
+                              ,forCellReuseIdentifier: reuseIdentifier2)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -33,13 +33,17 @@ class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSourc
   
   func loadData() {
     data.removeAll()
-    
-    db.collection("advertisements").whereField("userID", isEqualTo: user?.uid).getDocuments { snapshot, error in
+    db
+      .collection("advertisements")
+      .whereField("userID", isEqualTo: user?.uid)
+      .getDocuments { snapshot, error in
+        
       if let error = error {
         fatalError(error.localizedDescription)
       }
       
       guard let docs = snapshot?.documents else { return }
+        
       for doc in docs {
         do {
           try self.data.append(doc.data(as: AdModel.self)!)
@@ -51,12 +55,7 @@ class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSourc
     }
   }
   
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
-  }
-  
-  
+ 
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
     return data.count
@@ -66,12 +65,14 @@ class MyAdvertaismentTVC: UIViewController,UITabBarDelegate,UITableViewDataSourc
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier3,for: indexPath)  as! UItablviewCellTableViewCell
+    let cell = tableView
+      .dequeueReusableCell(withIdentifier: reuseIdentifier2,
+                           for: indexPath)  as! UItablviewCellTableViewCell
     
     let ad = data[indexPath.row]
     cell.address.text = ad.address
     cell.price.text = " the price is \(ad.price)"
-    cell.date.text = DateFormatter.localizedString(from: ad.date , dateStyle: .long, timeStyle: .medium)
+    cell.date.text = ad.date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
     
     if let imgURL = ad.imageURL {
       if imgURL != "" {

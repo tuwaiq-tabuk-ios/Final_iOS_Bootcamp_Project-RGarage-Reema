@@ -23,13 +23,15 @@ class UpdateAccountVC: UIViewController,
   @IBOutlet weak var emailUpdate: UITextField!
   @IBOutlet weak var updateUserPhoto: UIImageView!
   @IBOutlet weak var numberUserUpdataTF: UITextField!
-  
+  @IBOutlet weak var updateProfilrBtn: UIButton!
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     updateUserPhoto.layer.cornerRadius = updateUserPhoto.frame.height/2
     updateUserPhoto.layer.borderWidth = 3
     updateUserPhoto.layer.borderColor = UIColor.lightGray.cgColor
-    
+    changeLanguageButton.layer.cornerRadius = 10
+    updateProfilrBtn.layer.cornerRadius = 10
     
     //form database
     self.numberUserUpdataTF.text = user?.phoneNumber
@@ -38,15 +40,20 @@ class UpdateAccountVC: UIViewController,
     
     
     // for localizable
-    logOutButton.setTitle(NSLocalizedString("LogOut", comment: ""), for: .normal)
+    logOutButton.setTitle(NSLocalizedString("LogOut"
+                                            , comment: ""), for: .normal)
     
-    changeLanguageButton.setTitle(NSLocalizedString("chaangeLanguage", comment: ""), for: .normal)
+    changeLanguageButton.setTitle(NSLocalizedString("chaangeLanguage"
+                                                    , comment: ""), for: .normal)
   }
   
   //button for change language
   @IBAction func changeLanguagButtonPressed(_ sender: Any) {
     
-    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+    UIApplication
+      .shared
+      .open(URL(string: UIApplication
+                  .openSettingsURLString)!)
   }
   
   
@@ -62,50 +69,50 @@ class UpdateAccountVC: UIViewController,
   @IBAction func BackButtonPressedtoAccountVC(_ sender: UIButton) {
     let VC = self.storyboard?
       .instantiateViewController(identifier:K.Storyboard.tapbarVC)
-    
     self.view.window?.rootViewController = VC
     self.view.window?.makeKeyAndVisible()
   }
   
   // MARK: LOGOUT USER
-  
-  @IBAction func logoutUserPressed(_ sender: Any)
-  {
+  @IBAction func logoutUserPressed(_ sender: Any) {
     do {
       try  Auth.auth().signOut()
       
-      //when user logout go to this page
-      let VC = self.storyboard?
-        .instantiateViewController(identifier:K.Storyboard.welcome)
-      self.view.window?.rootViewController = VC
+      //when user logout go to this VC
+      let vc = self.storyboard?
+        .instantiateViewController(identifier:K
+                                    .Storyboard
+                                    .welcome)
+      self.view.window?.rootViewController = vc
       self.view.window?.makeKeyAndVisible()
     } catch let signOutError as NSError {
-      print ("Error signing out: %@", signOutError)
+      print ("Error signing out:", signOutError)
     }
   }
   
   // MARK: update user Information
-  
-  @IBAction func PressedupdatInfoUser(_ sender: UIButton) {
+    @IBAction func PressedupdatInfoUser(_ sender: UIButton) {
     
     // validate fields
     if uploading == true {return}
-    
+      
     user.email = emailUpdate.text!
     user.phoneNumber = numberUserUpdataTF.text!
     user.fullName = nameUpdate.text!
     user.imgURL = imageURL
     
     do {
-      try db.collection("users").document(user.docID!).setData(from: user, merge: true) { error in
+      try db
+        .collection("users")
+        .document(user.docID!)
+        .setData(from: user, merge: true) { error in
         if let error = error {
           fatalError(error.localizedDescription)
         }
         // updated
-        let alert =  Service.createAleartController(title: "Done"
+        let alert =  Service.createAlertController(title: "Done"
                                                     , message:"successfully updated your profile.")
         alert.title = NSLocalizedString("Done", comment: "")
-        
         alert.message = NSLocalizedString("successfully updated your profile.", comment: "")
         self.present(alert,animated: true , completion:  nil)
         print("Document successfully updated")
@@ -117,7 +124,6 @@ class UpdateAccountVC: UIViewController,
   
   
   @IBAction func updateUserPhotoButton(_ sender: Any) {
-    
     
     let addImge = UIImagePickerController()
     addImge.sourceType = .photoLibrary
@@ -168,13 +174,30 @@ class UpdateAccountVC: UIViewController,
     let title = "Oooooops!"
     let message = "Hi, for use this App press Go To settings and enabled access to Pohto Gallery... Check read and write option and relaunch the App!"
     
-    let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+    let alertController = UIAlertController(title: ""
+                                            , message: ""
+                                            , preferredStyle: .alert)
     
     let subview = (alertController.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
-    subview.backgroundColor = UIColor(white: 0, alpha: 0.2)
     
-    alertController.setValue(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .heavy),NSAttributedString.Key.foregroundColor : UIColor.red]), forKey: "attributedTitle")
-    alertController.setValue(NSAttributedString(string: message, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .regular),NSAttributedString.Key.foregroundColor : UIColor.white]), forKey: "attributedMessage")
+    subview.backgroundColor = UIColor(white: 0, alpha: 0.2)
+    alertController.setValue(NSAttributedString(string: title
+                                                , attributes: [NSAttributedString.Key
+                                                                .font : UIFont
+                                                                .systemFont(ofSize: 18
+                                                                            , weight: .heavy)
+                                                               ,NSAttributedString.Key
+                                                                .foregroundColor : UIColor.red])
+                                                               , forKey: "attributedTitle")
+    
+    alertController.setValue(NSAttributedString(string: message
+                                                , attributes: [NSAttributedString.Key
+                                                                .font : UIFont
+                                                                .systemFont(ofSize: 14
+                                                                            ,weight:.regular)
+                                                               ,NSAttributedString.Key
+                                                                .foregroundColor : UIColor.white])
+                                                               , forKey: "attributedMessage")
     
     let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
       print("Action cancelled")
@@ -186,8 +209,8 @@ class UpdateAccountVC: UIViewController,
     
     alertController.addAction(goToSettingPermission)
     alertController.addAction(cancelAction)
-    
     self.present(alertController, animated: true, completion: {
+      
     })
   }
   
@@ -202,16 +225,18 @@ class UpdateAccountVC: UIViewController,
             info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
     
     self.updateUserPhoto.image  = selectedImage
+      
     guard let jpegData = selectedImage.jpegData(compressionQuality: 0.25) else { return }
-    
     guard let currentUser  = user else  {return}
+      
     let imageName = currentUser.uid
     let ref = storageImage.child("images/\(imageName).png")
-    
     ref.putData(jpegData, metadata: nil, completion: { meta, error in
+      
       if let error = error {
         fatalError(error.localizedDescription)
       }
+      
       if let _ = meta {
         ref.downloadURL { url, error in
           if let error = error {
@@ -223,6 +248,7 @@ class UpdateAccountVC: UIViewController,
         }
       }
     })
+      
     self.dismiss(animated: true, completion: nil)
   }
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

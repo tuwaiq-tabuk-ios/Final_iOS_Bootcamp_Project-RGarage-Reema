@@ -13,7 +13,10 @@ class SplashVC : UIViewController{
   @IBOutlet weak var ourAppLabel: UILabel!
   
   override func viewDidLoad() {
-    thinkingLabel.text = NSLocalizedString("Thinking where to put your car?", comment: "")
-    ourAppLabel.text = NSLocalizedString("Our app meets your needs...", comment: "")
+    thinkingLabel.text = NSLocalizedString("Thinking where to put your car?"
+                                           , comment: "")
+    
+    ourAppLabel.text = NSLocalizedString("Our app meets your needs..."
+                                         , comment: "")
   }
 }

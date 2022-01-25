@@ -7,13 +7,10 @@
 
 import UIKit
 import Firebase
-import FirebaseStorage
-import FirebaseFirestore
 
 class AddAdvertisingVC : UIViewController
 , UINavigationControllerDelegate {
 
-  
   var uploading  :Bool = false
   var imageURL: String?
   
@@ -50,6 +47,7 @@ class AddAdvertisingVC : UIViewController
   }
   
   @IBAction func btnAddAdvertising(_ sender: Any) {
+    
     if let addressUserD = addressAD.text,
        let priceUserD = priceAD.text, let price = Double(priceUserD) {
       
@@ -62,56 +60,63 @@ class AddAdvertisingVC : UIViewController
       
       //      advertisements
       do {
-        try db.collection("advertisements").addDocument(from: adModel) { error in
+        try db
+          .collection("advertisements")
+          .addDocument(from: adModel) { error in
           if let error = error {
             fatalError(error.localizedDescription)
           }
           // alert
-          let alert =  Service.createAleartController(title: "Done"
-                                                      , message:"Your advertising has been uploaded successfully.")
+          let alert =  Service.createAlertController(title: "Done"
+                                                      ,message:"Your advertising has been uploaded successfully.")
           alert.title = NSLocalizedString("Done", comment: "")
           alert.message = NSLocalizedString("Youradvertisinghasbeenuploadedsuccessfully.", comment: "")
-          
           self.present(alert,animated: true , completion:  nil)
-          
+
           self.addressAD.text = ""
           self.priceAD.text = ""
-          //          self.addImageAD.image =
-          let tapbar = self.storyboard?.instantiateViewController(withIdentifier: "TapbarVC") as! TapbarVC
+
+          let tapbar = self.storyboard?
+              .instantiateViewController(withIdentifier: "TapbarVC") as! TapbarVC
           self.present(tapbar, animated: true, completion: nil)
         }
       } catch {
         fatalError(error.localizedDescription)
       }
     }
-    
   }
   
   @IBAction func addphotoButon(_ sender: Any) {
-    
     presentPhotoActionSheet()
   }
 }
 
 
 extension AddAdvertisingVC : UIImagePickerControllerDelegate {
+  
+  
   func presentPhotoActionSheet(){
-    
     let actionSheet = UIAlertController(
       title: "Advertising Picture",
       message: "How would you like to select a picture",
       preferredStyle: .actionSheet)
     
-    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    actionSheet.addAction(UIAlertAction(title: "Cancel"
+                                        , style: .cancel
+                                        , handler: nil))
     
-    actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {[weak self] _ in
+    actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default
+                                        , handler: {[weak self] _ in
       self?.presenCamera()
-    } ))
-    actionSheet.addAction(UIAlertAction(title: "Chose Photo", style: .default, handler: {[weak self ] _ in
+      
+    }))
+    actionSheet.addAction(UIAlertAction(title: "Chose Photo"
+                                        , style: .default, handler: {[weak self ] _ in
       self?.presentPhotoPicker()
     }))
     present(actionSheet , animated: true)
   }
+  
   
   func presenCamera (){
     let addImge = UIImagePickerController()
@@ -133,8 +138,8 @@ extension AddAdvertisingVC : UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController,
                              didFinishPickingMediaWithInfo info:
                              [UIImagePickerController.InfoKey : Any]) {
-    uploading  = true
     
+    uploading  = true
     guard let selectedImage =
             info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
     
@@ -148,18 +153,19 @@ extension AddAdvertisingVC : UIImagePickerControllerDelegate {
       if let error = error {
         fatalError(error.localizedDescription)
       }
-      if let _ = meta {
+      
+      if let metadata = meta {
         ref.downloadURL { url, error in
           if let error = error {
             fatalError(error.localizedDescription)
           }
           guard let url = url else { return }
           self.imageURL = url.absoluteString
-          
           self.uploading = false
+          
         }
       }
-    })
+    }) 
     self.dismiss(animated: true, completion: nil)
   }
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import FirebaseFirestoreSwift
-import Firebase
 
 class SeplashViewController: UIViewController {
   
@@ -16,6 +14,7 @@ class SeplashViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     //for localizable
-    areYouInVecationLabel.text = NSLocalizedString("Are you in vacation?", comment: "")
+    areYouInVecationLabel.text = NSLocalizedString("Are you in vacation?"
+                                                   , comment: "")
   }
 }

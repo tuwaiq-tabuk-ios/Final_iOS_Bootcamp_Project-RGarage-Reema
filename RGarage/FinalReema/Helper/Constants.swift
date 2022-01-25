@@ -11,8 +11,7 @@ import UIKit
 
 struct K {
   
-struct Storyboard {
-  
+  struct Storyboard {
   static let signInVC = "SignIn"
   static let signUpVC = "SignUp"
   static let tapbarVC = "TapbarVC"
@@ -21,14 +20,14 @@ struct Storyboard {
   static let checkEmailVC = "CheckEmailVC"
   static let welcome = "Wellcome"
   static let updateAccountVC = "UpdateAccountVC"
-
  }
   
   //MARK: password conditions
-  class Password{
+  class Password {
     static func isPasswordValid(_ password : String) -> Bool {
-      let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&_])[A-Za-z\\d$@$#!%*?&_]{8,}")
+      let passwordTest = NSPredicate(format: "SELF MATCHES %@"
+                                     , "^(?=.*[a-z])(?=.*[$@$#!%*?&_])[A-Za-z\\d$@$#!%*?&_]{8,}")
       return passwordTest.evaluate(with: password)
     }
-}
+  }
 }

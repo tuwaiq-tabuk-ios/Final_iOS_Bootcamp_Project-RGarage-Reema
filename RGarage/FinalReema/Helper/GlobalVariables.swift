@@ -7,8 +7,10 @@
 
 import Foundation
 import Firebase
+//import FirebaseFirestore
 
-var user: UserModel!
+
 let db = Firestore.firestore()
 let storage = Storage.storage()
 let storageImage = Storage.storage().reference()
+var user: UserModel!

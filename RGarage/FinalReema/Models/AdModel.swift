@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct AdModel: Codable {
   
   var id: String

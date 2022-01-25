@@ -27,16 +27,21 @@ class ForgetPasswordVC: UIViewController {
   @IBAction func sendButtonToCheckEmail(_ sender: UIButton) {
     
     let auth = Auth.auth()
-    auth.sendPasswordReset(withEmail: emailResetPasswordTF.text!){ [self](error) in
+    
+    auth
+      .sendPasswordReset(withEmail: emailResetPasswordTF.text!) { [self](error) in
       if let error = error {
-        let alert =  Service.createAleartController(title: "Error", message: error.localizedDescription)
+        let alert =  Service.createAlertController(title: "Error"
+                                                    , message: error.localizedDescription)
         self.present(alert,animated: true , completion:  nil)
         return
       } else {
     
-        let VC = self.storyboard?
-          .instantiateViewController(identifier:K.Storyboard.checkEmailVC)
-        self.view.window?.rootViewController = VC
+        let vc = self.storyboard?
+          .instantiateViewController(identifier:K
+                                      .Storyboard
+                                      .checkEmailVC)
+        self.view.window?.rootViewController = vc
         self.view.window?.makeKeyAndVisible()
 
       }
