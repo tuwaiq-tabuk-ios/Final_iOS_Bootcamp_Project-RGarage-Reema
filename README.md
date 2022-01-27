@@ -40,6 +40,8 @@ https://user-images.githubusercontent.com/85367931/151304823-d28aa9f0-e14b-46b1-
 
 https://user-images.githubusercontent.com/85367931/151304075-d0af1ffe-222a-41ea-98cd-315d7b9dc57f.MOV
 
+
+-Can see his advertisement in his profile
 -Users have Account and can also modify their profiles.
 
 https://user-images.githubusercontent.com/85367931/151304665-98785d25-708f-4b2c-a136-50e44e6f8b1d.MOV
