@@ -52,7 +52,7 @@ https://user-images.githubusercontent.com/85367931/151304837-d831d923-4cff-41ea-
 
 https://user-images.githubusercontent.com/85367931/151304916-afafc7f1-ab24-488a-bd62-45c9293d1edb.MOV
 
-- Users can change language of App for"Arabic ,Enaglis"
+-Users can change language of App for"Arabic ,English
 
 https://user-images.githubusercontent.com/85367931/151305178-8b4d6082-6667-4aa5-94e5-1cc239c91872.MOV
 
