@@ -47,7 +47,7 @@ class AccountVC: UIViewController ,
 
   // MARK: loadImage User
     func loadImage() {
-    if let imgURL = user.imgURL {
+    if let imgURL = user!.imgURL {
       if imgURL != "" {
         profilePhoto.load(url: URL(string: imgURL)!)
       }

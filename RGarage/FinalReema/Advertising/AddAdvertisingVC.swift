@@ -100,7 +100,6 @@ extension AddAdvertisingVC : UIImagePickerControllerDelegate {
       title: "Advertising Picture",
       message: "How would you like to select a picture",
       preferredStyle: .actionSheet)
-    
     actionSheet.addAction(UIAlertAction(title: "Cancel"
                                         , style: .cancel
                                         , handler: nil))

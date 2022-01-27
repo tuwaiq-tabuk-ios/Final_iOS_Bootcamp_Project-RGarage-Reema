@@ -16,10 +16,8 @@ class ChackingViewController: UIViewController {
     //MARK: Save Login user
     
     if let usr = Auth.auth().currentUser {
-      
       self.startLoading()
       let id = usr.uid
-
       db
         .collection("users")
         .whereField("uid", isEqualTo: id).getDocuments { snapshot, error in
@@ -32,8 +30,6 @@ class ChackingViewController: UIViewController {
           do {
             try user = doc.data(as: UserModel.self)
             self.stopLoading()
-            
-            
             let vc = self.storyboard?
               .instantiateViewController(identifier:K
                                           .Storyboard
@@ -45,7 +41,6 @@ class ChackingViewController: UIViewController {
             fatalError(error.localizedDescription)
           }
         }
-        
       }
     }
     else {
@@ -53,7 +48,6 @@ class ChackingViewController: UIViewController {
         .instantiateViewController(identifier:K
                                     .Storyboard
                                     .seplashViewController)
-
       self.view.window?.rootViewController = vc
       self.view.window?.makeKeyAndVisible()
 

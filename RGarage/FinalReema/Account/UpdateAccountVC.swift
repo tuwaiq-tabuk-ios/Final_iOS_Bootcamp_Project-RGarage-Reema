@@ -100,8 +100,8 @@ class UpdateAccountVC: UIViewController,
     user.phoneNumber = numberUserUpdataTF.text!
     user.fullName = nameUpdate.text!
     user.imgURL = imageURL
-    
-    do {
+
+      do {
       try db
         .collection("users")
         .document(user.docID!)
@@ -225,7 +225,6 @@ class UpdateAccountVC: UIViewController,
             info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
     
     self.updateUserPhoto.image  = selectedImage
-      
     guard let jpegData = selectedImage.jpegData(compressionQuality: 0.25) else { return }
     guard let currentUser  = user else  {return}
       
