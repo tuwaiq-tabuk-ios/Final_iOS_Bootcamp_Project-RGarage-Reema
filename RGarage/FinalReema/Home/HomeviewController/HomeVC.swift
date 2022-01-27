@@ -45,7 +45,6 @@ class HomeVC: UIViewController,
       if let error = error {
         fatalError(error.localizedDescription)
       }
-      
       guard let docs = snapshot?.documents else { return }
         
       for doc in docs {

@@ -163,7 +163,7 @@ class SignUpVC: UIViewController
           .title = NSLocalizedString("Error", comment: "")
         
         alert
-          .message = NSLocalizedString("password not mach"
+          .message = NSLocalizedString("password not match"
                                        , comment: "")
         
         self.present(alert,animated: true , completion:  nil)

@@ -11,7 +11,7 @@ import Firebase
 
 class ChatsUsersTVC: UIViewController {
   
-  var conversations: [ChatRoom] = []
+  var chatRoom: [ChatRoom] = []
   var selectedConversation: ChatRoom?
   
   
@@ -30,7 +30,7 @@ class ChatsUsersTVC: UIViewController {
     db.collection("conversations")
       .whereField("usersIds", arrayContains: user!.uid)
       .getDocuments() { (snapshot, error) in
-        self.conversations.removeAll()
+        self.chatRoom.removeAll()
         
         if let error = error {
           fatalError(error.localizedDescription)
@@ -39,13 +39,12 @@ class ChatsUsersTVC: UIViewController {
           if let docs = snapshot?.documents {
             for doc in docs {
               do {
-                try self.conversations
+                try self.chatRoom
                   .append(doc.data(as: ChatRoom.self)!)
               } catch {
                 fatalError(error.localizedDescription)
               }
             }
-            
             self.tableChatsBetweenUsers.reloadData()
             self.stopLoading()
           }
@@ -58,7 +57,7 @@ class ChatsUsersTVC: UIViewController {
 extension ChatsUsersTVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    return conversations.count
+    return chatRoom.count
   }
   
   
@@ -68,7 +67,7 @@ extension ChatsUsersTVC: UITableViewDelegate, UITableViewDataSource {
     let cell = tableView
                     .dequeueReusableCell(withIdentifier:"ChatusersCell") as! ChatuserCell
     
-    let conversation = conversations[indexPath.row]
+    let conversation = chatRoom[indexPath.row]
     let oUser = conversation.users.first { usr in usr.id != user.uid}!
     
     //load name,last message
@@ -91,7 +90,7 @@ extension ChatsUsersTVC: UITableViewDelegate, UITableViewDataSource {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let controller = storyboard
                        .instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-    controller.selectedConversation = conversations[indexPath.row]
+    controller.selectedConversation = chatRoom[indexPath.row]
     self.navigationController?.pushViewController(controller, animated: true)
   }
 }

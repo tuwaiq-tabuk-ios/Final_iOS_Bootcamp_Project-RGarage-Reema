@@ -69,8 +69,3 @@ https://user-images.githubusercontent.com/85367931/151306420-d16fd31c-8fbb-4b52-
 - Users can make communication with whatsapp
 
 https://user-images.githubusercontent.com/85367931/151306683-67ef450f-19ba-4d15-9421-2d6df117be85.MOV
-
-
-
-
-

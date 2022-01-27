@@ -112,9 +112,10 @@ class DetailsADInHome : UIViewController {
   
   @IBAction func whatsAppButtonPressed(_ sender: UIButton) {
     let phoneNumber = "\(phoneLabel.text!)"
-    let shareableMessageText = "Hi Lessor"
     
+    let shareableMessageText = "Hi Lessor"
     let whatsApp = "https://wa.me/\(phoneNumber)/?text=\(shareableMessageText)"
+    
     if let urlString = whatsApp.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
       if let whatsappURL = NSURL(string: urlString) {
         if UIApplication.shared.canOpenURL(whatsappURL as URL) {
@@ -125,7 +126,6 @@ class DetailsADInHome : UIViewController {
       }
     }
   }
-  
   //MARK: start Message Button
   
   @IBAction func ChatButtonPressed(_ sender: UIButton) {
@@ -155,7 +155,7 @@ class DetailsADInHome : UIViewController {
         }
         self.createConversation()
         
-    }
+      }
   }
   
   
